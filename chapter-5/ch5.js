@@ -197,18 +197,18 @@ console.log(day.toString())
 
 // getter and shatter//
 
-class person{
-    constructor(firstname,lastname,age){
-        this.firstName=firstname;
-        this.lastname=lastname;
-        this.age=age;
+class person {
+    constructor(firstname, lastname, age) {
+        this.firstName = firstname;
+        this.lastname = lastname;
+        this.age = age;
     }
 
-    get fullname(){
+    get fullname() {
         return `${this.firstName} ${this.lastname}`
     }
 }
-const person1=new person("sanjana","patel",22)
+const person1 = new person("sanjana", "patel", 22)
 console.log(person1.fullname);
 
 
@@ -268,31 +268,30 @@ myfunc();
 
 
 
-function nonrep(){
-var number =[1, 2, 1, 5, 6, 2, 3, 1, 2, 5, 8, 9]
-var i = 0;
-var j = 0;
-var N = [];
+function nonrep() {
+    var number = [1, 2, 1, 5, 6, 2, 3, 1, 2, 5, 8, 9]
+    var i = 0;
+    var j = 0;
+    var N = [];
 
-for (i = 0; i < number.length; i++) {
-    for (j = 0; j < number.length; j++) {
+    for (i = 0; i < number.length; i++) {
+        for (j = 0; j < number.length; j++) {
 
-        if (i ===j) {
-            continue;
+            if (i === j) {
+                continue;
 
+            }
+            if (number[i] === number[j]) {
+                break;
+            }
         }
-        if (number[i] === number[j]) {
-            break;
-        }
-        }
-        if(j === number.length)
-        {
+        if (j === number.length) {
             N.push(number[i]);
-        
 
+
+        }
     }
-}
-console.log(N);
+    console.log(N);
 }
 
 nonrep();
@@ -300,9 +299,9 @@ nonrep();
 
 1.// Write a function that clears array from all unnecessary elements, like false, undefined, empty strings, zero, null
 
-const arr = [0, 1, null, 2,3, undefined];
+const arr = [0, 1, null, 2, 3, undefined];
 const f = arr.filter((i) => {
-  return i !== null && typeof i!== 'undefined' && i!==0;
+    return i !== null && typeof i !== 'undefined' && i !== 0;
 });
 console.log(f);
 
@@ -313,6 +312,31 @@ console.log(f);
 // #4 - Write a JS function to convert the given number into coins
 //      e.g. 46 - 10, 10, 10, 10, 5, 1
 
+function amountTocoins() {
+
+    var num = 46
+
+    var arr1 = [24, 10, 5, 2, 1];
+    var str = '';
+
+    for (var i = 0; i < arr1.length; i++) {
+        if (num >= arr1[i]) {
+            num = num - arr1[i];
+            str = str + arr1[i] + ',';
+            i--;
+        }
+    }
+    console.log(str)
+}
+
+amountTocoins();
 
 
-  
+
+var is_array = function (input) {
+    if (toString.call(input) === "[object Array]")
+        return true;
+        return false;
+};
+console.log(is_array('w3resource'));
+console.log(is_array([1, 2, 4, 0]));
