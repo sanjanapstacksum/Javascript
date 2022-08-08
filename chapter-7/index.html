@@ -32,8 +32,36 @@
 
 
 <body>
-    <script src="ch7.js"></script>
+    
+    <div class="parantDiv" style="width:200px; height:200px; margin: 10px;   background-color: blue;" onclick="parentcall()">
+        <div class="childDiv"  style="width:100px;  height:100px;  position: fixed;
+        top: 17%;
+        left: 16%;
+        transform: translate(-50%, -50%); margin:0px auto; position: absolute;  background-color: rgb(255, 0, 128);" onclick="childcall()">
+        </div>
+    
+        </div>
 
+    
+
+
+    <div>
+
+        <button id="add">Add</button>
+        <button id="remove">remove</button>
+        <h1>Output</h1>
+    </div>
+
+    <h1> Stopping Default Behavior </h1>
+
+    <div id="mydiv" style="width:200px;
+    height:200px;
+    margin: 10px;
+    background-color: blue;
+    color: antiquewhite;">
+    <a href="https://getbootstrap.com/docs/4.0/components/navbar/" id="mylink " > Click og</a>  
+</div>
+    
 
 <!-- keyboard events -->
     <form>
@@ -55,6 +83,14 @@
           </div>
       </form>
     </div>
+
+
+    <!-- delegation -->
+
+    <ul id="list"></ul>
+    <li>one</li>
+    <li>two</li>
+</ul>
     
 
 
@@ -67,17 +103,64 @@
 
     <div id="box" oncontextmenu="fun()"></div>  
     <!-- oncontextmenu,onclick,onmouseover,up,down, etc -->
+
+
+
+    
     <script>
      function fun(){
         alert("hey");
      }
+
+     
+// function stoplink(e){
+//     e.preventDefault();
+
+// }
+
+// //  var l=document.getElementById("mylink");
+// l.addEventListener('click',stoplink,false);  
+
+
+const parentcall=()=>{
+    alert('p call');
+
+}
+
+const childcall=()=>{
+    alert('c call');
+    event.stopPropagation();
+    
+}
+
+let btnadd= document.querySelector('#add');
+let btnremove= document.querySelector('#remove');
+let output= document.querySelector('h1');
+
+
+btnadd.addEventListener('click',()=>{
+    document.addEventListener('mousemove',handleevent);
+})
+
+btnremove.addEventListener('click',()=>{
+    document.removeEventListener('mousemove',handleevent);
+})
+
+function handleevent(e){
+    output.innerText=`X: ${e.pageX}-Y: ${e.pageY}`;
+}
+
+
 
         </script>
 
         
     <!-- inline events -->
     <p onclick="console.log('You clicked Me!')">click Me </p>
+
+
    
-    
+   
+    <script src="ch7.js"></script>
 </body>
 </html>

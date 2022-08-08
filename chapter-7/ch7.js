@@ -1,20 +1,20 @@
 
 
-document.onclick=function(){ console.log('you clicked on the page')}
+// document.onclick=function(){ console.log('you clicked on the page')}
 
-document.body.addEventListener('click',dosomething);
-addEventListener('click',()=>alert('you Clicked'));
+// document.body.addEventListener('click',dosomething);
+// addEventListener('click',()=>alert('you Clicked'));
  
-function s(){
-    alert('something Happened');
-}
-addEventListener('click',s);
+// function s(){
+//     alert('something Happened');
+// }
+// addEventListener('click',s);
 
 
-function dosomething(event){
-    console.log(event.type);
-}
-addEventListener( 'click',dosomething);
+// function dosomething(event){
+//     console.log(event.type);
+// }
+// addEventListener( 'click',dosomething);
 
 
 
