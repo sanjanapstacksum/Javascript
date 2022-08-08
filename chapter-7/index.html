@@ -4,10 +4,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Event Examples</title>
+
+<style>
+    p{
+        width:200px;
+        height:200px;
+        margin: 10px;
+        background-color: #ccc;
+        float: left;
+
+    }
+    #box{ width:200px;
+        height:200px;
+        margin: 10px;
+        background-color: blue;
+        float: left;
+
+
+    }
+
+    .highlight{
+        background-color: red;
+    }
+</style>
 </head>
+
+
 <body>
     <script src="ch7.js"></script>
+
+
+<!-- keyboard events -->
+    <form>
+        <div class="container" id="hello">
+        <div class="m">
+          <label for="exampleInputEmail1" class="form-label">onkeyup</br></label>
+          <input type="email" onkeydown="alert(this.value);"    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </br>
+        </div>
+        <div class="m">
+          <label for="exampleInputPassword1" class="form-label"></br>onkeydown</br></label>
+          <input type="email " onkeyup="alert(this.value); "class="form-control" id="exampleInputPassword1">
+        </div>
+      
+
+        <div class="m">
+            <label for="exampleInputPassword1" class="form-label"></br>onkeyup</br></label>
+            <input type="email" onkeypress="alert(this.value);" class="form-control" id="exampleInputPassword1">
+          </div>
+      </form>
+    </div>
+    
+
+
+
+    <p id='click'>Click On me</p>
+    <p id='dbclick'> Double Click On me</p>
+    <p id='mouse'>Hover On me</p>
+    <script src="ch7.js"></script>
+
+
+    <div id="box" oncontextmenu="fun()"></div>  
+    <!-- oncontextmenu,onclick,onmouseover,up,down, etc -->
+    <script>
+     function fun(){
+        alert("hey");
+     }
+
+        </script>
+
+        
+    <!-- inline events -->
+    <p onclick="console.log('You clicked Me!')">click Me </p>
+   
     
 </body>
 </html>
