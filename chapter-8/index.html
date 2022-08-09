@@ -32,11 +32,12 @@
 </br></br>
 
 
-<form action="" name="form3" method="get">
-    Username:<input type="text" name="s_username"></br></br>
-    Password:<input type="Password" name="s_password"></br></br>
-    <input type="reset" name="btn"></br></br>
+<form action="" name="form3" id="wholeform" class="blurall">
+    Username:<input type="text" name="s_username" id="text1" onfocus="focusplease(this)" onblur="blurf(this)"   oninput="inputf(this)"></br></br>
+    Password:<input type="Password" name="s_password"   id="text2"   onblur="blurf(this)"   onfocus="focusplease(this)"   ></br></br>
+    <input type="reset" name="btn"   id="text3"   onblur="blurf(this)"   onfocus="focusplease(this)"   ></br></br>
 </form>
+<div id="line" style="border:1px solid red;"></div>
 
 
     <script src="ch8.js"></script>
