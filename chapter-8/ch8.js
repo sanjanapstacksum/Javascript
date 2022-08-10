@@ -140,7 +140,5 @@ form.powers;
 //     if(firstLetter.toUpperCase()==='X'){
 //         event.preventDefault();
 //         alert('not allowed')
-//     }
-
-        
+//     }        
 //     }
