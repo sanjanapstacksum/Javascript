@@ -21,7 +21,7 @@ let mtable=document.querySelector("#table");
         table.style.fontSize="25px",
         table.style.fontFamily='Montserrat','sans-serif';
         table.style.table="table-striped"
-        
+        table.className="myTable"
        
         let headerrow=document.createElement('tr');
        
