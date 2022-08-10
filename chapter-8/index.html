@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-<form name='search' action='/search'>
+<!-- <form name='search' action='/search'>
     <input name='searchInput'>
     <button type='submit'>Search</button></br></br>
 </form>
@@ -32,18 +32,83 @@
 </br></br>
 
 
-<form action="" name="form3" id="wholeform" class="blurall">
-    Username:<input type="text" name="s_username" id="text1" onfocus="focusplease(this)" onblur="blurf(this)"   oninput="inputf(this)"></br></br>
+<form action="" name="form3" id="wholeform" class="blurall" onsubmit="submited()">
+    Username:<input type="text" name="s_username" id="text1" onfocus="focusplease(this)" onblur="blurf(this)" onchange="changed(this)" value="sanjana" onselect="selected()" oninvalid="alert('please fill')" required></br></br>
     Password:<input type="Password" name="s_password"   id="text2"   onblur="blurf(this)"   onfocus="focusplease(this)"   ></br></br>
-    <input type="reset" name="btn"   id="text3"   onblur="blurf(this)"   onfocus="focusplease(this)"   ></br></br>
+    <input type="reset" name="btn"   id="text3"   onblur="blurf(this)"   onfocus="focusplease(this)"   >
+    <input type="submit">        
+</br></br>
 </form>
 <div id="line" style="border:1px solid red;"></div>
+</br>
 
 
-    <script src="ch8.js"></script>
-
+  
 
 
     
+ -->
+     <form id="hero">
+        <lable for ="heroname">Name:
+            <input type="text" id="heroName" name="heroName" autofocus >
+        </lable>
+        
+        <p> Super Powers</p>
+        
+        <lable for="flight">Flight:
+            <input type="checkbox" id="flight" value="Flight" name="powers" checked>
+        </lable>
+        <lable for="Strength">Super strength:
+            <input type="checkbox" id="strength" value="Strength" name="powers">
+        </lable>
+        <lable for="speed">Super spedd:
+            <input type="checkbox" id="speed" value="Super speed" name="powers">
+        </lable>
+        <lable for="energy">Energy Blasts:
+            <input type="checkbox" id="energy" value="Energy Blasts" name="powers">
+        </lable>
+        <lable for="telekinesis">Telekinesis:
+            <input type="checkbox" id="telekinesis" value="Telekinesis" name="powers">
+        </lable>
+
+        <p> What type of hero are you? </p>
+        <lable for="hero">Hero:
+            <input type="radio" id="hero" value="Hero" name="Category">
+        </lable>
+        <lable for="villain">Villain:
+            <input type="radio" id="villain" value="Villain" name="Category" checked>
+        </lable>
+        <lable for="anti-hero">Anti-hero:
+            <input type="radio" id="anti-hero" value="Antihero" name="Category">
+        </lable>
+        <lable for="city"> Base of operation:
+            <select name="city" id="city">
+                <option value="" selected> Choose a city</option>
+                <option value="Metropolis" >Metropolis</option>
+                <option value="Gotham City" >Gotham City</option>
+                <option value="Keystone City" >Keystone City</option>
+                <option value="Coast City" >Coast City</option>
+                <option value="Star City" >Star City</option>    
+            </select>
+
+        </lable>
+    </br>
+</br>
+        <lable for="origin">
+
+            <textarea id="origin" name="origin" rows="20" cols="60"> Welcome to Stack Summation. Good to see you</textarea>
+        </lable>
+        <button type="submit">Submit</button>
+
+     </form>
+
+
+
+
+     <script src="ch8.js"></script>
+
+
+
+
 </body>
 </html>
