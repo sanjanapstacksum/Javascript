@@ -29,5 +29,28 @@ function display(){
 
     }
 
+     var s =document.getElementById('table1')
+     var newRow=s.insertRow(row);
 
+     var cell1=newRow.insertCell(0);
+     var cell2=newRow.insertCell(1);   
+     var cell3=newRow.insertCell(2);
+     var cell4=newRow.insertCell(3);
+     var cell5=newRow.insertCell(4);
+     var cell6=newRow.insertCell(5);
+     var cell7=newRow.insertCell(6);
+     var cell8=newRow.insertCell(7);
+
+
+
+     cell1.innerHTML=name;
+     cell2.innerHTML=fullname;
+     cell3.innerHTML=gender;
+     cell4.innerHTML=email;
+     cell5.innerHTML=password;
+     cell6.innerHTML=mobileno;
+     cell7.innerHTML=city;
+     cell8.innerHTML=education;
+
+     row++;
 }
