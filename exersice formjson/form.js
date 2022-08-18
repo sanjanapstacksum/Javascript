@@ -48,20 +48,7 @@ function bfunction() {
     }
 
 }
-function genderfunction() {
 
-    var fname = document.getElementById('gender')
-
-    if (fname.value == "") {
-        document.getElementById('genderfun').style.display = "block";
-        return true;
-    }
-    else {
-        document.getElementById('genderfun').style.display = "none";
-        return true;
-    }
-
-}
 function emailfunction() {
 
     var fname = document.getElementById('email')
@@ -138,18 +125,67 @@ function edufunction() {
 }
 
 
+function validatefunc() {
+
+    var option = document.getElementsByName('optradio');
+
+
+    if (!(option[0].checked || option[1].checked)) {
+        document.getElementById('genderfun').style.display = "block";
+        return false;
+
+    }
+
+
+}
+
+
+function emailvalfun() {
+
+
+    var form1 = document.getElementById("form");
+    var Email = document.getElementById('email').value;
+
+    var text = document.getElementById('emailllfun');
+    var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+    if (Email.match(pattern)) {
+        document.getElementById('Emailfun').style.display = "block";
+        document.getElementById('emailllfun').style.display = "none";
+
+        // alert("email is valid")
+        form1.classlist.add("valid");
+        form1.classlist.remove("invalid");
+
+    }
+    else {
+        // alert("email is invalid")
+        document.getElementById('emailllfun').style.display = "block";
+        document.getElementById('Emailfun').style.display = "none";
+
+        form1.classList.remove("valid");
+        form1.classList.add("invalid");
+
+    }
+}
+
+
+
+
 var row = 1;
+
+
+
+
 
 function display() {
 
 
 
-
-
-
     var name = document.getElementById('name').value
     var fullname = document.getElementById('fullname').value
-    var gender = document.getElementById('gender').value
+    var gender = document.querySelector('input[name="optradio"]:checked');
     var email = document.getElementById('email').value
     var password = document.getElementById('password').value
     var mobileno = document.getElementById('mobileno').value
@@ -157,37 +193,95 @@ function display() {
     var education = document.getElementById('education').value
     var check = true;
 
-    if (name == '' || fullname == '' || gender == '' || email == '' || password == '' || mobileno == '' || city == '' || education == '') {
-   alert("fill all fields")                    
-        check = false;
+
+    // if (name == '' || fullname == '' || gender == '' || email == '' || password == '' || mobileno == '' || city == '' || education == '') {
+    //     alert("fill all fields")
+    //     check = false;
+
+    //     }
+    
+    var validate=true;
+
+    if (name == '') {
+
+        document.getElementById('firstnameIconStatus').style.display = "block";
+        validate=false;
     }
+     if (fullname == '') {
+        document.getElementById('fstatus').style.display = "block";
+        validate=false;
+    }
+    
+    var form1 = document.getElementById("form");
+    var Email = document.getElementById('email').value;
+
+    var text = document.getElementById('emailllfun');
+    var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+    if (!Email.match(pattern)) {
+        document.getElementById('emailllfun').style.display = "block";
+        validate=false;
+    }
+  
+
+    if (email == '') {
+        document.getElementById('emailfun').style.display = "block";
+        validate=false;
+    }
+   
+     if (password == '') {
+        document.getElementById('passfun').style.display = "block";
+        validate=false;
+        
+        
+    }
+
+     if (mobileno == '') {
+        document.getElementById('mobfun').style.display = "block";
+        validate=false;
+    }
+     if(city == '') {
+        document.getElementById('cityfun').style.display = "block";
+        validate=false;
+    }
+
+     if (education == '') {
+        document.getElementById('edufun').style.display = "block";
+        validate=false;
+    }
+   
+
+     if(validate==false){
+        return false;
+     }
+
     else {
 
-        check = true;
-
-
-
-        // const validate=document.forms['final'];
-        // validate.addEventListener('submit',validate,false);
-
-
+       var validate = true;
+        count = 0;
         var s = document.getElementById('table1')
         var newRow = s.insertRow(row);
 
         var cell1 = newRow.insertCell(0);
         var cell2 = newRow.insertCell(1);
-        var cell3 = newRow.insertCell(2);
+        // var cell3 = newRow.insertCell(2);
+        if (gender.checked)
+            newRow.insertCell(2).innerHTML = gender.value;
+        else
+            newRow.insertCell(2).innerHTML = "";
+
         var cell4 = newRow.insertCell(3);
         var cell5 = newRow.insertCell(4);
         var cell6 = newRow.insertCell(5);
         var cell7 = newRow.insertCell(6);
         var cell8 = newRow.insertCell(7);
 
-
+        count = count + 1;
 
         cell1.innerHTML = name;
         cell2.innerHTML = fullname;
-        cell3.innerHTML = gender;
+        // cell3.innerHTML = gender;
         cell4.innerHTML = email;
         cell5.innerHTML = password;
         cell6.innerHTML = mobileno;
@@ -196,4 +290,5 @@ function display() {
 
         row++;
     }
+
 }
