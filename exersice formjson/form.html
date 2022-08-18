@@ -73,6 +73,11 @@
         .table{
             background-color: rgb(173, 169, 169)
         }
+        #cont{
+            padding: 0px;
+            background-color: brown;
+            margin-top: 30px;
+        }
      
 
         #one {
@@ -112,53 +117,75 @@
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Enter your Name" id="name">
+                    <input type="text" class="form-control" placeholder="Enter your Name" id="name" onblur="blurfunction()" >
+                    <span id="firstnameIcon"></span>
+                    <span id="firstnameIconStatus"  style="display: none; float:left; color: red;">Name is required</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Full Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Enter your full Name" id="fullname">
+                    <input type="text" class="form-control" placeholder="Enter your full Name" id="fullname" onblur="bfunction()" >
+                    <span id="fstatus"  style="display: none; float:left; color: red;">Fullname is required</span>
+                    
                 </div>
+
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Gender</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Male/Female/Other" id="gender">
+                <div class="col-sm-10" style="
+               display:flex;
+               justify-content: flex-start;
+               margin: 0px auto;
+                padding-top: 5px;
+            ">
+                    <label class="radio-inline">
+                        <input type="radio" name="optradio" >Male &nbsp;
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="optradio">Female
+                      </label>
+                   
+                    <span id="genderfun"  style="display: none; float:left; color: red;">This field is required</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="abc@gmail.com" id="email">
+                    <input type="text" class="form-control" placeholder="abc@gmail.com" id="email" onblur="emailfunction()">
+                    <span id="emailfun"  style="display: none; float:left; color: red;">This field is required</span>
+                    
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control"  placeholder="Enter Your Password"
-                    id="password">
+                    <input type="password" class="form-control"  placeholder="Enter Your Password" id="password" onblur="passfunction()">
+                    <span id="passfun"  style="display: none; float:left; color: red;">This field is required</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Mobile No:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Enter your Mobile number" id="mobileno">
+                    <input type="text" class="form-control" placeholder="Enter your Mobile number" id="mobileno" onblur="mobfunction()" >
+                    <span id="mobfun"  style="display: none; float:left; color: red;">This field is required</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Enter your City Name" id="city">
+                    <input type="text" class="form-control" placeholder="Enter your City Name" id="city"  onblur="cityfunction()">
+                    <span id="cityfun"  style="display: none; float:left; color: red;">This field is required</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Education</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Your Qualification" id="education">
+                    <input type="text" class="form-control" placeholder="Your Qualification" id="education" onblur="edufunction()">
+                    <span id="edufun"  style="display: none; float:left; color: red;">This field is required</span>
                 </div>
             </div>
-            <button type="button" class="btn btn-success" id="btn1">Submit</button>
+            <input type="button" class="btn btn-success" id="btn1" value="submit">
 
 
 
