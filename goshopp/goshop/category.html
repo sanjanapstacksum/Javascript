@@ -1535,13 +1535,14 @@
     
                 var Form = document.getElementById("secondform2");
                 var Email = document.getElementById('secondemail').value;
+                document.getElementById('emailrequired2').style.display = "none";
     
     
                 var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     
     
                 if (Email.match(pattern)) {
-                    document.getElementById('email4').style.display = "block";
+                    // document.getElementById('email4').style.display = "block";
                     document.getElementById('email3').style.display = "none";
                     document.getElementById('emailrequired2').style.display = "none";
     
@@ -1675,15 +1676,16 @@
     
                 var Form = document.getElementById("firstf");
                 var Email = document.getElementById('email').value;
+                document.getElementById('emailrequired').style.display = "none";
     
     
                 var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     
     
                 if (Email.match(pattern)) {
-                    document.getElementById('email2').style.display = "block";
+                    // document.getElementById('email2').style.display = "block";
                     document.getElementById('email1').style.display = "none";
-                    document.getElementById('emaiirequired').style.display = "none";
+                    document.getElementById('emailrequired').style.display = "none";
     
                     // alert("email is valid")
                     // Form.classlist.add("valid");

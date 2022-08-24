@@ -1616,8 +1616,9 @@
                         <form class="login" id="firstform">
                             <div class="form-group"><input type="text" placeholder="Email" onkeyup="emailkeyfunc()"
                                     onblur="hellofirstform()"  onfocus="focus()" class="form-control" id="email">
-                                <span id="emailrequired" style="display: none; float:left; color: red;">*email is
-                                    required</span>
+                                 <span id="emailrequired" style="display: none; float:left; color: red;">*email is
+                                    required</span> 
+                                    
                                 <span id="email1" style="display: none; float:left; color: red;">enter correct
                                     email</span>
                                 <span id="email2" style="display: none; float:left; color:green;">Email is
@@ -1826,13 +1827,15 @@
 
             var Form = document.getElementById("secondform2");
             var Email = document.getElementById('secondemail').value;
+            document.getElementById('emailrequired2').style.display = "none";
+
 
 
             var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 
             if (Email.match(pattern)) {
-                document.getElementById('email4').style.display = "block";
+                // document.getElementById('email4').style.display = "block";
                 document.getElementById('email3').style.display = "none";
                 document.getElementById('emailrequired2').style.display = "none";
 
@@ -1934,27 +1937,27 @@
 
         // for form1
 
+
+        
        
+
         function hellofirstform() {
-            
             var signin = document.getElementById('email')
 
             if (signin.value == "") {
                 document.getElementById('emailrequired').style.display = "block";
                 return true;
             }
-           
             else {
                 document.getElementById('emailrequired').style.display = "none";
                 return true;
             }
-           
+
         }
 
         function passfirstform() {
             var signin = document.getElementById('password')
             document.getElementById('email2').style.display = "none";
-
 
             if (signin.value == "") {
                 document.getElementById('email2').style.display = "none";
@@ -1972,13 +1975,15 @@
 
             var Form = document.getElementById("firstf");
             var Email = document.getElementById('email').value;
+            document.getElementById('emailrequired').style.display = "none";
+
 
 
             var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 
             if (Email.match(pattern)) {
-                document.getElementById('email2').style.display = "block";
+                // document.getElementById('email2').style.display = "block";
                 document.getElementById('email1').style.display = "none";
                 document.getElementById('emailrequired').style.display = "none";
 
@@ -1991,19 +1996,12 @@
                 // alert("email is invalid")
                 document.getElementById('email1').style.display = "block";
                 document.getElementById('email2').style.display = "none";
-                document.getElementById('emailrequired').style.display = "none";
-
 
                 Form.classList.remove("valid");
                 Form.classList.add("invalid");
 
             }
         }
-
-
-
-
-
 
         var entry = document.getElementById('button')
         entry.addEventListener('click', show)
@@ -2036,11 +2034,6 @@
                 document.getElementById('email1').style.display = "none";
                 validate = false;
             }
-            if(!mail==""){
-
-                document.getElementById('emailrequired').style.display = "none";
-                validate=true;
-            }
             if (pass == '') {
                 document.getElementById('passwordrequired').style.display = "block";
                 validate = false;
@@ -2058,6 +2051,8 @@
                 alert("successfully login")
             }
         }
+
+
 
     </script>
 
