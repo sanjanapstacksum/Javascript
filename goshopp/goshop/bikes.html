@@ -64,53 +64,66 @@
             color: black;
         }
 
-        /*              
-      #Table1{
-        display: inline-block;
-        margin-top: 70px;
-        text-align: center;
-        margin-left: 150px;
-        border: black;
-        font-size: large;
-        border-top: black;
 
-      
-      }
+        .products-slider::after {
+    background: #fff none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    width: 12%;
+    z-index: 2;
+}
+.products-slider::before {
+    background: #fff none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    opacity: 0.7;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 12%;
+    z-index: 2;
+}
 
-      th,td{
-        border: 1px solid rgb(15, 1, 1);
-        
-        padding: 5px;
-        background-color:rgb(253, 202, 156);
-        text-align: center;
-        border-top: black;
-        vertical-align: middle;
-
-        
-       
-      }
-
-      #tab{
-        height: 500px;
-        width: 1000px;
-        text-align: center;
-        color: black;
-        text-align: center;
-        border: black;
-        border-top: black;
-
-      }
-
-      #border{
-        border: black;
-        border-top: black;
-
-      }
-      
-     
-        
-        
-      */
+.center .product-media {
+    transform: scale(1);
+}
+.product-media {
+    padding: 50px 0 20px;
+    transform: scale(0.7);
+}
+.products-wrap > .fancy-btn {
+    margin-top: 40px;
+}
+.nav-2 .owl-prev, .nav-2 .owl-next {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    bottom: 0;
+    font-size: 20px;
+    height: 40px;
+    line-height: 35px;
+    margin: auto;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: 30px;
+    z-index: 5;
+}
+.nav-2 .owl-prev {
+    left: 0;
+}
+.nav-2 .owl-next {
+    right: 0;
+}
+.products-slider .owl-prev {
+    left: 12%;
+}
+.products-slider .owl-next {
+    right: 12%;
+}
     </style>
 
 
@@ -120,127 +133,11 @@
     <header id="masthead" class="clearfix" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
         <div class="site-subheader site-header">
             <div class="container theme-container">
-                <!-- Language & Currency Switcher -->
-                <!-- <ul class="pull-left list-unstyled list-inline">
-                         <li class="nav-dropdown language-switcher">
-                             <div>EN</div>
-                             <ul class="nav-dropdown-inner list-unstyled list-lang">
-                                 <li><span class="current">EN</span></li>
-                                 <li><a title="Russian" href="#">RU</a></li>
-                                 <li><a title="France" href="#">FR</a></li>
-                                 <li><a title="Brazil" href="#">IT</a></li>                                
-                             </ul>
-                         </li>
-                         <li class="nav-dropdown language-switcher">
-                             <div><span class="fa fa-dollar"></span>USD</div>
-                             <ul class="nav-dropdown-inner list-unstyled list-currency">
-                                 <li><span class="current"><span class="fa fa-dollar"></span>USD</span></li>
-                                 <li><a title="Euro" href="#"><span class="fa fa-eur"></span>Euro</a></li>
-                                 <li><a title="GBP" href="#"><span class="fa fa-gbp"></span>GBP</a></li>
-                             </ul>
-                         </li>
-                     </ul> -->
+               
 
                 <!-- Mini Cart -->
                 <ul class="pull-right list-unstyled list-inline">
-                    <!-- <li class="nav-dropdown">
-                             <a href="#">My Account</a>
-                             <ul class="nav-dropdown-inner list-unstyled accnt-list">
-                                 <li> <a href="my-account.html">My Account</a></li>                                                
-                                 <li> <a href="account-info.html"> Account Information </a></li>                                                
-                                 <li> <a href="cng-pw.html">Change Password</a></li>
-                                 <li> <a href="address-book.html">Address Books</a></li>
-                                 <li> <a href="order-history.html">Order History</a></li>
-                                 <li> <a href="review-rating.html">Reviews and Ratings</a></li>
-                                 <li> <a href="return.html">Returns Requests</a></li>
-                                 <li> <a href="newsletter.html">Newsletter</a></li>
-                                 <li> <a href="myaccount-leftsidebar.html">Left Sidebar</a></li>
-                             </ul>
-                         </li>
-                         <li id="cartContent" class="cartContent">
-                             <a id="miniCartDropdown" href="cart.html">
-                                 My Cart 
-                                 <span class="cart-item-num">3</span>
-                             </a>
- 
-                             <div id="miniCartView" class="cartView">
-                                 <ul id="minicartHeader" class="product_list_widget list-unstyled">
-                                     <li>
-                                         <div class="media clearfix">
-                                             <div class="media-lefta">
-                                                 <a href="single-product.html">
-                                                     <img  src="assets/img/products/cart-popup-1.jpg" alt="hoodie_5_front" />
-                                                 </a>
-                                             </div>
-                                             <div class="media-body">
-                                                 <a href="single-product.html">Flusas Feminin</a>
-                                                 <span class="price"><span class="amount"><span class="fa fa-dollar"></span>20.00</span></span>
-                                                 <span class="quantity">Qty:  1Pcs</span>
-                                             </div>
-                                         </div>
- 
-                                         <div class="product-remove">
-                                             <a href="#" class="btn-remove" title="Remove this item"><i class="fa fa-close"></i></a>				
-                                         </div>
-                                     </li>
-                                     <li>
-                                         <div class="media clearfix">
-                                             <div class="media-lefta">
-                                                 <a href="single-product.html">
-                                                     <img  src="assets/img/products/cart-popup-2.jpg" alt="T_2_front" />
-                                                 </a>
-                                             </div>
-                                             <div class="media-body">
-                                                 <a href="single-product.html">Autum Winter</a>
-                                                 <span class="price"><span class="amount"><span class="fa fa-dollar"></span>20.00</span></span>
-                                                 <span class="quantity">Qty:  1Pcs</span>
-                                             </div>
-                                         </div>
- 
-                                         <div class="product-remove">
-                                             <a href="#" class="btn-remove" title="Remove this item"><i class="fa fa-close"></i></a>				
-                                         </div>
-                                     </li>
-                                     <li>
-                                         <div class="media clearfix">
-                                             <div class="media-lefta">
-                                                 <a href="single-product.html">
-                                                     <img  src="assets/img/products/cart-popup-3.jpg" alt="cd_6_angle" />
-                                                 </a>
-                                             </div>
-                                             <div class="media-body">
-                                                 <a href="single-product.html">Women's Summer</a>
-                                                 <span class="price"><span class="amount"><span class="fa fa-dollar"></span>20.00</span></span>
-                                                 <span class="quantity">Qty:  1Pcs</span>
-                                             </div>
-                                         </div>
- 
-                                         <div class="product-remove">
-                                             <a href="#" class="btn-remove" title="Remove this item"><i class="fa fa-close"></i></a>				
-                                         </div>
-                                     </li> 
-                                 </ul>
- 
-                                 <div class="cartActions">
-                                     <span class="pull-left">Subtotal</span>
-                                     <span class="pull-right"><span class="amount"><span class="fa fa-dollar"></span>75.00</span></span>
-                                     <div class="clearfix"></div>
- 
-                                     <div class="minicart-buttons">
-                                         <div class="col-lg-6">
-                                             <a href="cart.html">Your Cart</a>
-                                         </div>
-                                         <div class="col-lg-6">
-                                             <a href="checkout.html" class="minicart-checkout">Checkout</a>
-                                         </div>
-                                         <div class="clearfix"></div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </li>
-                         <li class="menu-item">
-                             <a href="checkout.html">Checkout</a>
-                         </li> -->
+                    
                     <li class="menu-item">
                         <a href="#login-popup" data-toggle="modal">Login</a>
                     </li>
@@ -308,97 +205,7 @@
                                         <li><a href="about-us.html">about us</a></li>
                                         <li><a href="single-product.html">product</a></li>
                                         <li><a href="category.html">category</a></li>
-                                        <!-- <li class="dropdown mega-dropdown">
-                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Clothing</a>                                            
-                                                 <div class="dropdown-menu mega-dropdown-menu mega-styl2"  style="background: white no-repeat url(assets/img/extra/megamenu-2.jpg) right 25px center; ">
-                                                     <div class="col-sm-6 menu-block">
-                                                         <div class="sub-list">                                                           
-                                                             <h2 class="blk-clr title">                                                                
-                                                                 <b class="extbold-font-4 fsz-16"> WOMEN  </b> <span class="thm-clr funky-font fsz-25"> fashion </span>
-                                                             </h2>
-                                                             <ul>
-                                                                 <li><a href="#"> Electronic </a></li>
-                                                                 <li><a href="#"> Perfume & Cologne </a></li>
-                                                                 <li><a href="#"> Health & Beauty </a></li>
-                                                                 <li><a href="#"> Kid’s Fashion </a></li>
-                                                                 <li><a href="#"> Trend Watches </a></li>
-                                                                 <li><a href="#"> Women’s Apparel </a></li>    
-                                                                 <li><a href="#"> Men’s Apparel </a></li>
-                                                             </ul>
-                                                         </div>
-                                                     </div>                                                   
-                                                 </div>
-                                             </li> 
-                                             <li class="dropdown mega-dropdown">
-                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Components</a>                                            
- 
-                                                 <div class="dropdown-menu mega-dropdown-menu pr"  style="background: white no-repeat url(assets/img/extra/megamenu-1.jpg) right top; ">
-                                                     <div class="col-md-3 col-sm-3 menu-block">
-                                                         <div class="sub-list">                                                           
-                                                             <h2 class="blk-clr title">                                                                
-                                                                 <b class="extbold-font-4 fsz-16"> WOMEN  </b> <span class="thm-clr funky-font fsz-25"> fashion </span>
-                                                             </h2>
-                                                             <ul>
-                                                                 <li><a href="#"> Electronic </a></li>
-                                                                 <li><a href="#"> Perfume & Cologne </a></li>
-                                                                 <li><a href="#"> Health & Beauty </a></li>
-                                                                 <li><a href="#"> Kid’s Fashion </a></li>
-                                                                 <li><a href="#"> Trend Watches </a></li>
-                                                                 <li><a href="#"> Women’s Apparel </a></li>    
-                                                                 <li><a href="#"> Men’s Apparel </a></li>
-                                                             </ul>
-                                                         </div>
-                                                     </div> 
-                                                     <div class="col-md-3 col-sm-3 menu-block">                                                
-                                                         <div class="sub-list">                                                           
-                                                             <h2 class="blk-clr title">                                                                
-                                                                 <b class="extbold-font-4 fsz-16"> MEN </b> <span class="thm-clr funky-font fsz-25"> fashion </span>
-                                                             </h2>
-                                                             <ul>
-                                                                 <li><a href="#"> Electronic </a></li>
-                                                                 <li><a href="#"> Perfume & Cologne </a></li>
-                                                                 <li><a href="#"> Health & Beauty </a></li>
-                                                                 <li><a href="#"> Kid’s Fashion </a></li>
-                                                                 <li><a href="#"> Trend Watches </a></li>
-                                                                 <li><a href="#"> Women’s Apparel </a></li>    
-                                                                 <li><a href="#"> Men’s Apparel </a></li>
-                                                             </ul>
-                                                         </div>
-                                                     </div>
-                                                     <div class="col-md-3 col-sm-3 menu-block">
-                                                         <div class="sub-list">                                                           
-                                                             <h2 class="blk-clr title">                                                                
-                                                                 <b class="extbold-font-4 fsz-16"> KID’S  </b> <span class="thm-clr funky-font fsz-25"> fashion </span>
-                                                             </h2>
-                                                             <ul>
-                                                                 <li><a href="#"> Electronic </a></li>
-                                                                 <li><a href="#"> Perfume & Cologne </a></li>
-                                                                 <li><a href="#"> Health & Beauty </a></li>
-                                                                 <li><a href="#"> Kid’s Fashion </a></li>
-                                                                 <li><a href="#"> Trend Watches </a></li>
-                                                                 <li><a href="#"> Women’s Apparel </a></li>    
-                                                                 <li><a href="#"> Men’s Apparel </a></li>
-                                                             </ul>
-                                                         </div>
-                                                     </div> 
-                                                     <div class="col-md-3 col-sm-3 menu-block">
-                                                         <div class="sub-list">                                                           
-                                                             <h2 class="blk-clr title">                                                                
-                                                                 <b class="extbold-font-4 fsz-16"> ELECTRONIC  </b> <span class="thm-clr funky-font fsz-25"> fashion </span>
-                                                             </h2>
-                                                             <ul>
-                                                                 <li><a href="#"> Electronic </a></li>
-                                                                 <li><a href="#"> Perfume & Cologne </a></li>
-                                                                 <li><a href="#"> Health & Beauty </a></li>
-                                                                 <li><a href="#"> Kid’s Fashion </a></li>
-                                                                 <li><a href="#"> Trend Watches </a></li>
-                                                                 <li><a href="#"> Women’s Apparel </a></li>    
-                                                                 <li><a href="#"> Men’s Apparel </a></li>
-                                                             </ul>
-                                                         </div>
-                                                     </div> 
-                                                 </div>
-                                             </li>  -->
+                                        
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                                 aria-haspopup="true">Blog</a>
@@ -409,35 +216,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact-us.html">Contact</a></li>
-                                        <!-- <li class="dropdown mega-dropdown active">
-                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Page</a>                                            
-                                                 <div class="dropdown-menu mega-dropdown-menu mega-styl2"  style="background: white no-repeat url(assets/img/extra/megamenu-3.jpg) right top; ">
-                                                     <div class="col-sm-6 menu-block">
-                                                         <div class="sub-list">                                                           
-                                                             <h2 class="blk-clr title">                                                                
-                                                                 <b class="extbold-font-4 fsz-16"> Product  </b> <span class="thm-clr funky-font fsz-25"> categories </span>
-                                                             </h2>
-                                                             <ul>
-                                                                 <li><a href="category.html"> category </a></li>
-                                                                 <li><a href="category-left-sidebar.html"> category left sidebar </a></li>
-                                                                 <li><a href="category-fullwidth.html"> category fullwidth </a></li>
-                                                                 <li><a href="category2.html"> category Style 2</a></li>
-                                                                 <li><a href="category2-left-sidebar.html"> category style 2 left sidebar </a></li>
-                                                                 <li><a href="single-product.html"> single product </a></li>  
-                                                             </ul>
-                                                         </div>
-                                                     </div>
-                                                     <div class="col-sm-6 menu-block">
-                                                         <div class="sub-list">                                                           
-                                                             <h2 class="blk-clr title">                                                                
-                                                                 <b class="extbold-font-4 fsz-16"> Theme  </b> <span class="thm-clr funky-font fsz-25"> pages </span>
-                                                             </h2>
-                                                             <ul>                                                                  
-                                                                 <!-- <li><a href="cart.html"> Shopping Cart </a></li>
-                                                                 <li><a href="checkout.html"> checkout </a></li>                                                             -->
-                                        <!-- <li><a href="about-us.html"> About Us </a></li> -->
-                                        <!-- <li><a href="404-error.html"> Error </a></li>
-                                                                 <li><a href="coming-soon.html"> Coming Soon </a></li> -->
+                                       
                                     </ul>
                                 </div>
                         </div>
@@ -448,39 +227,13 @@
 
                 </nav>
             </div>
-            <!-- <div class="pull-right srch-box">
-                                 <a id="open-popup-search" class="header-link-search" href="javascript:void(0)" title="Search">
-                                     <i class="fa fa-search"></i>
-                                 </a>
-                             </div> -->
+           
         </div>
         </div>
         </div>
         </div>
     </header>
-    <!-- / HEADER -->
-
-
-    <!-- 
-         <div id="Table1" class="one1">
-           
-            <table class="table table-hover" id="tab">
-
-                <thread>
-
-                    <tr id="border">
-
-                        <th>No</th>
-                        <th>images</th>
-                        <th>Name</th>
-                        <th>price</th>
-                    </tr>
-                </thread>
-                <tbody id="data-output">
-
-                </tbody>
-            </table>
-        </div> -->
+    
 
 
     <section class="gst-row row-bikes clear">
@@ -492,208 +245,16 @@
             </div>
 
             <!-- Portfolio items -->
-            <div class="products-slider nav-2 mine">
+           
 
-
-                 <div class="product">
-                        <div class="product-media">
-                            <img src="assets/img/products/slid-prod-2.png" alt="" />
-                        </div>
-                        <div class="product-content">
-                            <h3> <a href="single-product.html" class="title-2">ROAD BIKES</a> </h3>
-                            <p class="font-2">Start from <span class="thm-clr"> $299.00 </span> </p>
-                        </div>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-media">
-                            <img src="assets/img/products/slid-prod-1.png" alt="" />
-                        </div>
-                        <div class="product-content">
-                            <h3> <a href="single-product.html" class="title-2"> MOUNTAIN BIKES </a> </h3>
-                            <p class="font-2">Start from <span class="thm-clr"> $599.00 </span> </p>
-                        </div>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-media">
-                            <img src="assets/img/products/slid-prod-3.png" alt="" />
-                        </div>
-                        <div class="product-content">
-                            <h3> <a href="single-product.html" class="title-2">BMX BIKES</a> </h3>
-                            <p class="font-2">Start from <span class="thm-clr"> $399.00 </span> </p>
-                        </div>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-media">
-                            <img src="assets/img/products/slid-prod-2.png" alt="" />
-                        </div>
-                        <div class="product-content">
-                            <h3> <a href="single-product.html" class="title-2">ROAD BIKES</a> </h3>
-                            <p class="font-2">Start from <span class="thm-clr"> $299.00 </span> </p>
-                        </div>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-media">
-                            <img src="assets/img/products/slid-prod-1.png" alt="" />
-                        </div>
-                        <div class="product-content">
-                            <h3> <a href="single-product.html" class="title-2"> MOUNTAIN BIKES </a> </h3>
-                            <p class="font-2">Start from <span class="thm-clr"> $599.00 </span> </p>
-                        </div>
-                    </div>
-
-                    <div class="product">
-                        <div class="product-media">
-                            <img src="assets/img/products/slid-prod-3.png" alt="" />
-                        </div>
-                        <div class="product-content">
-                            <h3> <a href="single-product.html" class="title-2">BMX BIKES</a> </h3>
-                            <p class="font-2">Start from <span class="thm-clr"> $399.00 </span> </p>
-                        </div>
-                    </div>
-                </div>  
-<!-- 
-
-                 <div class="products-slider nav-2 mine owl-carousel owl-theme owl-center owl-loaded"> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <div class="owl-stage-outer">
-                    <div class="owl-stage"
-                        style="transition: all 0s ease 0s; width: 4310px; transform: translate3d(-646.5px, 0px, 0px);">
-                        <div class="owl-item cloned" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-1.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2"> MOUNTAIN BIKES </a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $599.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item cloned" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-3.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2">BMX BIKES</a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $399.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active center" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-2.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2">ROAD BIKES</a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $299.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-1.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2"> MOUNTAIN BIKES </a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $599.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-3.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2">BMX BIKES</a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $399.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-2.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2">ROAD BIKES</a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $299.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-1.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2"> MOUNTAIN BIKES </a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $599.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-3.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2">BMX BIKES</a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $399.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item cloned" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-2.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2">ROAD BIKES</a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $299.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item cloned" style="width: 431px; margin-right: 0px;">
-                            <div class="product">
-                                <div class="product-media">
-                                    <img src="assets/img/products/slid-prod-1.png" alt="">
-                                </div>
-                                <div class="product-content">
-                                    <h3> <a href="single-product.html" class="title-2"> MOUNTAIN BIKES </a> </h3>
-                                    <p class="font-2">Start from <span class="thm-clr"> $599.00 </span> </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="products-slider nav-2">
+                    
                 </div>
-                <div class="owl-controls">
-                    <div class="owl-nav">
-                        <div class="owl-prev" style=""><i class="fa fa-angle-left"></i></div>
-                        <div class="owl-next" style=""><i class="fa fa-angle-right"></i></div>
-                    </div>
-                    <div class="owl-dots" style="display: none;"></div>
-                </div>
-            </div>  -->
+                 
+                
+
+
+                
 
             <a href="#" class="fancy-btn fancy-btn-small fsz-15">View all Bikes</a>
         </div>
@@ -959,382 +520,8 @@
     <script src="assets/js/countdown.js"></script>
     <script src="assets/js/jquery.sticky.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script src="bikes.js"></script>
 
-    <script>
-
-        // const s=document.getElementById('firstf')
-
-        // s.addEventListener('blur',event=>{
-        //     if (s.value == "") {
-        //         document.getElementById('emailrequired').style.display = "block";
-        //         document.getElementById('passwordrequired').style.display = "block";
-        //         return true;
-        //     }
-        //     else {
-
-        //         document.getElementById('emailrequired').style.display = "none";
-        //         document.getElementById('passwordrequired').style.display = "none";
-        //         return true;
-        //     }
-
-
-
-        // })
-
-        // for form2
-
-        function firstname() {
-            var signin = document.getElementById('secondname')
-
-            if (signin.value == "") {
-                document.getElementById('userrequired').style.display = "block";
-                return true;
-            }
-            else {
-                document.getElementById('userrequired').style.display = "none";
-                return true;
-            }
-
-        }
-
-        function mailfunc() {
-            var signin = document.getElementById('secondemail')
-
-            if (signin.value == "") {
-                document.getElementById('emailrequired2').style.display = "block";
-                return true;
-            }
-            else {
-                document.getElementById('emailrequired2').style.display = "none";
-                return true;
-            }
-
-        }
-
-        function pass2func() {
-            var signin = document.getElementById('secondpassword')
-
-            if (signin.value == "") {
-                document.getElementById('passwordrequired2').style.display = "block";
-                return true;
-            }
-            else {
-                document.getElementById('passwordrequired2').style.display = "none";
-                return true;
-            }
-
-        }
-
-
-        function contactfumc() {
-            var signin = document.getElementById('secondnumber')
-
-            if (signin.value == "") {
-                document.getElementById('contactrequired').style.display = "block";
-                return true;
-            }
-            else {
-                document.getElementById('contactrequired').style.display = "none";
-                return true;
-            }
-
-        }
-
-
-
-        function mail2func() {
-
-            var Form = document.getElementById("secondform2");
-            var Email = document.getElementById('secondemail').value;
-            document.getElementById('emailrequired2').style.display = "none";
-
-
-
-            var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-
-            if (Email.match(pattern)) {
-                // document.getElementById('email4').style.display = "block";
-                document.getElementById('email3').style.display = "none";
-                document.getElementById('emailrequired2').style.display = "none";
-
-                // alert("email is valid")
-                // Form.classlist.add("valid");
-                // Form.classlist.remove("invalid");
-
-            }
-            else {
-                // alert("email is invalid")
-                document.getElementById('email3').style.display = "block";
-                document.getElementById('email4').style.display = "none";
-
-                Form.classList.remove("valid");
-                Form.classList.add("invalid");
-
-            }
-        }
-
-
-        var entry = document.getElementById('button1')
-        entry.addEventListener('click', show2)
-
-        function show2() {
-
-            document.getElementById('email4').style.display = "none";
-
-
-            var uname = document.getElementById('secondname').value
-            var mail2 = document.getElementById('secondemail').value
-            var pass2 = document.getElementById('secondpassword').value
-            var contact = document.getElementById('secondnumber').value
-
-
-            var validate = true;
-
-
-            var Form = document.getElementById("secondform2");
-            var Email = document.getElementById('secondemail').value;
-
-
-            var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-
-            if (!Email.match(pattern)) {
-                document.getElementById('email3').style.display = "block";
-                document.getElementById('emailrequired2').style.display = "none";
-                validate = false;
-            }
-
-            if (mail2 == '') {
-                document.getElementById('emailrequired2').style.display = "block";
-                document.getElementById('email3').style.display = "none";
-                document.getElementById('email4').style.display = "none";
-                validate = false;
-            }
-
-            if (pass2 == '') {
-                document.getElementById('passwordrequired2').style.display = "block";
-                validate = false;
-            }
-            if (uname == '') {
-                document.getElementById('userrequired').style.display = "block";
-                validate = false;
-            }
-            if (contact == '') {
-                document.getElementById('contactrequired').style.display = "block";
-                validate = false;
-            }
-
-
-
-
-            if (validate == false) {
-                return false;
-            }
-
-
-            else {
-                validate = true;
-
-
-                alert("successfully Registered")
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // for form1
-        function hellofirstform() {
-            var signin = document.getElementById('email')
-
-            if (signin.value == "") {
-                document.getElementById('emailrequired').style.display = "block";
-                return true;
-            }
-            else {
-                document.getElementById('emailrequired').style.display = "none";
-                return true;
-            }
-
-        }
-
-        function passfirstform() {
-            var signin = document.getElementById('password')
-
-            if (signin.value == "") {
-                document.getElementById('email2').style.display = "none";
-                document.getElementById('passwordrequired').style.display = "block";
-                return true;
-            }
-            else {
-                document.getElementById('passwordrequired').style.display = "none";
-                return true;
-            }
-
-        }
-
-        function emailkeyfunc() {
-
-            var Form = document.getElementById("firstf");
-            var Email = document.getElementById('email').value;
-            document.getElementById('emailrequired').style.display = "none";
-
-
-
-            var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-
-            if (Email.match(pattern)) {
-                // document.getElementById('email2').style.display = "block";
-                document.getElementById('email1').style.display = "none";
-                document.getElementById('emailrequired').style.display = "none";
-
-                // alert("email is valid")
-                // Form.classlist.add("valid");
-                // Form.classlist.remove("invalid");
-
-            }
-            else {
-                // alert("email is invalid")
-                document.getElementById('email1').style.display = "block";
-                document.getElementById('email2').style.display = "none";
-
-                Form.classList.remove("valid");
-                Form.classList.add("invalid");
-
-            }
-        }
-
-        var entry = document.getElementById('button')
-        entry.addEventListener('click', show)
-
-        function show() {
-
-
-            var mail = document.getElementById('email').value
-            var pass = document.getElementById('password').value
-
-            var validate = true;
-
-
-            var Form = document.getElementById("firstf");
-            var Email = document.getElementById('email').value;
-
-
-            var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-
-            if (!Email.match(pattern)) {
-                document.getElementById('email1').style.display = "block";
-                document.getElementById('emailrequired').style.display = "none";
-                validate = false;
-            }
-
-            if (mail == '') {
-
-                document.getElementById('emailrequired').style.display = "block";
-                document.getElementById('email1').style.display = "none";
-                validate = false;
-            }
-            if (pass == '') {
-                document.getElementById('passwordrequired').style.display = "block";
-                validate = false;
-            }
-
-
-
-            if (validate == false) {
-                return false;
-            }
-
-
-            else {
-                validate = true;
-                alert("successfully login")
-            }
-        }
-
-
-
-
-
-        // fetch("bikes.json")
-        // .then(function(response){
-        //     return response.json();
-        // })
-
-        // .then(function(products){   
-
-        //     let output=document.querySelector("#data-output");
-        //     let out="";
-        //     for(let product of products){
-        //         out += `
-        //         <tr>
-        //             <td> ${product.No}</td>
-        //             <td> <img src='${product.images}'></td>
-        //             <td> ${product.Name}</td>
-        //             <td> ${product.price}</td>
-
-
-
-        //             </tr>
-        //         `;
-        //     }
-        //     output.innerHTML=out;
-        // }
-        // )
-
-
-        fetch("bikes.json")
-            .then(function (response) {
-                return response.json();
-            })
-
-            .then(function (products) {
-
-                let output = document.querySelector(".mine");
-
-                let out = "";
-                for (let product of products) {
-                    out += `
-       
-            
-            
-                    <div class="product" >
-                     
-                        <div class="product-media" >
-                            <img src="${product.images}" alt="" />
-                        </div>
-                        <div class="product-content">
-                            <h3> <a href="single-product.html" class="title-2">${product.Name}</a> </h3>
-                            <p class="font-2">Start from <span class="thm-clr">${product.price}  </span> </p>
-                        </div>
-                    </div>
-                    
-            
-            
-        `;
-                }
-                console.log(out)
-                output.innerHTML = out;
-
-            }
-            )
-
-
-
-    </script>
 
 </body>
 
