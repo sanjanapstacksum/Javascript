@@ -1,6 +1,3 @@
-
-
-
 // form-2
 
 function firstname() {
@@ -324,5 +321,4 @@ fetch("bikes.json")
 
     }
     )
-
 

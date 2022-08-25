@@ -26,7 +26,36 @@
         "images": " assets/img/products/slid-prod-3.png",
         "Name": "BMX...",
         "price": "$399"
+    },
+    {
+        "No": "1", 
+        "images": " assets/img/products/slid-prod-3.png",
+        "Name": "BMX...",
+        "price": "$399"
+    },
+  
+    {
+        
+        "No": "2", 
+        "images": "assets/img/products/slid-prod-2.png",
+        "Name": "Road Bikes",
+        "price": "$299"
+    },
+  
+    {
+        
+        "No": "3", 
+        "images": "assets/img/products/slid-prod-1.png",
+        "Name": "Mountain Bikes",
+        "price": "$599"
+    },
+    {
+        "No": "1", 
+        "images": " assets/img/products/slid-prod-3.png",
+        "Name": "BMX...",
+        "price": "$399"
     }
+  
   
     
    
