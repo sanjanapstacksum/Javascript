@@ -42,7 +42,6 @@ function pass2func() {
 
 }
 
-
 function contactfumc() {
     var signin = document.getElementById('secondnumber')
 
@@ -56,8 +55,6 @@ function contactfumc() {
     }
 
 }
-
-
 
 function mail2func() {
 
@@ -142,9 +139,6 @@ function show2() {
         validate = false;
     }
 
-
-
-
     if (validate == false) {
         return false;
     }
@@ -157,19 +151,6 @@ function show2() {
         alert("successfully Registered")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // for form1
 function hellofirstform() {
@@ -213,17 +194,13 @@ function emailkeyfunc() {
 
 
     if (Email.match(pattern)) {
-        // document.getElementById('email2').style.display = "block";
+
         document.getElementById('email1').style.display = "none";
         document.getElementById('emailrequired').style.display = "none";
 
-        // alert("email is valid")
-        // Form.classlist.add("valid");
-        // Form.classlist.remove("invalid");
-
     }
     else {
-        // alert("email is invalid")
+
         document.getElementById('email1').style.display = "block";
         document.getElementById('email2').style.display = "none";
 
@@ -269,8 +246,6 @@ function show() {
         validate = false;
     }
 
-
-
     if (validate == false) {
         return false;
     }
@@ -283,11 +258,6 @@ function show() {
 }
 
 
-
-
-
-
-
 fetch("bikes.json")
     .then(function (response) {
         return response.json();
@@ -298,8 +268,8 @@ fetch("bikes.json")
         let output = document.querySelector(".products-slider");
 
         let out = "";
-      
-                
+
+
         for (let product of products) {
 
             out += `
