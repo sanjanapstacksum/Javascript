@@ -298,3 +298,47 @@ let Us = {
   let billion = 1e9;  
 
 alert( 7.3e9 );  
+// array destructuring
+
+let options = {
+    title: "Menu",
+    width: 100,
+    height: 200
+  };
+  
+  let {title, width, height} = options;
+  
+  alert(title);  
+  alert(width);  
+  alert(height); 
+
+
+  let recipeMap = new Map([
+    ['cucumber', 500],
+    ['tomatoes', 350],
+    ['onion',    50]
+  ]);
+  
+
+  for (let vegetable of recipeMap.keys()) {
+    alert(vegetable); }
+  
+
+  for (let amount of recipeMap.values()) {
+    alert(amount); 
+  }
+  
+  for (let entry of recipeMap) { 
+    alert(entry); 
+  }
+
+  
+
+  let obj = {
+    name: "John",
+    age: 30
+  };
+  
+  let map = new Map(Object.entries(obj));
+  
+  alert( map.get('name') );
