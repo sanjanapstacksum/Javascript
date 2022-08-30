@@ -98,8 +98,11 @@ function conbutton() {
     }
     else {
         document.getElementById('submitted').style.display = "block";
+        setTimeout(function(){
+       
+        location.reload();
 
-    }
+    },2000)
 }
 
-
+}
