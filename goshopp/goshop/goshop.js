@@ -118,9 +118,8 @@ function show2() {
         setTimeout(function () {
             $('#login-bottom').modal('hide'); $('#login-popup').modal('show');
             swal("Registation Successfully !", "", "success");
-            location.reload();
             
-        }, 4000);
+        }, 1000);
     }
 }
 
@@ -207,9 +206,12 @@ function show() {
         setTimeout(function () {
             $('#login-popup').modal('hide');
             swal("Login Successfully !", "", "success");
+           
 
         }, 1000);
+       
     }
+    
 }
 
 

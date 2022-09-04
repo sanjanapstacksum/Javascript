@@ -1,0 +1,49 @@
+.form-control {
+    width: 50%;
+
+}
+body {
+    text-align: center;
+    margin: 0px auto;
+    padding: 0px;
+    background-repeat: no-repeat;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(216, 227, 236);
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'DM Serif Display', serif;
+    font-weight: bold;
+    font-size: large;
+}
+form {
+    display: inline block;
+
+    margin: 20px auto;
+    padding: 50px;
+    position: sticky;
+
+}
+.btn {
+    display: block;
+    margin-left: 270px;
+    border: 1px solid rgb(7, 48, 7);
+}
+
+#cont{
+    padding: 0px;
+    background-color: brown;
+    margin-top: 30px;
+}
+#one {
+   
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4.5px);
+    -webkit-backdrop-filter: blur(4.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+}

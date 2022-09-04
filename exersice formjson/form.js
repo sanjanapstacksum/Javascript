@@ -33,7 +33,6 @@ function blurfunction() {
 
 }
 
-
 function bfunction() {
 
     var fname = document.getElementById('fullname')

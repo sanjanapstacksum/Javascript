@@ -342,3 +342,142 @@ let options = {
   let map = new Map(Object.entries(obj));
   
   alert( map.get('name') );
+
+//json stringif
+
+  let student = {
+    name: 'John',
+    age: 30,
+    isAdmin: false,
+    courses: ['html', 'css', 'js'],
+    spouse: null
+  };
+  
+  let json = JSON.stringify(student);
+  
+  alert(typeof json); // we've got a string!
+  
+  alert(json);
+
+
+
+  let meetup = {
+    title: "Conference",
+    room: {
+      number: 23,
+      participants: ["john", "ann"]
+    }
+  };
+  
+  alert( JSON.stringify(meetup) );
+ 
+
+  var gVar = 5;
+
+alert(window.gVar);
+
+let gLet = 5;
+
+alert(window.gLet); 
+
+
+//decorator
+let worker = {
+  someMethod() {
+    return 1;
+  },
+
+  slow(x) {
+    alert("Called with " + x);
+    return x * this.someMethod(); // (*)
+  }
+};
+
+function cachingDecorator(func) {
+  let cache = new Map();
+  return function(x) {
+    if (cache.has(x)) {
+      return cache.get(x);
+    }
+    let result = func.call(this, x); // "this" is passed correctly now
+    cache.set(x, result);
+    return result;
+  };
+}
+
+worker.slow = cachingDecorator(worker.slow); // now make it caching
+
+alert( worker.slow(2) ); // works
+alert( worker.slow(2) ); // works, doesn't call the original (cached)
+
+//rest parameter and spread syntax
+
+function sumAll(...args) { 
+  let sum = 0;
+
+  for (let arg of args) sum += arg;
+
+  return sum;
+}
+
+alert( sumAll(1) ); 
+alert( sumAll(1, 2) ); 
+alert( sumAll(1, 2, 3) ); 
+
+function showName(firstName, lastName, ...titles) {
+  alert( firstName + ' ' + lastName ); // Julius Caesar
+
+  // the rest go into titles array
+  // i.e. titles = ["Consul", "Imperator"]
+  alert( titles[0] ); // Consul
+  alert( titles[1] ); // Imperator
+  alert( titles.length ); // 2
+}
+
+showName("Julius", "Caesar", "Consul", "Imperator");
+
+let arr = [3, 5, 1];
+
+alert( Math.max(arr) ); 
+//in  array wont work
+
+let Aarr = [3, 5, 1];
+
+alert( Math.max(...Aarr) ); 
+//with using spread operaor it will work
+
+let arr1 = [1, -2, 3, 4];
+let arr2 = [8, 3, -8, 1];
+
+alert( Math.max(1, ...arr1, 2, ...arr2, 25) );
+
+// lost this
+
+let p = {
+  firstName: "John",
+  sayHi() {
+    alert(`Hello, ${this.firstName}!`);
+  }
+};
+
+setTimeout(p.sayHi, 1000);
+// That’s because setTimeout got the function user.sayHi, separately from the object. The last line can be rewritten as:
+
+let f = user.sayHi;
+setTimeout(f, 1000); // lost user context
+// The method setTimeout in-browser is a little special: it sets this=window for the function call (for Node.js, this becomes the timer object, but doesn’t really matter here). So for this.firstName it tries to get window.firstName, which does not exist. In other similar cases, usually this just becomes undefined.
+
+
+//closure
+
+const outer=(a)=>{
+  b=10;
+  const inner=()=>{
+    let sum=a+b;
+    console.log(`the sum of ${sum}`)
+  }
+   inner();
+}
+outer(5);
+
+
