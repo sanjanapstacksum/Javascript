@@ -4,7 +4,7 @@ regexx.forEach(e => {
 
     e.addEventListener('keyup', (e) => {
         var name = document.getElementById('name').value;
-        var regex = /^[a-zA-Z ]{3,30}$/;
+        var regex = /^[a-zA-Z ]{2,30}$/;
         if (e.target.id == "name" && !name.match(regex)) {
             document.getElementById('fnameval').style.display = "block"
             document.getElementById('firstnameIconStatus').style.display = "none";
@@ -49,7 +49,7 @@ regexx.forEach(e => {
         }
 
         var passtrong = document.getElementById('mobileno').value;
-        var regex1 = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
+        var regex1 = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/
         if (e.target.id == "mobileno" && !passtrong.match(regex1)) {
             document.getElementById('mobvalid').style.display = "block";
             document.getElementById('mobfun').style.display = "none";

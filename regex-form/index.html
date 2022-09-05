@@ -20,9 +20,9 @@
                 <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control alleve" placeholder="Enter your Name" id="name">
-                    <span id="firstnameIconStatus" style="display: none; float:left; color: red;">*name is
+                    <span id="firstnameIconStatus" style="display: none; float:left; color: red;">*Name is
                         required</span>
-                    <span id="fnameval" style="display: none; float:left; color: red;">*enter correct name
+                    <span id="fnameval" style="display: none; float:left; color: red;">*Name Must be consists of 2 to 20 letters
                     </span>
                 </div>
             </div>
@@ -30,16 +30,16 @@
                 <label for="staticEmail" class="col-sm-2 col-form-label">Full Name</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control alleve" placeholder="Enter your full Name" id="fullname">
-                    <span id="fstatus" style="display: none; float:left; color: red;">*fullname is required</span>
-                    <span id="fullnameval" style="display: none; float:left; color: red;">*fullname is not Correct</span>
+                    <span id="fstatus" style="display: none; float:left; color: red;">*Fullname is required</span>
+                    <span id="fullnameval" style="display: none; float:left; color: red;">*Fullname must be consists of 5 to 30 letters</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
                     <input type="email" class="form-control alleve" placeholder="abc@gmail.com" id="email">
-                    <span id="emailfun" style="display: none; float:left; color: red;">*email is required</span>
-                    <span id="emailllfun" style="display: none; float:left; color: red;">*enter correct email</span>
+                    <span id="emailfun" style="display: none; float:left; color: red;">*Email is required</span>
+                    <span id="emailllfun" style="display: none; float:left; color: red;">*Please keep email format like(abc@gmail.com) </span>
                     <span id="Emailfun" style="display: none; float:left; color:green;">Email is correct</span>
                 </div>
             </div>
@@ -48,8 +48,12 @@
                 <div class="col-sm-10">
                     <input type="password" class="form-control alleve" placeholder="Enter Your Password" id="password">
                     <span id="passfun" style="display: none; float:left; color: red;">*password is required</span>
-                    <span id="passfullval" style="display: none; float:left; color: red;">*please enter strong
-                        password</span>
+                    <span id="passfullval" style="display: none; float:left; color: red;">*Password must have atleast one non alphabetic character </br>
+                      <span style="float: left;" >*Password must have atleast one digit(0-9)</span></br>
+                      <span style="float: left;" > *Password must have atleast one Uppercase(A-Z)</span></br>
+                      <span style="float: left;" >*Password contains minimum 8 characters</span>
+
+                        </span>
                 </div>
             </div>
             <div class="form-group row">
@@ -57,9 +61,9 @@
                 <div class="col-sm-10">
                     <input type="number" class="form-control alleve" placeholder="Enter your Mobile number"
                         id="mobileno">
-                    <span id="mobfun" style="display: none; float:left; color: red;">*mobile no is required</span>
-                    <span id="mobvalid" style="display: none; float:left; color: red;">*enter valid mobile
-                        number</span>
+                    <span id="mobfun" style="display: none; float:left; color: red;">*Mobile no is required</span>
+                    <span id="mobvalid" style="display: none; float:left; color: red;">*Mobile no must be 10 digits.
+            </span>
                 </div>
             </div>
             <input type="button" class="btn btn-success" id="btns" value="submit">
