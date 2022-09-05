@@ -144,6 +144,10 @@ function subfunc(e) {
         document.getElementById('mobfun').style.display = "block";
         val = false
     }
+
+    if(val==false){
+        return false;
+     }
     else {
         var val = true;
         swal("Login Successfully !", "", "success");

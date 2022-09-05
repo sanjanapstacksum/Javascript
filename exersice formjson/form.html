@@ -81,19 +81,7 @@
      
 
         #one {
-            /* background-image: url("new.jpg");
-            background-repeat: no-repeat, ;
-            background-repeat: no-repeat;
-            background-color: #cccccc; */
-            /* Used if the image is unavailable */
-            /* height: 500px; */
-            /* You must set a specified height */
-            /* background-position: center; */
-            /* Center the image */
-            /* background-repeat: no-repeat; */
-            /* Do not repeat the image */
-            /* background-size: cover;
-            Resize the background image to cover the entire container */
+            
 
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -139,11 +127,11 @@
                margin: 0px auto;
                 padding-top: 5px;
             ">
-                    <label class="radio-inline">
-                        <input type="radio" name="optradio" value="Male" onblur="genderfunction()" >Male &nbsp;
+                    <label class="radio-inline" onkeyup="genderfunction()">
+                        <input type="radio" name="optradio" value="Male"  >Male &nbsp;
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" name="optradio" value="Female" onblur="genderfunction()">Female &nbsp;
+                        <input type="radio" name="optradio" value="Female">Female &nbsp;
                       </label>
                    
                     <span id="genderfun"  style="display: none; float:left; color: red;"> Please select one option</span>

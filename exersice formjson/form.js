@@ -1,23 +1,11 @@
 console.log("hello world")
-
-
 // ----Create a new directory for this in same git repo.
 // 1. Create a HTML Form for user details. Try to cover all inputs (Using bootstrap also)
 // 2. Accept the data on button click and display in table dynamically
 // 3. Add the javascript form validation (For Blank and invalid input)
 // 4. Make form interactive
-
-
-
-
-
-
 var entry = document.getElementById('btn1')
 entry.addEventListener('click', display)
-
-
-// var form = document.forms['final']; 
-
 function blurfunction() {
 
     var fname = document.getElementById('name')
@@ -76,8 +64,6 @@ function passfunction() {
     }
 
 }
-
-
 function mobfunction() {
 
     var fname = document.getElementById('mobileno')
@@ -92,7 +78,6 @@ function mobfunction() {
     }
 
 }
-
 function cityfunction() {
 
     var fname = document.getElementById('city')
@@ -107,7 +92,6 @@ function cityfunction() {
     }
 
 }
-
 function edufunction() {
 
     var fname = document.getElementById('education')
@@ -122,66 +106,47 @@ function edufunction() {
     }
 
 }
-
-
 function validatefunc() {
 
     var option = document.getElementsByName('optradio');
-
-
     if (!(option[0].checked || option[1].checked)) {
         document.getElementById('genderfun').style.display = "block";
-        return false;
+       return false;
 
     }
-
-
+    else{
+        document.getElementById('genderfun').style.display = "none"; 
+    }
 }
-
-
 function emailvalfun() {
-
-
     var form1 = document.getElementById("form");
     var Email = document.getElementById('email').value;
-
     var text = document.getElementById('emailllfun');
     var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-
     if (Email.match(pattern)) {
-        document.getElementById('Emailfun').style.display = "block";
-        document.getElementById('emailllfun').style.display = "none";
-
-        // alert("email is valid")
-        form1.classlist.add("valid");
-        form1.classlist.remove("invalid");
-
+        document.getElementById('emailllfun').style.display = "none"; 
     }
     else {
         // alert("email is invalid")
         document.getElementById('emailllfun').style.display = "block";
         document.getElementById('Emailfun').style.display = "none";
-
-        form1.classList.remove("valid");
-        form1.classList.add("invalid");
-
+        document.getElementById('emailfun').style.display = "none";
     }
 }
 
+function genderfunction(){
+    if (gender.checked){
+        newRow.insertCell(2).innerHTML = gender.value;
+        document.getElementById('genderfun').style.display = "none";
+    }
+        
+    else{
+        newRow.insertCell(2).innerHTML = "";}
 
-
+}
 
 var row = 1;
-
-
-
-
-
 function display() {
-
-
-
     var name = document.getElementById('name').value
     var fullname = document.getElementById('fullname').value
     var gender = document.querySelector('input[name="optradio"]:checked');
@@ -192,13 +157,6 @@ function display() {
     var education = document.getElementById('education').value
     var check = true;
 
-
-    // if (name == '' || fullname == '' || gender == '' || email == '' || password == '' || mobileno == '' || city == '' || education == '') {
-    //     alert("fill all fields")
-    //     check = false;
-
-    //     }
-    
     var validate=true;
 
     if (name == '') {
@@ -226,6 +184,7 @@ function display() {
 
     if (email == '') {
         document.getElementById('emailfun').style.display = "block";
+        document.getElementById('emailllfun').style.display = "none";
         validate=false;
     }
    
@@ -265,10 +224,14 @@ function display() {
         var cell1 = newRow.insertCell(0);
         var cell2 = newRow.insertCell(1);
         // var cell3 = newRow.insertCell(2);
-        if (gender.checked)
+        if (gender.checked){
             newRow.insertCell(2).innerHTML = gender.value;
-        else
-            newRow.insertCell(2).innerHTML = "";
+            document.getElementById('genderfun').style.display = "none";
+        }
+            
+        else{
+            newRow.insertCell(2).innerHTML = "";}
+        
 
         var cell4 = newRow.insertCell(3);
         var cell5 = newRow.insertCell(4);
@@ -280,7 +243,6 @@ function display() {
 
         cell1.innerHTML = name;
         cell2.innerHTML = fullname;
-        // cell3.innerHTML = gender;
         cell4.innerHTML = email;
         cell5.innerHTML = password;
         cell6.innerHTML = mobileno;
