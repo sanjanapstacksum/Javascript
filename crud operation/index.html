@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table-records</title>
+
+      <link rel="stylesheet" href="bootstrap.min.css" >
+      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" id="themify-icons-css" href="https://themify.me/wp-content/themes/themify-v32/themify-icons/themify-icons.css" type="text/css" media="all">
+</head> 
+
+ <body onload="loadFunction()">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Navbar text with an inline element
+        </span>
+      </div>
+      </nav>
+
+      <div class="container">
+        <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center">
+                  <button type="button" id="add-button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal" style="
+                  float: right;
+                  margin-right: 120px;
+                  margin-bottom: 10px;
+              ">Add</button>
+
+               <!-- Modal -->
+       <div class="modal fade" id="myModal" role="dialog">
+       <div class="modal-dialog">
+       <div class="modal-content">
+       <div class="modal-header"> 
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <form style="text-align: center;  "id="form">
+            <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">First Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control allEvent " placeholder="Enter your Name" id="name"  >
+                       
+                        <span id="firstnameIconStatus"  style="display: none; float:left; color: red;">Name is required</span>
+                        <span id="correctName"  style="display: none; float:left; color: red;">*Please enter correct name</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Last Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control allEvent" placeholder="Enter your full Name" id="fullname"  >
+                        <span id="fstatus"  style="display: none; float:left; color: red;">Fullname is required</span>
+                        <span id="correctFullname"  style="display: none; float:left; color: red;">*Please enter correct Fullname</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control allEvent" placeholder="abc@gmail.com" id="email"   >
+                        <span id="emailfun"  style="display: none; float:left; color: red;">Email is required</span>
+                        <span id="emailllfun"  style="display: none; float:left; color: red;"> *Please enter correct email</span>  
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">College</label>
+                    
+                        <select id="college" class="allEvent" style="width:77%; margin-left: 14px; border: 1px solid #ced4da; color: #495057c7;" required>
+                            <option value="">Select your college</option>
+                            <option value="Silver oak">Silver oak</option>
+                            <option value="DAIICT">DAIICT</option>
+                            <option value="Sal">Sal</option>
+                            <option value="PDPU">PDPU</option>
+                            <option value="Ahmedabad University">Ahmedabad University</option>
+                            <option value="VGEC">VGEC</option>
+                            <option value="LDRP">LDRP</option>
+                            <option value="LD">LD</option>
+                          </select>
+                          <span id="collegefun"  style="display: none; float:left; color: red; margin-left: 98px;">College is required</span>
+                         </div>
+                
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">City</label>
+                    <select id="city" class="allEvent" style="width:77%; margin-left: 14px; border: 1px solid #ced4da; color: #495057c7;" >
+                        <option value="">Select your city</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Aanand">Aanand</option>
+                        <option value="Surat">Surat</option>
+                        <option value="Rajkot">Rajkot</option>
+                        <option value="Bhavnagar">Bhavnagar</option>
+                        <option value="vadodra">vadodra</option>
+                        <option value="Gandhinagar">Gandhinagar</option>
+                      </select>
+                      <span id="cityfun"  style="display: none; float:left; color: red; margin-left: 98px;">City is required</span>  
+                     </div>
+                <input type="button" class="btn btn-success" id="btn1" value="submit"  >
+        </form>
+        </div>
+        <div class="modal-footer" style="border-top:0px ;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <!-- new model -->
+
+
+          <div class="card-body text-center">
+          <div class="modal fade" id="updateUserModel" role="dialog">
+          <div class="modal-dialog">
+
+          <div class="modal-content">
+          <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+  </div>
+  <div class="modal-body">
+    <form style="text-align: center;  "id="form">
+      <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
+
+          <input type="hidden" id="userId">
+          <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">First Name</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control updateEvent " placeholder="Enter your Name" id="update_name"  >
+                  <span id="requiredName"  style="display: none; float:left; color: red;">Name is required</span>
+                  <span id="CorrectName"  style="display: none; float:left; color: red;">*Please enter correct name</span>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Last Name</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control updateEvent" placeholder="Enter your full Name" id="update_fullname"  >
+                  <span id="requiredFullname"  style="display: none; float:left; color: red;">Fullname is required</span>
+                  <span id="CorrectFullname"  style="display: none; float:left; color: red;">*Please enter correct Fullname</span>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                  <input type="email" class="form-control updateEvent" placeholder="abc@gmail.com" id="update_email"   >
+                  <span id="requiredEmail" style="display: none; float:left; color: red;"> Email is required</span>
+                  <span id="CorrectEmail"  style="display: none; float:left; color: red;"> *Please enter correct email</span>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">College</label>
+                  <select id="update_college" class="updateEvent" style="width:77%; margin-left: 14px; border: 1px solid #ced4da; color: #495057c7;" required>
+                      <option value="">Select your college</option>
+                      <option value="Silver oak">Silver oak</option>
+                      <option value="DAIICT">DAIICT</option>
+                      <option value="Sal">Sal</option>
+                      <option value="PDPU">PDPU</option>
+                      <option value="Ahmedabad University">Ahmedabad University</option>
+                      <option value="VGEC">VGEC</option>
+                      <option value="LDRP">LDRP</option>
+                      <option value="LD">LD</option>
+                    </select>
+                    <span id="Collegefun"  style="display: none; float:left; color: red; margin-left: 98px;">College is required</span>
+                   </div>
+          
+          <div class="form-group row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">City</label>
+              <select id="update_city" class="updateEvent" style="width:77%; margin-left: 14px; border: 1px solid #ced4da; color: #495057c7;" >
+                  <option value="">Select your city</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Aanand">Aanand</option>
+                  <option value="Surat">Surat</option>
+                  <option value="Rajkot">Rajkot</option>
+                  <option value="Bhavnagar">Bhavnagar</option>
+                  <option value="vadodra">vadodra</option>
+                  <option value="Gandhinagar">Gandhinagar</option>
+                </select>
+                <span id="Cityfun"  style="display: none; float:left; color: red; margin-left: 98px;">City is required</span>
+               </div>
+          <input type="button" class="btn btn-primary" id="btnModel" value="submit"  >
+  </form>
+  </div>
+  <div class="modal-footer" style="border-top:0px ;">
+    <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+      <!-- table -->
+                    <div class="table-responsive">
+                        <table class="table" id="table-add">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">College</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col" >Update/Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody class="customtable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="noData"><h1 style="
+                        margin-top: 100px; color: grey;"
+                       > No Record Found :( </h1>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div> 
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="bootstrap.min.js" ></script>
+<script src="sweetalert.min.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
+
+  
