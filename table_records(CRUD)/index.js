@@ -1,4 +1,4 @@
-const userdata = JSON.parse(localStorage.getItem("records"));
+const userdata = JSON.parse(localStorage.getItem("user_records"));
 
 // validation of add modal//
 
@@ -41,7 +41,7 @@ regexx.forEach((e) => {
 });
 row = 1;
 function loadFunction() {
-  const userData = JSON.parse(localStorage.getItem("records"));
+  const userData = JSON.parse(localStorage.getItem("user_records"));
   if (userData.length === 0) {
     document.getElementById("noData").style.display = "block";
   }
@@ -51,7 +51,7 @@ function loadFunction() {
   
 
   for (let values of userData) {
-    var delUpdate = `<div><span class=" " ><a onclick="updaterecord(${values.id})" href="update-records:;"><i class="ti-pencil-alt" style="color:green"></i></a></span> &nbsp &nbsp<span class=""><a onclick="deleteRecord(event,${values.id})" href="delete-record:;" data-id="${values.id}" ><i  class="ti-trash "style="color:red"></i></a></span></div>`;
+    var delUpdate = `<div><span class=" " ><a onclick="updaterecord(${values.id})" href="update:;"><i class="fa-solid fa-pen-to-square" style="color:green"></i></a></span> &nbsp &nbsp<span class=""><a onclick="deleteRecord(event,${values.id})" href="deleterecord:;" data-id="${values.id}" ><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></a></span></div>`;
 
     var val = true;
     count = 0;
@@ -158,10 +158,10 @@ function subfunc(e) {
   if (val === false) {
     return false;
   } else {
-    // add records//
+    // add user_records//
 
     location.reload();
-    var localstorageArr = JSON.parse(localStorage.getItem("records")) ?? [];
+    var localstorageArr = JSON.parse(localStorage.getItem("user_records")) ?? [];
     var localId = localstorageArr.length + 1;
     
 
@@ -176,11 +176,11 @@ function subfunc(e) {
     
     document.getElementById("form").reset();
     localstorageArr.push(localObject);
-    localStorage.setItem("records", JSON.stringify(localstorageArr));
+    localStorage.setItem("user_records", JSON.stringify(localstorageArr));
   }
 }
 
-// delete records//
+// delete user_records//
 
 let deleteRecord = (event, recordId) => {
   swal({
@@ -195,7 +195,7 @@ let deleteRecord = (event, recordId) => {
         if (userdata[i].id === recordId) {
           userdata.splice(i, 1);
           const elementdelete = document.getElementById("s" + recordId);
-          localStorage.setItem("records", JSON.stringify(userdata));
+          localStorage.setItem("user_records", JSON.stringify(userdata));
         }
       }
       location.reload();
@@ -205,7 +205,7 @@ let deleteRecord = (event, recordId) => {
   });
 };
 
-// update records//
+// update user_records//
 
 function updaterecord(userId) {
   for (var i = 0; i < userdata.length; i++) {
@@ -221,7 +221,7 @@ function updaterecord(userId) {
   }
 }
 
-const updateDataValue = JSON.parse(localStorage.getItem("records"));
+const updateDataValue = JSON.parse(localStorage.getItem("user_records"));
 
 // validation of edit modal //
 
@@ -356,7 +356,7 @@ document.getElementById("btnModel").onclick = function () {
         user.college = document.getElementById("update_college").value;
         user.city = document.getElementById("update_city").value;
 
-        localStorage.setItem("records", JSON.stringify(updateDataValue));
+        localStorage.setItem("user_records", JSON.stringify(updateDataValue));
         $("#updateUserModel").modal("hide");
         location.reload();
       }
