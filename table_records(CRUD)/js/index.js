@@ -2,7 +2,7 @@ const userdata = JSON.parse(localStorage.getItem("user_records"));
 
 // validation of add modal//
 
-var submit = document.getElementById("btn1");
+var submit = document.getElementById("btnSubmit");
 submit.addEventListener("click", subfunc);
 
 var regexx = document.querySelectorAll(".allEvent");
@@ -11,31 +11,31 @@ regexx.forEach((e) => {
     var name = document.getElementById("name").value;
     var regex = /^[a-zA-Z ]{2,30}$/;
     if (e.target.id == "name" && !name.match(regex)) {
-      document.getElementById("correctName").style.display = "block";
-      document.getElementById("firstnameIconStatus").style.display = "none";
+      document.getElementById("correct_name").style.display = "block";
+      document.getElementById("firstnameRequired").style.display = "none";
     } else {
-      document.getElementById("correctName").style.display = "none";
-      document.getElementById("firstnameIconStatus").style.display = "none";
+      document.getElementById("correct_name").style.display = "none";
+      document.getElementById("firstnameRequired").style.display = "none";
     }
 
     var Email = document.getElementById("email").value;
     var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (e.target.id == "email" && !Email.match(pattern)) {
-      document.getElementById("emailllfun").style.display = "block";
-      document.getElementById("emailfun").style.display = "none";
+      document.getElementById("correct_email").style.display = "block";
+      document.getElementById("emailRequired").style.display = "none";
     } else {
-      document.getElementById("emailllfun").style.display = "none";
-      document.getElementById("emailfun").style.display = "none";
+      document.getElementById("correct_email").style.display = "none";
+      document.getElementById("emailRequired").style.display = "none";
     }
 
     var fullName = document.getElementById("fullname").value;
     var regex = /^[a-zA-Z ]{3,30}$/;
     if (e.target.id == "fullname" && !fullName.match(regex)) {
-      document.getElementById("correctFullname").style.display = "block";
-      document.getElementById("fstatus").style.display = "none";
+      document.getElementById("correct_fullname").style.display = "block";
+      document.getElementById("fullnameRequired").style.display = "none";
     } else {
-      document.getElementById("correctFullname").style.display = "none";
-      document.getElementById("fstatus").style.display = "none";
+      document.getElementById("correct_fullname").style.display = "none";
+      document.getElementById("fullnameRequired").style.display = "none";
     }
   });
 });
@@ -48,32 +48,159 @@ function loadFunction() {
 
   document.getElementById("form").reset();
   document.getElementById("noData").style.display = "none";
-  
+}
+//pagination//
 
-  for (let values of userData) {
-    var delUpdate = `<div><span class=" " ><a onclick="updaterecord(${values.id})" href="update:;"><i class="fa-solid fa-pen-to-square" style="color:green"></i></a></span> &nbsp &nbsp<span class=""><a onclick="deleteRecord(event,${values.id})" href="deleterecord:;" data-id="${values.id}" ><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></a></span></div>`;
+var tableData = "";
 
-    var val = true;
-    count = 0;
-    var table = document.getElementById("table-add");
-    var newRow = table.insertRow(row);
-    var cell1 = newRow.insertCell(values[0]);
-    var cell2 = newRow.insertCell(values[1]);
-    var cell3 = newRow.insertCell(values[2]);
-    var cell4 = newRow.insertCell(values[3]);
-    var cell5 = newRow.insertCell(values[4]);
-    var cell6 = newRow.insertCell(values[5]);
+const renderTable = (data) => {
+  data.forEach((values) => {
+    tableData += `
+    <tr id="user_${values.id}">
+    <td> ${values.fname}</a></td>
+    <td>${values.lname}</td>
+    <td>${values.email}</td>
+    <td>${values.college}</td>
+    <td>${values.city}</td>
+    <td><a onclick="updaterecord(${values.id})" href="update:;"><i class="fa-solid fa-pen-to-square" style="color:green"></i></a> |
+    <a onclick="deletedata(${values.id})" href="deletedata:;" data-id="${values.id}" ><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></a></td>
+    </tr>`;
+  });
+  return (document.getElementById("customtable").innerHTML = tableData);
+};
 
-    count = count + 1;
+let result = renderTable(userdata);
 
-    cell1.innerHTML = values.fname;
-    cell2.innerHTML = values.lname;
-    cell3.innerHTML = values.email;
-    cell4.innerHTML = values.college;
-    cell5.innerHTML = values.city;
-    cell6.innerHTML = delUpdate;
-    row++;
+const paginationNumbers = document.getElementById("pagination-numbers");
+const paginatedList = document.getElementById("customtable").rows;
+
+const nextButton = document.getElementById("next-button");
+const prevButton = document.getElementById("prev-button");
+
+const paginationLimit = 5;
+const pageCount = Math.ceil(userdata.length / paginationLimit);
+let currentPage = 1;
+
+const disableButton = (button) => {
+  button.classList.add("disabled");
+  button.setAttribute("disabled", true);
+};
+
+const enableButton = (button) => {
+  button.classList.remove("disabled");
+  button.removeAttribute("disabled");
+};
+
+const handlePageButtonsStatus = () => {
+  if (currentPage === 1) {
+    disableButton(prevButton);
+  } else {
+    enableButton(prevButton);
   }
+
+  if (pageCount === currentPage) {
+    disableButton(nextButton);
+  } else {
+    enableButton(nextButton);
+  }
+};
+
+const handleActivePageNumber = () => {
+  document.querySelectorAll(".pagination-number").forEach((button) => {
+    button.classList.remove("active");
+    const pageIndex = Number(button.getAttribute("page-index"));
+    if (pageIndex == currentPage) {
+      button.classList.add("active");
+    }
+  });
+};
+
+const appendPageNumber = (index) => {
+  const pageNumber = document.createElement("button");
+  pageNumber.className = "pagination-number";
+  pageNumber.innerHTML = index;
+  pageNumber.setAttribute("page-index", index);
+  pageNumber.setAttribute("aria-label", "Page " + index);
+
+  paginationNumbers.appendChild(pageNumber);
+};
+
+const getPaginationNumbers = () => {
+  for (let i = 1; i <= pageCount; i++) {
+    appendPageNumber(i);
+  }
+};
+
+const setCurrentPage = (pageNum) => {
+  currentPage = pageNum;
+
+  handleActivePageNumber();
+  handlePageButtonsStatus();
+
+  const prevRange = (pageNum - 1) * paginationLimit;
+  const currRange = pageNum * paginationLimit;
+
+  var rows = Array.from(paginatedList);
+
+  rows.forEach((item, index) => {
+    item.classList.add("hidden");
+    if (index >= prevRange && index < currRange) {
+      item.classList.remove("hidden");
+    }
+  });
+};
+
+window.addEventListener("load", () => {
+  getPaginationNumbers();
+  setCurrentPage(1);
+
+  prevButton.addEventListener("click", () => {
+    setCurrentPage(currentPage - 1);
+  });
+
+  nextButton.addEventListener("click", () => {
+    setCurrentPage(currentPage + 1);
+  });
+
+  document.querySelectorAll(".pagination-number").forEach((button) => {
+    const pageIndex = Number(button.getAttribute("page-index"));
+
+    if (pageIndex) {
+      button.addEventListener("click", () => {
+        setCurrentPage(pageIndex);
+      });
+    }
+  });
+});
+
+// pagination end //
+
+//delete userData//
+function deletedata(Id) {
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover your data!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      for (var i = 0; i < userdata.length; i++) {
+        if (userdata[i].id === Id) {
+          userdata.splice(i, 1);
+          const elementdelete = document.getElementById("user_" + Id);
+          elementdelete.remove();
+
+          localStorage.setItem("user_records", JSON.stringify(userdata));
+          swal(" Blog successfully deleted!", {
+            icon: "success",
+          });
+        }
+      }
+    } else {
+      swal("Your Blog is safe!");
+    }
+  });
 }
 
 var allevent = document.querySelectorAll(".allEvent");
@@ -81,42 +208,42 @@ var allevent = document.querySelectorAll(".allEvent");
 allevent.forEach((element) => {
   element.addEventListener("blur", (e) => {
     if (e.target.id == "name" && document.getElementById("name").value == "") {
-      document.getElementById("firstnameIconStatus").style.display = "block";
+      document.getElementById("firstnameRequired").style.display = "block";
     } else {
-      document.getElementById("firstnameIconStatus").style.display = "none";
+      document.getElementById("firstnameRequired").style.display = "none";
     }
 
     if (
       e.target.id == "email" &&
       document.getElementById("email").value == ""
     ) {
-      document.getElementById("emailfun").style.display = "block";
+      document.getElementById("emailRequired").style.display = "block";
     } else {
-      document.getElementById("emailfun").style.display = "none";
+      document.getElementById("emailRequired").style.display = "none";
     }
 
     if (
       e.target.id == "fullname" &&
       document.getElementById("fullname").value == ""
     ) {
-      document.getElementById("fstatus").style.display = "block";
+      document.getElementById("fullnameRequired").style.display = "block";
     } else {
-      document.getElementById("fstatus").style.display = "none";
+      document.getElementById("fullnameRequired").style.display = "none";
     }
 
     if (
       e.target.id == "college" &&
       document.getElementById("college").value == ""
     ) {
-      document.getElementById("collegefun").style.display = "block";
+      document.getElementById("collegeRequired").style.display = "block";
     } else {
-      document.getElementById("collegefun").style.display = "none";
+      document.getElementById("collegeRequired").style.display = "none";
     }
 
     if (e.target.id == "city" && document.getElementById("city").value == "") {
-      document.getElementById("cityfun").style.display = "block";
+      document.getElementById("cityRequited").style.display = "block";
     } else {
-      document.getElementById("cityfun").style.display = "none";
+      document.getElementById("cityRequired").style.display = "none";
     }
   });
 });
@@ -131,27 +258,27 @@ function subfunc(e) {
   var city = document.getElementById("city").value;
 
   if (Name == "") {
-    document.getElementById("firstnameIconStatus").style.display = "block";
+    document.getElementById("firstnameRequired").style.display = "block";
     val = false;
   }
 
   if (Email == "") {
-    document.getElementById("emailfun").style.display = "block";
+    document.getElementById("emailRequired").style.display = "block";
     val = false;
   }
 
   if (Fullname == "") {
-    document.getElementById("fstatus").style.display = "block";
+    document.getElementById("fullnameRequired").style.display = "block";
     val = false;
   }
 
   if (college == "") {
-    document.getElementById("collegefun").style.display = "block";
+    document.getElementById("collegeRequired").style.display = "block";
     val = false;
   }
 
   if (city == "") {
-    document.getElementById("cityfun").style.display = "block";
+    document.getElementById("cityRequired").style.display = "block";
     val = false;
   }
 
@@ -161,9 +288,9 @@ function subfunc(e) {
     // add user_records//
 
     location.reload();
-    var localstorageArr = JSON.parse(localStorage.getItem("user_records")) ?? [];
+    var localstorageArr =
+      JSON.parse(localStorage.getItem("user_records")) ?? [];
     var localId = localstorageArr.length + 1;
-    
 
     var localObject = {
       id: localId,
@@ -173,38 +300,12 @@ function subfunc(e) {
       college: document.getElementById("college").value,
       city: document.getElementById("city").value,
     };
-    
+
     document.getElementById("form").reset();
     localstorageArr.push(localObject);
     localStorage.setItem("user_records", JSON.stringify(localstorageArr));
   }
 }
-
-// delete user_records//
-
-let deleteRecord = (event, recordId) => {
-  swal({
-    title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover your data!",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then((willDelete) => {
-    if (willDelete) {
-      for (var i = 0; i < userdata.length; i++) {
-        if (userdata[i].id === recordId) {
-          userdata.splice(i, 1);
-          const elementdelete = document.getElementById("s" + recordId);
-          localStorage.setItem("user_records", JSON.stringify(userdata));
-        }
-      }
-      location.reload();
-    } else {
-      swal("Your Blog is safe!");
-    }
-  });
-};
-
 // update user_records//
 
 function updaterecord(userId) {
@@ -231,30 +332,30 @@ regexx.forEach((e) => {
     var name = document.getElementById("update_name").value;
     var regex = /^[a-zA-Z ]{2,30}$/;
     if (e.target.id == "update_name" && !name.match(regex)) {
-      document.getElementById("CorrectName").style.display = "block";
+      document.getElementById("correctName").style.display = "block";
       document.getElementById("requiredName").style.display = "none";
     } else {
-      document.getElementById("CorrectName").style.display = "none";
+      document.getElementById("correctName").style.display = "none";
       document.getElementById("requiredName").style.display = "none";
     }
 
     var Email = document.getElementById("update_email").value;
     var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (e.target.id == "update_email" && !Email.match(pattern)) {
-      document.getElementById("CorrectEmail").style.display = "block";
+      document.getElementById("correctEmail").style.display = "block";
       document.getElementById("requiredEmail").style.display = "none";
     } else {
-      document.getElementById("emailllfun").style.display = "none";
+      document.getElementById("correctEmail").style.display = "none";
       document.getElementById("requiredEmail").style.display = "none";
     }
 
     var fullName = document.getElementById("update_fullname").value;
     var regex = /^[a-zA-Z ]{3,30}$/;
     if (e.target.id == "update_fullname" && !fullName.match(regex)) {
-      document.getElementById("CorrectFullname").style.display = "block";
+      document.getElementById("correctFullname").style.display = "block";
       document.getElementById("requiredFullname").style.display = "none";
     } else {
-      document.getElementById("CorrectFullname").style.display = "none";
+      document.getElementById("correctFullname").style.display = "none";
       document.getElementById("requiredFullname").style.display = "none";
     }
   });
@@ -295,23 +396,23 @@ allevent.forEach((element) => {
       e.target.id == "update_college" &&
       document.getElementById("update_college").value == ""
     ) {
-      document.getElementById("Collegefun").style.display = "block";
+      document.getElementById("required_college").style.display = "block";
     } else {
-      document.getElementById("Collegefun").style.display = "none";
+      document.getElementById("required_college").style.display = "none";
     }
 
     if (
       e.target.id == "update_city" &&
       document.getElementById("update_city").value == ""
     ) {
-      document.getElementById("Cityfun").style.display = "block";
+      document.getElementById("required_city").style.display = "block";
     } else {
-      document.getElementById("Cityfun").style.display = "none";
+      document.getElementById("required_city").style.display = "none";
     }
   });
 });
 
-document.getElementById("btnModel").onclick = function () {
+document.getElementById("btn_modelUpdate").onclick = function () {
   var val = true;
   var Name = document.getElementById("update_name").value;
   var Email = document.getElementById("update_email").value;
@@ -335,12 +436,12 @@ document.getElementById("btnModel").onclick = function () {
   }
 
   if (college == "") {
-    document.getElementById("Collegefun").style.display = "block";
+    document.getElementById("required_college").style.display = "block";
     val = false;
   }
 
   if (city == "") {
-    document.getElementById("Cityfun").style.display = "block";
+    document.getElementById("required_city").style.display = "block";
     val = false;
   }
 
