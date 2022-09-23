@@ -1,9 +1,8 @@
 const userdata = JSON.parse(localStorage.getItem("user_records"));
-
-// validation of add modal//
+// // validation of add modal//
 
 var submit = document.getElementById("btnSubmit");
-submit.addEventListener("click", subfunc);
+submit.addEventListener("click", submitUser);
 
 var regexx = document.querySelectorAll(".allEvent");
 regexx.forEach((e) => {
@@ -40,15 +39,7 @@ regexx.forEach((e) => {
   });
 });
 row = 1;
-function loadFunction() {
-  const userData = JSON.parse(localStorage.getItem("user_records"));
-  if (userData.length === 0) {
-    document.getElementById("noData").style.display = "block";
-  }
 
-  document.getElementById("form").reset();
-  document.getElementById("noData").style.display = "none";
-}
 //pagination//
 
 var tableData = "";
@@ -73,10 +64,8 @@ let result = renderTable(userdata);
 
 const paginationNumbers = document.getElementById("pagination-numbers");
 const paginatedList = document.getElementById("customtable").rows;
-
 const nextButton = document.getElementById("next-button");
 const prevButton = document.getElementById("prev-button");
-
 const paginationLimit = 5;
 const pageCount = Math.ceil(userdata.length / paginationLimit);
 let currentPage = 1;
@@ -139,7 +128,6 @@ const setCurrentPage = (pageNum) => {
 
   const prevRange = (pageNum - 1) * paginationLimit;
   const currRange = pageNum * paginationLimit;
-
   var rows = Array.from(paginatedList);
 
   rows.forEach((item, index) => {
@@ -149,7 +137,6 @@ const setCurrentPage = (pageNum) => {
     }
   });
 };
-
 window.addEventListener("load", () => {
   getPaginationNumbers();
   setCurrentPage(1);
@@ -179,7 +166,7 @@ window.addEventListener("load", () => {
 function deletedata(Id) {
   swal({
     title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover your data!",
+    text: "Once deleted, you will not be able to recover your Records!",
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -203,9 +190,8 @@ function deletedata(Id) {
   });
 }
 
-var allevent = document.querySelectorAll(".allEvent");
-
-allevent.forEach((element) => {
+  var allevent = document.querySelectorAll(".allEvent");
+  allevent.forEach((element) => {
   element.addEventListener("blur", (e) => {
     if (e.target.id == "name" && document.getElementById("name").value == "") {
       document.getElementById("firstnameRequired").style.display = "block";
@@ -249,7 +235,7 @@ allevent.forEach((element) => {
 });
 
 var row = 1;
-function subfunc(e) {
+function submitUser(e) {
   var val = true;
   var Name = document.getElementById("name").value;
   var Email = document.getElementById("email").value;
@@ -325,7 +311,6 @@ function updaterecord(userId) {
 const updateDataValue = JSON.parse(localStorage.getItem("user_records"));
 
 // validation of edit modal //
-
 var regexx = document.querySelectorAll(".updateEvent");
 regexx.forEach((e) => {
   e.addEventListener("keyup", (e) => {
@@ -362,7 +347,6 @@ regexx.forEach((e) => {
 });
 
 var allevent = document.querySelectorAll(".updateEvent");
-
 allevent.forEach((element) => {
   element.addEventListener("blur", (e) => {
     if (
@@ -464,3 +448,58 @@ document.getElementById("btn_modelUpdate").onclick = function () {
     });
   }
 };
+
+// Search User //
+
+var submitSearch = document.getElementById("searchButton");
+submitSearch.addEventListener("click", searchUser);
+
+function searchUser() {
+  var search = document.getElementById("search").value;
+
+  if (!search) {
+    location.reload();
+  }
+  var regex = /^[a-zA-Z ]{3,30}$/;
+  if (!search.match(regex)) {
+    document.getElementById("correctSearchName").style.display = "none";
+  } else {
+    var input = document.getElementById("search");
+    var filter = input.value;
+    var table = document.getElementById("customtable");
+    var tr = table.getElementsByTagName("tr");
+
+    filteredData = userdata?.filter((user) => {
+      const fname = user.fname.toLowerCase();
+
+      if (fname.includes(filter)) {
+        return fname?.includes(filter.toLowerCase());
+      } else {
+        document.getElementById("dontDisplay").style.display = "none";
+      }
+    });
+
+    if (!filteredData.length) {
+      document.getElementById("noDataFound").style.display = "block";
+    }
+
+    var tableData = "";
+
+    const renderTable = (filteredData) => {
+      filteredData.forEach((values) => {
+        tableData += `
+      <tr id="user_${values.id}">
+      <td> ${values.fname}</a></td>
+      <td>${values.lname}</td>
+      <td>${values.email}</td>
+      <td>${values.college}</td>
+      <td>${values.city}</td>
+      <td><a onclick="updaterecord(${values.id})" href="update:;"><i class="fa-solid fa-pen-to-square" style="color:green"></i></a> |
+      <a onclick="deletedata(${values.id})" href="deletedata:;" data-id="${values.id}" ><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></a></td>
+      </tr>`;
+      });
+      return (document.getElementById("customtable").innerHTML = tableData);
+    };
+    renderTable(filteredData);
+  }
+}

@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="/css/pagination.css">
     </head>
-    <body onload="loadFunction()">
+    <body >
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +42,21 @@
                   margin-right: 120px;
                   margin-bottom: 10px;
               ">Add</button>
+
+            <div class="input-group rounded" style="
+            width: 50;
+            width: 30%;
+            margin-left: 124px;
+            ">
+                <input type="search" class="form-control rounded" id="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onkeyup="searchUser()"  />
+                <span class="input-group-text border-0" id="search-addon" style="
+                margin-left: 5px;
+            "> 
+                &nbsp<i class="fas fa-search" input type="button" id="searchButton" ></i>
+                </span>
+                <span id="correctSearchName" style="display: none; float:left; color: red;" >search is required</span>
+                
+            </div>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" role="dialog">
                                 <div class="modal-dialog">
@@ -115,7 +130,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- new model -->
+                        <!-- update model -->
                         <div class="card-body text-center">
                             <div class="modal fade" id="updateUserModel" role="dialog">
                                 <div class="modal-dialog">
@@ -206,9 +221,8 @@
                                 <tbody class="customtable" id="customtable"></tbody>
                             </table>
                         </div>
-                        <div id="noData">
-                            <h1 style="
-                        margin-top: 100px; color: grey;"> No Record Found :( </h1>
+                        <div id="noDataFound" style="display: none;">
+                            <h1 style="margin-top: 100px; color: grey;"> No Record Found :( </h1>
                         </div>
                     </div>
                 </div>
@@ -216,7 +230,7 @@
         </div>
         </div>
         </div>
-        <nav class="pagination-container">
+        <nav class="pagination-container" id="dontDisplay" >
             <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page"> &lt; </button>
             <div id="pagination-numbers"></div>
             <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page"> &gt; </button>
