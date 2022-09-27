@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="/css/index.css">
+      <link rel="stylesheet" href="/css/pagination.css">
+      <link rel="stylesheet" href="/css/bootstrap.min.css"></head>
+   <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <a class="navbar-brand" href="#">Navbar</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span>
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+               </li>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" href="#">Action</a>
+                     <a class="dropdown-item" href="#">Another action</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+               </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" onkeyup="searchUser()">
+               <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="color: white;" id="searchButton">Search</button>
+            </form>
+         </div>
+      </nav>
+      <div class="container">
+         <div class="row">
+            <div class="col-12">
+               <div class="card">
+                  <div class="card-body text-center">
+                     <button type="button" id="add-button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal" style="
+              float: right;
+             background-color: #3aa051;
+             margin-right: 125px;
+              margin-bottom: 10px;
+          ">Add Record</button> &nbsp &nbsp <button type="button" id="delete-button" class="btn btn-info btn" style="
+           float: right;
+          background-color: red;
+          margin-right: 9px;
+           margin-bottom: 10px;
+       " onclick="deleteAll()">Delete</button>
+                     <!-- Modal -->
+                     <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                           <div class="modal-content" style="
+               
+                background: #a79999;
+                font-size: 15px;
+            ">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              <div class="modal-body" style="color: black;">
+                                 <form style="text-align: center;  " id="form">
+                                    <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">First Name</label>
+                                          <div class="col-sm-10">
+                                             <input type="text" class="form-control allEvent " placeholder="Enter your Name" id="name">
+                                             <span id="firstName" style="display: none; float:left; color: red;">Name is required</span>
+                                             <span id="correct_name" style="display: none; float:left; color: red;">*Please enter correct name</span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                          <div class="col-sm-10">
+                                             <input type="email" class="form-control allEvent" placeholder="abc@gmail.com" id="email">
+                                             <span id="emailRequired" style="display: none; float:left; color: red;">Email is required</span>
+                                             <span id="correct_email" style="display: none; float:left; color: red;"> *Please enter correct email</span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">Mobile-no</label>
+                                          <div class="col-sm-10">
+                                             <input type="text" class="form-control allEvent" placeholder="Enter your mobile-no" id="mobile-no">
+                                             <span id="mobRequired" style="display: none; float:left; color: red;">Mobile-no is required</span>
+                                             <span id="correct_MobNo" style="display: none; float:left; color: red;">*Please enter correct Mobile-no</span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">College</label>
+                                          <select id="college" class="allEvent" style="width:77%; margin-left: 14px; border: 1px solid #ced4da; color: #495057c7;" required>
+                                             <option value="">Select your college</option>
+                                             <option value="Silver oak">Silver oak</option>
+                                             <option value="DAIICT">DAIICT</option>
+                                             <option value="Sal">Sal</option>
+                                             <option value="PDPU">PDPU</option>
+                                             <option value="Ahmedabad University">Ahmedabad University</option>
+                                             <option value="VGEC">VGEC</option>
+                                             <option value="LDRP">LDRP</option>
+                                             <option value="LD">LD</option>
+                                          </select>
+                                          <span id="collegeRequired" style="display: none; float:left; color: red; margin-left: 98px;">College is required</span>
+                                       </div>
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">City</label>
+                                          <select id="city" class="allEvent" style="width:77%; margin-left: 14px; border: 1px solid #ced4da; color: #495057c7;">
+                                             <option value="">Select your city</option>
+                                             <option value="Ahmedabad">Ahmedabad</option>
+                                             <option value="Aanand">Aanand</option>
+                                             <option value="Surat">Surat</option>
+                                             <option value="Rajkot">Rajkot</option>
+                                             <option value="Bhavnagar">Bhavnagar</option>
+                                             <option value="vadodra">vadodra</option>
+                                             <option value="Gandhinagar">Gandhinagar</option>
+                                          </select>
+                                          <span id="cityRequired" style="display: none; float:left; color: red; margin-left: 98px;">City is required</span>
+                                       </div>
+                                       <input type="button" class="btn btn-success" id="btnSubmit" value="submit" style="background: green">
+                                 </form>
+                              </div>
+                              <div class="modal-footer" style="border-top:0px ;">
+                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- update model -->
+                  <div class="card-body text-center">
+                     <div class="modal fade" id="updateUserModel" role="dialog">
+                        <div class="modal-dialog">
+                           <div class="modal-content" style="
+               
+                            background: #a79999;
+                            font-size: 15px;
+                        ">
+                              <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              <div class="modal-body">
+                                 <form style="text-align: center;  " id="form">
+                                    <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
+                                       <input type="hidden" id="userId">
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">First Name</label>
+                                          <div class="col-sm-10">
+                                             <input type="text" class="form-control updateEvent " placeholder="Enter your Name" id="update_name">
+                                             <span id="requiredName" style="display: none; float:left; color: red;">Name is required</span>
+                                             <span id="correctName" style="display: none; float:left; color: red;">*Please enter correct name</span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                          <div class="col-sm-10">
+                                             <input type="email" class="form-control updateEvent" placeholder="abc@gmail.com" id="update_email">
+                                             <span id="requiredEmail" style="display: none; float:left; color: red;"> Email is required</span>
+                                             <span id="correctEmail" style="display: none; float:left; color: red;"> *Please enter correct email</span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">Mobile-no</label>
+                                          <div class="col-sm-10">
+                                             <input type="text" class="form-control updateEvent" placeholder="Enter your full Name" id="update_mobile">
+                                             <span id="requiredMobile" style="display: none; float:left; color: red;">Mobileno is required</span>
+                                             <span id="correctMobile" style="display: none; float:left; color: red;">*Please enter correct mobileno</span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">College</label>
+                                          <select id="update_college" class="updateEvent" style="width:77%; margin-left: 14px; border: 1px solid #ced4da; color: #495057c7;" required>
+                                             <option value="">Select your college</option>
+                                             <option value="Silver oak">Silver oak</option>
+                                             <option value="DAIICT">DAIICT</option>
+                                             <option value="Sal">Sal</option>
+                                             <option value="PDPU">PDPU</option>
+                                             <option value="Ahmedabad University">Ahmedabad University</option>
+                                             <option value="VGEC">VGEC</option>
+                                             <option value="LDRP">LDRP</option>
+                                             <option value="LD">LD</option>
+                                          </select>
+                                          <span id="required_college" style="display: none; float:left; color: red; margin-left: 98px;">College is required</span>
+                                       </div>
+                                       <div class="form-group row">
+                                          <label for="staticEmail" class="col-sm-2 col-form-label">City</label>
+                                          <select id="update_city" class="updateEvent" style="width:77%; margin-left: 14px; border: 1px solid #ced4da; color: #495057c7;">
+                                             <option value="">Select your city</option>
+                                             <option value="Ahmedabad">Ahmedabad</option>
+                                             <option value="Aanand">Aanand</option>
+                                             <option value="Surat">Surat</option>
+                                             <option value="Rajkot">Rajkot</option>
+                                             <option value="Bhavnagar">Bhavnagar</option>
+                                             <option value="vadodra">vadodra</option>
+                                             <option value="Gandhinagar">Gandhinagar</option>
+                                          </select>
+                                          <span id="required_city" style="display: none; float:left; color: red; margin-left: 98px;">City is required</span>
+                                       </div>
+                                       <input type="button" class="btn btn-primary" id="btn_modelUpdate" value="update" style="background-color: green;">
+                                 </form>
+                              </div>
+                              <div class="modal-footer" style="border-top:0px ;">
+                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- table -->
+                  <div class="table-responsive">
+                     <table class="table" id="table-add">
+                        <thead class="thead-light">
+                           <tr>
+                              <th scope="col">First Name</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Mobile no</th>
+                              <th scope="col">College</th>
+                              <th scope="col">City</th>
+                              <th scope="col">Action</th>
+                           </tr>
+                        </thead>
+                        <tbody class="customtable" id="customtable"></tbody>
+                     </table>
+                  </div>
+                  <div id="noDataFound" style="display: none;">
+                     <h1 style="margin-top: 100px; color: grey;"> No Record Found :( </h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      </div>
+      <nav class="pagination-container" id="dontDisplay">
+         <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page"> &lt; </button>
+         <div id="pagination-numbers"></div>
+         <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page"> &gt; </button>
+      </nav>
+      <script src="/js/jquery.min.js"></script>
+      <script src="/js/bootstrap.min.js" ></script>
+      <script src="/js/index.js"></script>
+      <script src="/js/sweetalert.min.js"></script>
+   </body>
+</html>
