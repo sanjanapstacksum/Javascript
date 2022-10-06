@@ -1,6 +1,5 @@
 const userdata = JSON.parse(localStorage.getItem("user_records"));
 // // validation of add modal//
-
 var submit = document.getElementById("btnSubmit");
 submit.addEventListener("click", submitUser);
 
@@ -30,10 +29,10 @@ regexx.forEach((e) => {
     var fullName = document.getElementById("fullname").value;
     var regex = /^[a-zA-Z ]{3,30}$/;
     if (e.target.id == "fullname" && !fullName.match(regex)) {
-      document.getElementById("correct_fullname").style.display = "block";
+      document.getElementById("correct_MobNo").style.display = "block";
       document.getElementById("fullnameRequired").style.display = "none";
     } else {
-      document.getElementById("correct_fullname").style.display = "none";
+      document.getElementById("correct_MobNo").style.display = "none";
       document.getElementById("fullnameRequired").style.display = "none";
     }
   });

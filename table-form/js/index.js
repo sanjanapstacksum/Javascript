@@ -271,13 +271,13 @@ function deletedata(userId) {
           elementdelete.remove();
 
           localStorage.setItem("users_records", JSON.stringify(getData));
-          swal(" Blog successfully deleted!", {
+          swal(" Records successfully deleted!", {
             icon: "success",
           });
         }
       }
     } else {
-      swal("Your Blog is safe!");
+      swal("Your Records are safe!");
     }
   });
 }
@@ -422,17 +422,21 @@ document.getElementById("btn_modelUpdate").onclick = function () {
     return false;
   } else {
     var userId = document.getElementById("userId").value;
+    console.log(userId,"userid")
     updateData.map((user) => {
+      console.log(user,"user")
       if (parseInt(userId) === user.id) {
+        console.log(userId,"userid")
         user.fname = document.getElementById("update_name").value;
         user.mobile = document.getElementById("update_mobile").value;
         user.email = document.getElementById("update_email").value;
         user.college = document.getElementById("update_college").value;
         user.city = document.getElementById("update_city").value;
 
+        console.log(user.fname,"uf")
         localStorage.setItem("users_records", JSON.stringify(updateData));
         $("#updateUserModel").modal("hide");
-        location.reload();
+       
       }
     });
   }
@@ -492,7 +496,6 @@ function searchUser() {
 }
 
 function deleteAll() {
- 
   swal({
     title: "Are you sure?",
     text: "Once deleted, you will not be able to recover your Records!",
@@ -501,15 +504,14 @@ function deleteAll() {
     dangerMode: true,
   }).then((willDelete) => {
     if (willDelete) {
-       localStorage.clear();
+      localStorage.clear();
       var clear = document.getElementById("customtable");
       clear.remove();
       document.getElementById("dontDisplay").style.display = "none";
       document.getElementById("noDataFound").style.display = "block";
-          swal(" Records successfully deleted!", {
-            icon: "success",
-          });
-        
+      swal(" Records successfully deleted!", {
+        icon: "success",
+      });
     } else {
       swal("Your Records are safe!");
     }

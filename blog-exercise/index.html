@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Your description">
+    <meta name="author" content="Your name">
+    <meta property="og:site_name" content="" />
+    <meta property="og:site" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Mark Webpage Title</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png">
+
+  </head>
+
+  <body data-spy="scroll" data-target=".fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+      <div class="container">
+        <a class="navbar-brand logo-image" href="index.html">
+          <img src="images/logo.svg" alt="alternative">
+        </a>
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="">Blog <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="">Blog-detail</a>
+            </li>
+          </ul>
+          <span class="nav-item social-icons">
+            <span class="fa-stack">
+              <a href="#your-link">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-facebook-f fa-stack-1x"></i>
+              </a>
+            </span>
+            <span class="fa-stack">
+              <a href="#your-link">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x"></i>
+              </a>
+            </span>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <header id="header" class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="text-container">
+              <h1 class="h1-large">I love to create beautiful and efficient websites</h1>
+              <a class="btn-solid-lg page-scroll" href="#about">Discover</a>
+              <a class="btn-outline-lg page-scroll" href="#contact">
+                <i class="fas fa-user"></i>Contact Me </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="card-body text-center">
+      <button type="button" id="add-button" class="btn-solid-lg page-scroll" data-toggle="modal" data-target="#myModal" style="float: right;
+        margin-right: 121px;
+        margin-top: 22px;
+    ">Add Record</button>
+
+      <!-- Modal -->
+
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content" style="
+  
+   background: #dc9595;
+   font-size: 15px;
+">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="color: black;">
+              <form style="text-align: center;  " id="form">
+                <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label" style="
+                             /* color: black; */
+                             font-family: 'Poppins';
+                             font-size: 18px;
+                         ">Title</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control allEvent " placeholder="Enter your title" id="title">
+                      <span id="titleRequired" style="display: none; float:left; color: red;">title is required</span>
+                      <span id="correct_title" style="display: none; float:left; color: red;">*Please enter correct title</span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label" style="
+                             /* color: black; */
+                             font-family: 'Poppins';
+                             font-size: 18px;
+                         ">Body</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control allEvent" placeholder="Enter your body content" id="body">
+                      <span id="bodyRequired" style="display: none; float:left; color: red;">Body is required</span>
+                      <span id="correct_body" style="display: none; float:left; color: red;"> *Please enter correct Body</span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label" style="
+                             /* color: black; */
+                             font-family: 'Poppins';
+                             font-size: 18px;
+                         ">Image</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control allEvent" placeholder="Enter your image path" id="image">
+                      <span id="imageRequired" style="display: none; float:left; color: red;">image is required</span>
+                      <span id="correct_image" style="display: none; float:left; color: red;">*Please enter correct path</span>
+                    </div>
+                  </div>
+                  <input type="button" class="btn-solid-lg page-scroll" id="btnSubmit" value="Submit">
+              </form>
+            </div>
+            <div class="modal-footer" style="border-top:0px ;">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="basic-4 " style="
+    margin-top: 100px;
+
+"></div>
+
+    <!-- Footer -->
+
+    <div class="footer bg-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="social-container">
+              <span class="fa-stack">
+                <a href="#your-link">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x"></i>
+                </a>
+              </span>
+              <span class="fa-stack">
+                <a href="#your-link">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x"></i>
+                </a>
+              </span>
+              <span class="fa-stack">
+                <a href="#your-link">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-pinterest-p fa-stack-1x"></i>
+                </a>
+              </span>
+              <span class="fa-stack">
+                <a href="#your-link">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x"></i>
+                </a>
+              </span>
+              <span class="fa-stack">
+                <a href="#your-link">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-youtube fa-stack-1x"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="copyright bg-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p class="p-small">Copyright © <a class="no-line" href="#your-link">Your name</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p class="p-small">Distributed By <a class="no-line" href="https://themewagon.com/">Themewagon</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+  </body>
+</html>

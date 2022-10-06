@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>SB Admin 2 - Dashboard</title>
+      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+      <link href="css/sb-admin-2.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="/css/pagination.css">
+   </head>
+   <body id="page-top">
+      <div id="wrapper">
+         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
+               <div class="sidebar-brand-icon rotate-n-15">
+                  <i class="fas fa-laugh-wink"></i>
+               </div>
+               <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup>
+               </div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item ">
+               <a class="nav-link" href="dashboard.html">
+                  <i class="fas fa-fw fa-tachometer-alt"></i>
+                  <span>Dashboard</span>
+               </a>
+            </li>
+            <hr class="sidebar-divider">
+           
+            <li class="nav-item active">
+               <a class="nav-link collapsed" href="users.html" >
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                  <span>Users</span>
+               </a>
+            </li>
+            <hr class="sidebar-divider">
+         </ul>
+         <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+               <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                     <i class="fa fa-bars"></i>
+                  </button>
+                  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                     <h1 class="h3 mb-0 text-gray-800" style="
+              text-align: center;
+              margin-top: 25px;
+          " id="">Users</h1>
+                  </div>
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                           <form class="form-inline mr-auto w-100 navbar-search">
+                              <div class="input-group">
+                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                 <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                       <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </li>
+                     <nav aria-label="breadcrumb"style="
+                     margin-top: 11px;
+                 ">
+                        <ol class="breadcrumb" style="background-color: white;">
+                          
+                          <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">users</li>
+                        </ol>
+                      </nav>
+                     <div class="topbar-divider d-none d-sm-block"></div>
+                     
+                     <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="profileName">Douglas McGee</span>
+                           <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                           <a class="dropdown-item" href="profile.html">
+                              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
+                           
+                           <div class="dropdown-divider"></div>
+                           <a class="dropdown-item" href="index.html" data-toggle="modal" data-target="#logoutModal">
+                              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout </a>
+                        </div>
+                     </li>
+                  </ul>
+               </nav>
+               <div class="container-fluid">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="card">
+                              <div class="card-body text-center">
+                                 <button type="button" id="add-button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal" style="
+                     float: right;
+                    background-color: #3aa051;
+                    margin-right: 22px;
+                     margin-bottom: 10px;
+                 ">Add Record</button>
+                                 <div class="input-group rounded" style="
+                  width: 50;
+                  width: 30%;
+                  margin-left: 20px;
+                  ">
+                                    <input type="search" class="form-control rounded" id="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onkeyup="searchUser()" />
+                                    <span class="input-group-text border-0" id="search-addon" style="
+                      margin-left: 5px;
+                  "> &nbsp <i class="fas fa-search" input type="button" id="searchButton"></i>
+                                    </span>
+                                    <span id="correctSearchName" style="display: none; float:left; color: red;">search is required</span>
+                                 </div>
+
+                                 <!-- Modal -->
+                                 <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                                       <div class="modal-content" style="
+                      
+                       background: #768dcb;;
+                       font-size: 15px;
+                   ">
+                                          <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          </div>
+                                          <div class="modal-body" style="color: black;">
+                                             <form style="text-align: center;  " id="form">
+                                                <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
+                                                   <div class="form-group row">
+                                                      <label for="staticEmail" class="col-sm-2 col-form-label">First Name</label>
+                                                      <div class="col-sm-10">
+                                                         <input type="text" class="form-control allEvent " placeholder="Enter your Name" id="name">
+                                                         <span id="firstName" style="display: none; float:left; color: red;">Name is required</span>
+                                                         <span id="correct_name" style="display: none; float:left; color: red;">*Please enter correct name</span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group row">
+                                                      <label for="staticEmail" class="col-sm-2 col-form-label">Last Name</label>
+                                                      <div class="col-sm-10">
+                                                         <input type="text" class="form-control allEvent " placeholder="Enter your Name" id="lastName">
+                                                         <span id="last_name" style="display: none; float:left; color: red;">Name is required</span>
+                                                         <span id="correct_lastName" style="display: none; float:left; color: red;">*Please enter correct name</span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group row">
+                                                      <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                                      <div class="col-sm-10">
+                                                         <input type="email" class="form-control allEvent" placeholder="abc@gmail.com" id="email">
+                                                         <span id="emailRequired" style="display: none; float:left; color: red;">Email is required</span>
+                                                         <span id="correct_email" style="display: none; float:left; color: red;"> *Please enter correct email</span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group row">
+                                                      <label for="staticEmail" class="col-sm-2 col-form-label" style="font-size: 13px;">Password</label>
+                                                      <div class="col-sm-10">
+                                                         <input type="password" class="form-control allEvent" placeholder="Enter your password" id="password">
+                                                         <span id="passwordRequired" style="display: none; float:left; color: red;">Password is required</span>
+                                                         <span id="correct_password" style="display: none; float:left; color: red;">*Please enter correct Password</span>
+                                                      </div>
+                                                   </div>
+                                                   <input type="button" class="btn btn-success" id="btnSubmit" value="submit" style="background: green">
+                                             </form>
+                                          </div>
+                                          <div class="modal-footer" style="border-top:0px ;">
+                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- update model -->
+                              <div class="card-body text-center">
+                                 <div class="modal fade" id="updateUserModel" role="dialog">
+                                    <div class="modal-dialog">
+                                       <div class="modal-content" style="
+                      
+                                   background: #768dcb;
+                                   font-size: 15px;
+                               ">
+                                          <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          </div>
+                                          <div class="modal-body">
+                                             <form style="text-align: center;  " id="form">
+                                                <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
+                                                   <input type="hidden" id="userId">
+                                                   <div class="form-group row">
+                                                      <label for="staticEmail" class="col-sm-2 col-form-label" style="color: black;">First Name</label>
+                                                      <div class="col-sm-10">
+                                                         <input type="text" class="form-control updateEvent " placeholder="Enter your Name" id="update_name">
+                                                         <span id="requiredName" style="display: none; float:left; color: red;">Name is required</span>
+                                                         <span id="correctName" style="display: none; float:left; color: red;">*Please enter correct name</span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group row">
+                                                      <label for="staticEmail" class="col-sm-2 col-form-label" style="color: black">Last Name</label>
+                                                      <div class="col-sm-10">
+                                                         <input type="text" class="form-control updateEvent " placeholder="Enter your Name" id="update_Lname">
+                                                         <span id="requiredLname" style="display: none; float:left; color: red;">Name is required</span>
+                                                         <span id="correctLname" style="display: none; float:left; color: red;">*Please enter correct name</span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group row">
+                                                      <label for="staticEmail" class="col-sm-2 col-form-label"  style="color: black;">Email</label>
+                                                      <div class="col-sm-10">
+                                                         <input type="email" class="form-control updateEvent" placeholder="abc@gmail.com" id="update_email">
+                                                         <span id="requiredEmail" style="display: none; float:left; color: red;"> Email is required</span>
+                                                         <span id="correctEmail" style="display: none; float:left; color: red;"> *Please enter correct email</span>
+                                                      </div>
+                                                   </div>
+                                                   <div class="form-group row">
+                                                      <label for="staticEmail" class="col-sm-2 col-form-label"  style="color: black">Password</label>
+                                                      <div class="col-sm-10">
+                                                         <input type="text" class="form-control updateEvent" placeholder="Enter your full Name" id="update_password">
+                                                         <span id="requiredPassword" style="display: none; float:left; color: red;">password is required</span>
+                                                         <span id="correctPassword" style="display: none; float:left; color: red;">*Please enter correct password</span>
+                                                      </div>
+                                                   </div>
+                                                   <input type="button" class="btn btn-primary" id="btn_modelUpdate" value="update" style="background-color: green;">
+                                             </form>
+                                          </div>
+                                          <div class="modal-footer" style="border-top:0px ;">
+                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- table -->
+                              <div class="table-responsive">
+                                 <table class="table" id="table-add">
+                                    <thead class="thead-light">
+                                       <tr>
+                                          <th scope="col">First Name</th>
+                                          <th scope="col">Last Name</th>
+                                          <th scope="col">Email</th>
+                                          <th scope="col">Action</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody class="customtable" id="customtable"></tbody>
+                                 </table>
+                              </div>
+                              <div id="noDataFound" style="display: none;">
+                                 <h1 style="margin-top: 100px; color: grey;"> No Record Found :( </h1>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <nav class="pagination-container" id="dontDisplay" style="
+      margin-bottom: 200px;
+  ">
+         <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page"> &lt; </button>
+         <div id="pagination-numbers"></div>
+         <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page"> &gt; </button>
+      </nav>
+      <a class="scroll-to-top rounded" href="#page-top">
+         <i class="fas fa-angle-up"></i>
+      </a>
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">×</span>
+                  </button>
+               </div>
+               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+               <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="index.html" onclick="logout()">Logout</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="js/validated.js"></script>
+      <script src="js/users.js"></script>
+      <script src="js/sweetalert.min.js"></script>
+   </body>
+</html>
