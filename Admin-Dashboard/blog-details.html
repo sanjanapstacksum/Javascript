@@ -79,7 +79,7 @@
                 class="h3 mb-0 text-gray-800"
                 style="text-align: center; margin-top: 25px"
               >
-                Dashboard
+               Blog-details
               </h1>
             </div>
             <ul class="navbar-nav ml-auto">
@@ -117,6 +117,16 @@
                   </form>
                 </div>
               </li>
+              <nav aria-label="breadcrumb"style="
+                     margin-top: 11px;
+                 ">
+                        <ol class="breadcrumb" style="background-color: white;">
+                          
+                          <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                          <li class="breadcrumb-item "><a href="blog.html">blogs</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">blog-details</li>
+                        </ol>
+                      </nav>
               <div class="topbar-divider d-none d-sm-block"></div>
               
               <li class="nav-item dropdown no-arrow">
@@ -164,41 +174,17 @@
               </li>
             </ul>
           </nav>
-          <div class="container-fluid">
-            <p style="text-align: center; font-size: 30px"><span  id="greet"></span>
-             
-              <span id="userName" style="color: rgb(64, 64, 197)"></span>
-              <span> <i class='far fa-grin-beam' style='font-size:36px'></i> </span>
-              <span id="dateTime" ></span>
-              <span>,</span>
-              <span id="time" ></span> 
-            </p>
-            <div class="row">
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                        >
-                          Total Users
-                        </div>
-                        <div
-                          class="h5 mb-0 font-weight-bold text-gray-800"
-                          id="countOfUsers"
-                        ></div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-users fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="text-center">
+            <img src="img/undraw_posting_photo.svg" class="rounded" alt="..." style="width: 35%;"></br></br>
+            <h1>Blog-Title</h1></br>
+            <div class="container">
+              <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h5>
             </div>
-          </div>
+            </div>
         </div>
+
+
+        
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
@@ -253,7 +239,7 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
-    <script src="js/dashboard.js"></script>
     <script src="js/validated.js"></script>
+    <script src="js/blog-details.js"></script>
   </body>
 </html>

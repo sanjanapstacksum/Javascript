@@ -1,3 +1,13 @@
+
+function logout() {
+  localStorage.clear();
+}
+var getData=localStorage.getItem('login_input')
+if(getData==null){
+   location.href="index.html"
+   
+}
+
 var getUser = JSON.parse(localStorage.getItem("login_input"));
 document.getElementById("profileName").innerHTML =getUser.fname + " " + getUser.lname;
 

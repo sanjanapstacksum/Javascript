@@ -50,7 +50,10 @@ allevent.forEach((element) => {
 var login = document.getElementById("login");
 login.addEventListener("click", loginUser);
 
+
 function loginUser(e) {
+
+ 
   var val = true;
   e.preventDefault();
   var email = document.getElementById("exampleInputEmail").value;

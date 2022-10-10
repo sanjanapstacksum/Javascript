@@ -1,3 +1,7 @@
+function logout() {
+  localStorage.clear();
+}
+
 var userArray = JSON.parse(localStorage.getItem("register_input"));
 var loginUser = JSON.parse(localStorage.getItem("login_input"))
 document.getElementById("profileName").innerHTML=loginUser.fname+" "+loginUser.lname
