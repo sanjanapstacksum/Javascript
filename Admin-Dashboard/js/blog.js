@@ -1,6 +1,6 @@
 function logout() {
-  localStorage.clear();
-}
+  window.localStorage.removeItem('login_input')}
+
 var blogArray = JSON.parse(localStorage.getItem("blog-records"));
 
 var loginUser = JSON.parse(localStorage.getItem("login_input"));
@@ -33,7 +33,7 @@ regex.forEach((e) => {
     }
 
     var image = document.getElementById("image").value;
-    var regex = /\.(jpe?g|png|gif|bmp|svg)$/i;
+    var regex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/ 
     if (e.target.id == "image" && !image.match(regex)) {
       document.getElementById("image_error_msg").style.display = "block";
       document.getElementById("imageRequired").style.display = "none";
@@ -49,8 +49,6 @@ regex.forEach((e) => {
 function upperCase(title){
  return title[0].toUpperCase() + title.slice(1)
 }
-
-
 
 var tableInfo = ""; 
 const renderTable = (data) => {
@@ -233,15 +231,13 @@ function submitBlog() {
     } 
 
     var image = document.getElementById("image").value;
-    var regex = /\.(jpe?g|png|gif|bmp|svg)$/i;
+    var regex =  /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/ 
     if ( !image.match(regex)) {
       document.getElementById("image_error_msg").style.display = "block";
       document.getElementById("imageRequired").style.display = "none";
       val = false
     } 
     
-
-
   if (body == "") {
     document.getElementById("bodyRequired").style.display = "block";
     val = false;
@@ -320,7 +316,7 @@ var regex = document.querySelectorAll(".updateEvent");
 regex.forEach((e) => {
   e.addEventListener("keyup", (e) => {
     var image = document.getElementById("update_image").value;
-    var regex = /\.(jpe?g|png|gif|bmp|svg)$/i;
+    var regex =  /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg|svg)\??.*$/gmi 
     if (e.target.id == "update_image" && !image.match(regex)) {
       document.getElementById("update_image_error").style.display = "block";
       document.getElementById("requiredImage").style.display = "none";
@@ -387,6 +383,14 @@ document.getElementById("submit_updateModel").onclick = function () {
 
   if (body == "") {
     document.getElementById("requiredBody").style.display = "block";
+    val = false;
+  }
+  
+  var title = document.getElementById("update_title").value;
+  var pattern = /^[a-zA-Z ]{2,30}$/;
+  if (!title.match(pattern)) {
+    document.getElementById("update_title_error").style.display = "block";
+    document.getElementById("requiredTitle").style.display = "none";
     val = false;
   }
 

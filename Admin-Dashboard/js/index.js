@@ -86,10 +86,7 @@ function loginUser(e) {
   if (val === false) {
     return false;
   } else {
-    var getRegData = JSON.parse(localStorage.getItem("register_input"));
-    if (getRegData == null) {
-      swal("Please register yourself first  !", "", "error");
-    }
+    
     var localstorageRegRecord = JSON.parse(
       localStorage.getItem("register_input")
     );

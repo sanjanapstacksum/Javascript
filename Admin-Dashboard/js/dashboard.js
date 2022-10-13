@@ -1,5 +1,5 @@
 function logout() {
-  localStorage.clear();
+  window.localStorage.removeItem('login_input')
 }
 var blogArray = JSON.parse(localStorage.getItem("blog-records"));
 var userArray = JSON.parse(localStorage.getItem("register_input"));

@@ -1,5 +1,5 @@
 function logout() {
-  localStorage.clear();
+  window.localStorage.removeItem('login_input')
 }
 var getData = localStorage.getItem("login_input");
 if (getData == null) {
