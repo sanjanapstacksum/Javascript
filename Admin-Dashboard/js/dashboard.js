@@ -1,20 +1,26 @@
 function logout() {
   localStorage.clear();
 }
-
+var blogArray = JSON.parse(localStorage.getItem("blog-records"));
 var userArray = JSON.parse(localStorage.getItem("register_input"));
 var loginUser = JSON.parse(localStorage.getItem("login_input"));
 var userLength = userArray.length;
 
 document.getElementById("countOfUsers").innerHTML = userLength;
+if (Array.isArray(blogArray)) {
+  document.getElementById("countOfBlogs").innerHTML = blogArray.length;
+} else {
+  document.getElementById("countOfBlogs").innerHTML = 0;
+}
+
 document.getElementById("userName").innerHTML =
   loginUser.fname + " " + loginUser.lname;
 document.getElementById("profileName").innerHTML =
-loginUser.fname + " " + loginUser.lname;
+  loginUser.fname + " " + loginUser.lname;
 
 var date = new Date();
 var current_date =
-date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+  date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 var date_time = current_date;
 document.getElementById("dateTime").innerHTML = date_time;
 

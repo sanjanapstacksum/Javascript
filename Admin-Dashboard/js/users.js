@@ -3,26 +3,30 @@ function logout() {
 }
 
 var userArray = JSON.parse(localStorage.getItem("register_input"));
-var loginUser = JSON.parse(localStorage.getItem("login_input"))
-document.getElementById("profileName").innerHTML=loginUser.fname+" "+loginUser.lname
+var loginUser = JSON.parse(localStorage.getItem("login_input"));
+document.getElementById("profileName").innerHTML =
+  loginUser.fname + " " + loginUser.lname;
+
 
 
 var tableInfo = "";
 const renderTable = (data) => {
- data.forEach((users) => {
-   tableInfo += `
+  data.forEach((users) => {
+    tableInfo += `
    <tr id="user_${users.id}">
     <td> ${users.fname}</a></td>
     <td>${users.lname}</td>
     <td>${users.email}</td>
-    
-    <td><a onclick="updaterecord(${users.id})" href="update:;"><i class="fa-solid fa-pen-to-square" style="color:green"></i></a> |
-    <a onclick="deletedata(${users.id})" href="deletedata:;" data-id="${users.id}" ><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></a></td>
+    <td><a onclick="updaterecord(${users.id})" href="javascript:;"><i class="fa-solid fa-pen-to-square" style="color:green"></i></a> |
+    <a onclick="deletedata(${users.id})" href="javascript:;" data-id="${users.id}" ><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></a></td>
     </tr>`;
   });
+  
   return (document.getElementById("customtable").innerHTML = tableInfo);
+  
 };
-let result = renderTable(userArray);
+  renderTable(userArray);
+
 
 // pagination//
 const paginationNumbers = document.getElementById("pagination-numbers");
@@ -233,6 +237,41 @@ function submitUser() {
     val = false;
   }
 
+  var passtrong = document.getElementById("password").value;
+  var regex1 =
+    /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
+  if (!passtrong.match(regex1)) {
+    document.getElementById("correct_password").style.display = "block"
+    val = false;
+  }
+
+
+  var name = document.getElementById("name").value;
+    var regex = /^[a-zA-Z ]{2,30}$/;
+    if ( !name.match(regex)) {
+      document.getElementById("correct_name").style.display = "block";
+      document.getElementById("firstName").style.display = "none";
+      val = false;
+    } 
+
+    var email = document.getElementById("email").value;
+    var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!email.match(pattern)) {
+      document.getElementById("correct_email").style.display = "block";
+      document.getElementById("emailRequired").style.display = "none";
+      val = false;
+    }
+
+
+    var lastName = document.getElementById("lastName").value;
+    var regex = /^[a-zA-Z ]{2,30}$/;
+    if ( !lastName.match(regex)) {
+      document.getElementById("correct_lastName").style.display = "block";
+      document.getElementById("last_name").style.display = "none";
+      val = false;
+    } 
+
+
   if (password == "") {
     document.getElementById("passwordRequired").style.display = "block";
     val = false;
@@ -267,7 +306,7 @@ function submitUser() {
 function deletedata(userId) {
   swal({
     title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover your Records!",
+    text: "Once deleted, you will not be able to recover your Record!",
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -279,13 +318,13 @@ function deletedata(userId) {
           const elementdelete = document.getElementById("user_" + userId);
           elementdelete.remove();
           localStorage.setItem("register_input", JSON.stringify(userArray));
-          swal(" Records successfully deleted!", {
+          swal(" Record successfully deleted!", {
             icon: "success",
           });
         }
       }
     } else {
-      swal("Your Records are safe!");
+      swal("Your Record is safe!");
     }
   });
 }
@@ -300,7 +339,6 @@ function updaterecord(userId) {
       document.getElementById("update_email").value = userArray[i].email;
       document.getElementById("update_password").value = userArray[i].password;
       document.getElementById("userId").value = userId;
-   
 
       $("#updateUserModel").modal("show");
     }
@@ -397,7 +435,6 @@ allevent.forEach((element) => {
 });
 
 document.getElementById("btn_modelUpdate").onclick = function () {
- 
   var val = true;
   var Name = document.getElementById("update_name").value;
   var Email = document.getElementById("update_email").value;
@@ -427,10 +464,8 @@ document.getElementById("btn_modelUpdate").onclick = function () {
   if (val === false) {
     return false;
   } else {
-   
     var userId = document.getElementById("userId").value;
     updateData.map((user) => {
-      
       if (parseInt(userId) === user.id) {
         user.fname = document.getElementById("update_name").value;
         user.lname = document.getElementById("update_Lname").value;
@@ -455,7 +490,7 @@ function searchUser() {
   if (!search) {
     location.reload();
   }
-  var regex = /^[a-zA-Z ]{3,30}$/;
+  var regex = /^[a-zA-Z ]{1,30}$/;
   if (!search.match(regex)) {
     document.getElementById("correctSearchName").style.display = "none";
   } else {
@@ -478,21 +513,10 @@ function searchUser() {
       document.getElementById("noDataFound").style.display = "block";
     }
 
-    var tableData = "";
-
-    const renderTable = (filteredData) => {
-      filteredData.forEach((values) => {
-        tableData += `
-        <tr id="user_${values.id}">
-        <td> ${values.fname}</a></td>
-        <td>${values.lname}</td>
-        <td>${values.email}</td>
-      <td><a onclick="updaterecord(${values.id})" href="update:;"><i class="fa-solid fa-pen-to-square" style="color:green"></i></a> |
-      <a onclick="deletedata(${values.id})" href="deletedata:;" data-id="${values.id}" ><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></a></td>
-      </tr>`;
-      });
-      return (document.getElementById("customtable").innerHTML = tableData);
-    };
-    renderTable(filteredData);
+   
+   tableInfo=''
+   document.getElementById("customtable").innerHTML = tableInfo
+   renderTable(filteredData)
+   
   }
 }

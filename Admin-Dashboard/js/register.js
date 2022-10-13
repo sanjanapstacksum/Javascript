@@ -104,6 +104,38 @@ function registerUser(e) {
     document.getElementById("requiredEmail").style.display = "block";
     val = false;
   }
+  var fname = document.getElementById("exampleFirstName").value;
+  var regex = /^[a-zA-Z ]{2,30}$/;
+  if (!fname.match(regex)) {
+    document.getElementById("correctFname").style.display = "block";
+    document.getElementById("requiredFname").style.display = "none";
+    val = false;
+  }
+
+  var lname = document.getElementById("exampleLastName").value;
+  var regex = /^[a-zA-Z ]{2,30}$/;
+  if (!lname.match(regex)) {
+    document.getElementById("correctLname").style.display = "block";
+    document.getElementById("requiredLname").style.display = "none";
+    val = false;
+  }
+
+  var passtrong = document.getElementById("exampleInputPassword").value;
+  var regex1 =
+    /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
+  if (!passtrong.match(regex1)) {
+    document.getElementById("correctPassword").style.display = "block";
+    document.getElementById("requiredPassword").style.display = "none";
+    val = false;
+  }
+
+  var Email = document.getElementById("exampleInputEmail").value;
+  var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (!Email.match(pattern)) {
+    document.getElementById("correctEmail").style.display = "block";
+    document.getElementById("requiredEmail").style.display = "none";
+    val = false;
+  }
 
   if (Fname == "") {
     document.getElementById("requiredFname").style.display = "block";

@@ -84,7 +84,7 @@
                         <ol class="breadcrumb" style="background-color: white;">
                           
                           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">users</li>
+                          <li class="breadcrumb-item active" aria-current="page">Users</li>
                         </ol>
                       </nav>
                      <div class="topbar-divider d-none d-sm-block"></div>
@@ -109,7 +109,7 @@
                   <div class="container">
                      <div class="row">
                         <div class="col-12">
-                           <div class="card">
+                           <div class="card"style="margin-top: 60px;">
                               <div class="card-body text-center">
                                  <button type="button" id="add-button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal" style="
                      float: right;
@@ -133,7 +133,7 @@
                                  <!-- Modal -->
                                  <div class="modal fade" id="myModal" role="dialog">
                                     <div class="modal-dialog">
-                                       <div class="modal-content" style="
+                                       <div class="modal-content" style="width: 600px; height: 462px;
                       
                       
                        font-size: 15px;
@@ -145,32 +145,32 @@
                                              <form style="text-align: center;  " id="form">
                                                 <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
                                                    <div class="form-group row">
-                                                      <label for="staticEmail" class="col-sm-2 col-form-label">First Name</label>
-                                                      <div class="col-sm-10">
+                                                      <label for="staticEmail" class="col-sm-3 col-form-label">First Name</label>
+                                                      <div class="col-sm-9">
                                                          <input type="text" class="form-control allEvent " placeholder="Enter your Name" id="name">
                                                          <span id="firstName" style="display: none; float:left; color: red;">Name is required</span>
                                                          <span id="correct_name" style="display: none; float:left; color: red;">*Please enter correct name</span>
                                                       </div>
                                                    </div>
                                                    <div class="form-group row">
-                                                      <label for="staticEmail" class="col-sm-2 col-form-label">Last Name</label>
-                                                      <div class="col-sm-10">
+                                                      <label for="staticEmail" class="col-sm-3 col-form-label">Last Name</label>
+                                                      <div class="col-sm-9">
                                                          <input type="text" class="form-control allEvent " placeholder="Enter your Name" id="lastName">
                                                          <span id="last_name" style="display: none; float:left; color: red;">Name is required</span>
                                                          <span id="correct_lastName" style="display: none; float:left; color: red;">*Please enter correct name</span>
                                                       </div>
                                                    </div>
                                                    <div class="form-group row">
-                                                      <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                                                      <div class="col-sm-10">
+                                                      <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                                                      <div class="col-sm-9">
                                                          <input type="email" class="form-control allEvent" placeholder="abc@gmail.com" id="email">
                                                          <span id="emailRequired" style="display: none; float:left; color: red;">Email is required</span>
                                                          <span id="correct_email" style="display: none; float:left; color: red;"> *Please enter correct email</span>
                                                       </div>
                                                    </div>
                                                    <div class="form-group row">
-                                                      <label for="staticEmail" class="col-sm-2 col-form-label" style="font-size: 13px;">Password</label>
-                                                      <div class="col-sm-10">
+                                                      <label for="staticEmail" class="col-sm-3 col-form-label" style="font-size: 13px;">Password</label>
+                                                      <div class="col-sm-9">
                                                          <input type="password" class="form-control allEvent" placeholder="Enter your password" id="password">
                                                          <span id="passwordRequired" style="display: none; float:left; color: red;">Password is required</span>
                                                          <span id="correct_password" style="display: none; float:left; color: red;">*Please enter correct Password</span>
@@ -190,7 +190,7 @@
                               <div class="card-body text-center">
                                  <div class="modal fade" id="updateUserModel" role="dialog">
                                     <div class="modal-dialog">
-                                       <div class="modal-content" style="
+                                       <div class="modal-content" style=" width: 600px; height: 462px;
                       
                                    
                                    font-size: 15px;
@@ -203,32 +203,32 @@
                                                 <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px;">
                                                    <input type="hidden" id="userId">
                                                    <div class="form-group row">
-                                                      <label for="staticEmail" class="col-sm-2 col-form-label" style="color: black;">First Name</label>
-                                                      <div class="col-sm-10">
+                                                      <label for="staticEmail" class="col-sm-3 col-form-label" style="color: black;">First Name</label>
+                                                      <div class="col-sm-9">
                                                          <input type="text" class="form-control updateEvent " placeholder="Enter your Name" id="update_name">
                                                          <span id="requiredName" style="display: none; float:left; color: red;">Name is required</span>
                                                          <span id="correctName" style="display: none; float:left; color: red;">*Please enter correct name</span>
                                                       </div>
                                                    </div>
                                                    <div class="form-group row">
-                                                      <label for="staticEmail" class="col-sm-2 col-form-label" style="color: black">Last Name</label>
-                                                      <div class="col-sm-10">
+                                                      <label for="staticEmail" class="col-sm-3 col-form-label" style="color: black">Last Name</label>
+                                                      <div class="col-sm-9">
                                                          <input type="text" class="form-control updateEvent " placeholder="Enter your Name" id="update_Lname">
                                                          <span id="requiredLname" style="display: none; float:left; color: red;">Name is required</span>
                                                          <span id="correctLname" style="display: none; float:left; color: red;">*Please enter correct name</span>
                                                       </div>
                                                    </div>
                                                    <div class="form-group row">
-                                                      <label for="staticEmail" class="col-sm-2 col-form-label"  style="color: black;">Email</label>
-                                                      <div class="col-sm-10">
+                                                      <label for="staticEmail" class="col-sm-3 col-form-label"  style="color: black;">Email</label>
+                                                      <div class="col-sm-9">
                                                          <input type="email" class="form-control updateEvent" placeholder="abc@gmail.com" id="update_email">
                                                          <span id="requiredEmail" style="display: none; float:left; color: red;"> Email is required</span>
                                                          <span id="correctEmail" style="display: none; float:left; color: red;"> *Please enter correct email</span>
                                                       </div>
                                                    </div>
                                                    <div class="form-group row">
-                                                      <label for="staticEmail" class="col-sm-2 col-form-label"  style="color: black">Password</label>
-                                                      <div class="col-sm-10">
+                                                      <label for="staticEmail" class="col-sm-3 col-form-label"  style="color: black">Password</label>
+                                                      <div class="col-sm-9">
                                                          <input type="text" class="form-control updateEvent" placeholder="Enter your full Name" id="update_password">
                                                          <span id="requiredPassword" style="display: none; float:left; color: red;">password is required</span>
                                                          <span id="correctPassword" style="display: none; float:left; color: red;">*Please enter correct password</span>
@@ -247,7 +247,7 @@
                               <!-- table -->
                               <div class="table-responsive">
                                  <table class="table" id="table-add">
-                                    <thead class="thead-light">
+                                    <thead class="thead-light" >
                                        <tr>
                                           <th scope="col">First Name</th>
                                           <th scope="col">Last Name</th>

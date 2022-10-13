@@ -62,7 +62,7 @@
         <hr class="sidebar-divider" />
       </ul>
       <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
+        <div id="contentBg">
           <nav
             class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
           >
@@ -165,25 +165,27 @@
             </ul>
           </nav>
           <div class="container-fluid">
-            <p style="text-align: center; font-size: 30px"><span  id="greet"></span>
-             
+            <p style="text-align: center; font-size: 30px ;float: left;" >
+              <span  id="greet"></span>
               <span id="userName" style="color: rgb(64, 64, 197)"></span>
               <span> <i class='far fa-grin-beam' style='font-size:36px'></i> </span>
+            </p>
+            <p style=" font-size: 30px  ;">
               <span id="dateTime" ></span>
-              <span>,</span>
               <span id="time" ></span> 
             </p>
-            <div class="row">
+           
+            <div class="row"style="margin-top: 40px; justify-content:center">
               <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div
+                        <a href="users.html"
                           class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                         >
                           Total Users
-                        </div>
+                      </a>
                         <div
                           class="h5 mb-0 font-weight-bold text-gray-800"
                           id="countOfUsers"
@@ -196,16 +198,31 @@
                   </div>
                 </div>
               </div>
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <a href="blog.html"
+                          class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                        >
+                          Total Blogs
+                        </a>
+                        <div
+                          class="h5 mb-0 font-weight-bold text-gray-800"
+                          id="countOfBlogs"
+                        ></div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fa fa-file  text-gray-500"style="font-size:24px"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2021</span>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
     <a class="scroll-to-top rounded" href="#page-top">

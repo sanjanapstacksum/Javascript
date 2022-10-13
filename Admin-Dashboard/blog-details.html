@@ -78,8 +78,9 @@
               <h1
                 class="h3 mb-0 text-gray-800"
                 style="text-align: center; margin-top: 25px"
-              >
-               Blog-details
+                id="blogHeading"
+                >
+               
               </h1>
             </div>
             <ul class="navbar-nav ml-auto">
@@ -123,10 +124,10 @@
                         <ol class="breadcrumb" style="background-color: white;">
                           
                           <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-                          <li class="breadcrumb-item "><a href="blog.html">blogs</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">blog-details</li>
+                          <li class="breadcrumb-item "><a href="blog.html">Blogs</a></li>
+                          <li class="breadcrumb-item active" id="blogBreadcrumb" aria-current="page"></li>
                         </ol>
-                      </nav>
+              </nav>
               <div class="topbar-divider d-none d-sm-block"></div>
               
               <li class="nav-item dropdown no-arrow">
@@ -174,17 +175,48 @@
               </li>
             </ul>
           </nav>
+          <div class="container">
+      
+          <div id="noBlogFound" style="display: none;">
+            <h1 style="margin-top: 236px;color: grey;text-align: center;justify-content: center;"> No Blog Found :( </h1>
+         </div>
           <div class="text-center">
-            <img src="img/undraw_posting_photo.svg" class="rounded" alt="..." style="width: 35%;"></br></br>
-            <h1>Blog-Title</h1></br>
-            <div class="container">
-              <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h5>
+            <img src="" class="rounded image"id="imageBlog" alt="..." style="width: 16%;margin-top: 10px ;" ></br></br>
+            <h1 id="blogTitle" style="text-decoration: underline"></h1></br>
+            
+            <div class="container col-6" style="text-align: left;;">
+              
+              <h5 id="blogDescription"style="font-size: 17.5px"></h5>
             </div>
             </div>
+           
+        </div>
+      </br></br>
+      
+<div class="hideDiv" id="hideDiv">
+      <div class="row">
+        <div class="col-6">
+          <h3 style="margin-left: 54px;font-size:25px "id="previousStatic" >Previous</h3>
+        </div>
+        <div class="col-6">
+          <h3 style="float: right;margin-right: 70px; font-size:25px" id="nextStatic">Next</h3>
+        </div>
+      </div>
+      <div class="row">
+         <div class=" col-6 " >
+        <a href="javascript:;" id="prevBlogUrl" target='_blank'>
+          <h3 style="margin-left: 54px;font-size:25px"id="previousBlog"font-size:25px"></h3>
+        </a>
         </div>
 
+        <div class=" col-6" >
+          <a href="javascript:;" id="nextBlogUrl" target='_blank'>
+            <h3 style="float: right;margin-right: 70px;font-size:25px"id="nextBlog">Next</h3>
+          </a>
+          </div>
+      </div>
+</div>
 
-        
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
@@ -229,7 +261,7 @@
             >
               Cancel
             </button>
-            <a class="btn btn-primary" href="index.html" onclick="logout()"
+            <a class="btn btn-primary" href="index.html" 
               >Logout</a
             >
           </div>

@@ -50,10 +50,7 @@ allevent.forEach((element) => {
 var login = document.getElementById("login");
 login.addEventListener("click", loginUser);
 
-
 function loginUser(e) {
-
- 
   var val = true;
   e.preventDefault();
   var email = document.getElementById("exampleInputEmail").value;
@@ -64,15 +61,35 @@ function loginUser(e) {
     val = false;
   }
 
+  var passtrong = document.getElementById("exampleInputPassword").value;
+  var regex1 =
+    /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
+  if (!passtrong.match(regex1)) {
+    document.getElementById("correctPassword").style.display = "block";
+    document.getElementById("requiredPassword").style.display = "none";
+    val = false;
+  }
+
+  var Email = document.getElementById("exampleInputEmail").value;
+  var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (!Email.match(pattern)) {
+    document.getElementById("correctEmail").style.display = "block";
+    document.getElementById("requiredEmail").style.display = "none";
+    val = false;
+  }
+
   if (email == "") {
     document.getElementById("requiredEmail").style.display = "block";
     val = false;
   }
 
- 
   if (val === false) {
     return false;
   } else {
+    var getRegData = JSON.parse(localStorage.getItem("register_input"));
+    if (getRegData == null) {
+      swal("Please register yourself first  !", "", "error");
+    }
     var localstorageRegRecord = JSON.parse(
       localStorage.getItem("register_input")
     );
