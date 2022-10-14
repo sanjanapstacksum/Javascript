@@ -29,18 +29,11 @@ regex.forEach((e) => {
       document.getElementById("description_error").style.display = "block";
       document.getElementById("bodyRequired").style.display = "none";
     } else {
+      document.getElementById("description_error").style.display = "none";
       document.getElementById("bodyRequired").style.display = "none";
     }
 
-    var image = document.getElementById("image").value;
-    var regex = /\.(jpg|jpeg|png|webp|avif|gif|svg)$/
-    if (e.target.id == "image" && !image.match(regex)) {
-      document.getElementById("image_error_msg").style.display = "block";
-      document.getElementById("imageRequired").style.display = "none";
-    } else {
-      document.getElementById("image_error_msg").style.display = "none";
-      document.getElementById("imageRequired").style.display = "none";
-    }
+   
   });
 });
 
@@ -196,6 +189,8 @@ allevent.forEach((element) => {
 
     if (e.target.id == "body" && document.getElementById("body").value == "") {
       document.getElementById("bodyRequired").style.display = "block";
+      document.getElementById("description_error").style.display = "none";
+      
     } else {
       document.getElementById("bodyRequired").style.display = "none";
     }
@@ -211,6 +206,15 @@ function submitBlog() {
   var body = document.getElementById("body").value;
   var title = document.getElementById("title").value;
   
+  var body = document.getElementById("body").value;
+  var pattern = /^[a-zA-Z ]{30,1000}$/;
+  if (!body.match(pattern)) {
+    document.getElementById("description_error").style.display = "block";
+    document.getElementById("bodyRequired").style.display = "none";
+    val = false;
+  } 
+
+
   title = title.toLowerCase();
   key = title.replace(/ /g, "_");
   var title = document.getElementById("title").value;
@@ -221,13 +225,7 @@ function submitBlog() {
       val = false;
     } 
 
-    var image = document.getElementById("image").value;
-    var regex =  /\.(jpg|jpeg|png|webp|avif|gif|svg)$/
-    if ( !image.match(regex)) {
-      document.getElementById("image_error_msg").style.display = "block";
-      document.getElementById("imageRequired").style.display = "none";
-      val = false
-    } 
+    
     if (image == "") {
       document.getElementById("imageRequired").style.display = "block";
       document.getElementById("image_error_msg").style.display = "none";
@@ -241,6 +239,8 @@ function submitBlog() {
     }
   if (body == "") {
     document.getElementById("bodyRequired").style.display = "block";
+    document.getElementById("description_error").style.display = "none";
+    
     val = false;
   }
 
