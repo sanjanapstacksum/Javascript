@@ -1,5 +1,5 @@
 function logout() {
-  window.localStorage.removeItem('login_input')
+  window.localStorage.removeItem("login_input");
 }
 var getData = localStorage.getItem("login_input");
 if (getData == null) {
@@ -111,26 +111,10 @@ document.getElementById("save").onclick = function (e) {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
 
-  if (name == "") {
-    document.getElementById("firstName").style.display = "block";
-
-    val = false;
-  }
-
-  if (email == "") {
-    document.getElementById("email_required").style.display = "block";
-    val = false;
-  }
-
-  if (lname == "") {
-    document.getElementById("lastName").style.display = "block";
-    val = false;
-  }
-
-  var passtrong = document.getElementById("password").value;
+  var password = document.getElementById("password").value;
   var regex1 =
     /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
-  if (!passtrong.match(regex1)) {
+  if (!password.match(regex1)) {
     document.getElementById("correct_password").style.display = "block";
     document.getElementById("password_required").style.display = "none";
     val = false;
@@ -147,6 +131,24 @@ document.getElementById("save").onclick = function (e) {
 
   if (password == "") {
     document.getElementById("password_required").style.display = "block";
+    document.getElementById("correct_password").style.display = "none";
+
+    val = false;
+  }
+  if (name == "") {
+    document.getElementById("firstName").style.display = "block";
+
+    val = false;
+  }
+
+  if (email == "") {
+    document.getElementById("email_required").style.display = "block";
+    document.getElementById("correct_email").style.display = "none";
+    val = false;
+  }
+
+  if (lname == "") {
+    document.getElementById("lastName").style.display = "block";
     val = false;
   }
 

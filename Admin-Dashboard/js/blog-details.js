@@ -3,7 +3,6 @@ document.getElementById("profileName").innerHTML =
   loginUser.fname + " " + loginUser.lname;
 
 var objUrlParams = new URLSearchParams(window.location.search);
-
 var blogSlug = objUrlParams.get("blog_slug");
 var blogArray = JSON.parse(localStorage.getItem("blog-records"));
 var found = false;
@@ -17,7 +16,6 @@ blogArray.filter((blog) => {
     document.getElementById("blogDescription").innerHTML = blog.body;
     document.getElementById("blogBreadcrumb").innerHTML = blog.title;
     document.getElementById("noBlogFound").style.display = "none";
-
     found = true;
   }
   if (found === true) {
@@ -25,7 +23,6 @@ blogArray.filter((blog) => {
   } else {
     found = false;
     document.getElementById("noBlogFound").style.display = "block";
-   
   }
 });
 
@@ -62,4 +59,3 @@ function findNexPrevBlog() {
   });
 }
 findNexPrevBlog();
-

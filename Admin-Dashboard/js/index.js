@@ -1,10 +1,10 @@
-var regexx = document.querySelectorAll(".formValidation");
-regexx.forEach((e) => {
+var formValidation = document.querySelectorAll(".formValidation");
+formValidation.forEach((e) => {
   e.addEventListener("keyup", (e) => {
-    var passtrong = document.getElementById("exampleInputPassword").value;
+    var password = document.getElementById("exampleInputPassword").value;
     var regex1 =
       /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
-    if (e.target.id == "exampleInputPassword" && !passtrong.match(regex1)) {
+    if (e.target.id == "exampleInputPassword" && !password.match(regex1)) {
       document.getElementById("correctPassword").style.display = "block";
       document.getElementById("requiredPassword").style.display = "none";
     } else {
@@ -12,9 +12,9 @@ regexx.forEach((e) => {
       document.getElementById("requiredPassword").style.display = "none";
     }
 
-    var Email = document.getElementById("exampleInputEmail").value;
+    var email = document.getElementById("exampleInputEmail").value;
     var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (e.target.id == "exampleInputEmail" && !Email.match(pattern)) {
+    if (e.target.id == "exampleInputEmail" && !email.match(pattern)) {
       document.getElementById("correctEmail").style.display = "block";
       document.getElementById("requiredEmail").style.display = "none";
     } else {
@@ -32,6 +32,7 @@ allevent.forEach((element) => {
       document.getElementById("exampleInputEmail").value == ""
     ) {
       document.getElementById("requiredEmail").style.display = "block";
+      document.getElementById("correctEmail").style.display = "none";
     } else {
       document.getElementById("requiredEmail").style.display = "none";
     }
@@ -41,6 +42,7 @@ allevent.forEach((element) => {
       document.getElementById("exampleInputPassword").value == ""
     ) {
       document.getElementById("requiredPassword").style.display = "block";
+      document.getElementById("correctPassword").style.display = "none";
     } else {
       document.getElementById("requiredPassword").style.display = "none";
     }
@@ -55,24 +57,17 @@ function loginUser(e) {
   e.preventDefault();
   var email = document.getElementById("exampleInputEmail").value;
   var password = document.getElementById("exampleInputPassword").value;
-
-  if (password == "") {
-    document.getElementById("requiredPassword").style.display = "block";
-    val = false;
-  }
-
-  var passtrong = document.getElementById("exampleInputPassword").value;
-  var regex1 =
+  var regexEmail =
     /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
-  if (!passtrong.match(regex1)) {
+  if (!password.match(regexEmail)) {
     document.getElementById("correctPassword").style.display = "block";
     document.getElementById("requiredPassword").style.display = "none";
     val = false;
   }
 
-  var Email = document.getElementById("exampleInputEmail").value;
+  var email = document.getElementById("exampleInputEmail").value;
   var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (!Email.match(pattern)) {
+  if (!email.match(pattern)) {
     document.getElementById("correctEmail").style.display = "block";
     document.getElementById("requiredEmail").style.display = "none";
     val = false;
@@ -80,17 +75,22 @@ function loginUser(e) {
 
   if (email == "") {
     document.getElementById("requiredEmail").style.display = "block";
+    document.getElementById("correctEmail").style.display = "none";
+    val = false;
+  }
+  if (password == "") {
+    document.getElementById("requiredPassword").style.display = "block";
+    document.getElementById("correctPassword").style.display = "none";
     val = false;
   }
 
   if (val === false) {
     return false;
   } else {
-    
     var localstorageRegRecord = JSON.parse(
       localStorage.getItem("register_input")
     );
-
+    var value = true;
     localstorageRegRecord.filter((user) => {
       if (user.email == email && user.password == password) {
         swal("login Successfully !", "", "success");
@@ -108,7 +108,12 @@ function loginUser(e) {
         };
 
         localStorage.setItem("login_input", JSON.stringify(localObject));
+        value = false;
+      }
+      if (value === false) {
+        return false;
       } else {
+        value = true;
         swal("login failed !", "", "error");
       }
     });

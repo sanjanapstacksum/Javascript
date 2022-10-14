@@ -1,3 +1,6 @@
+var localstorageRegRecord =
+  JSON.parse(localStorage.getItem("register_input")) ?? [];
+
 var regexx = document.querySelectorAll(".registerUser");
 regexx.forEach((e) => {
   e.addEventListener("keyup", (e) => {
@@ -32,9 +35,9 @@ regexx.forEach((e) => {
       document.getElementById("requiredPassword").style.display = "none";
     }
 
-    var Email = document.getElementById("exampleInputEmail").value;
+    var email = document.getElementById("exampleInputEmail").value;
     var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (e.target.id == "exampleInputEmail" && !Email.match(pattern)) {
+    if (e.target.id == "exampleInputEmail" && !email.match(pattern)) {
       document.getElementById("correctEmail").style.display = "block";
       document.getElementById("requiredEmail").style.display = "none";
     } else {
@@ -52,6 +55,7 @@ allevent.forEach((element) => {
       document.getElementById("exampleInputEmail").value == ""
     ) {
       document.getElementById("requiredEmail").style.display = "block";
+      document.getElementById("correctEmail").style.display = "none";
     } else {
       document.getElementById("requiredEmail").style.display = "none";
     }
@@ -61,6 +65,7 @@ allevent.forEach((element) => {
       document.getElementById("exampleInputPassword").value == ""
     ) {
       document.getElementById("requiredPassword").style.display = "block";
+      document.getElementById("correctPassword").style.display = "none";
     } else {
       document.getElementById("requiredPassword").style.display = "none";
     }
@@ -70,6 +75,7 @@ allevent.forEach((element) => {
       document.getElementById("exampleFirstName").value == ""
     ) {
       document.getElementById("requiredFname").style.display = "block";
+      document.getElementById("correctFname").style.display = "none";
     } else {
       document.getElementById("requiredFname").style.display = "none";
     }
@@ -78,6 +84,7 @@ allevent.forEach((element) => {
       document.getElementById("exampleLastName").value == ""
     ) {
       document.getElementById("requiredLname").style.display = "block";
+      document.getElementById("correctLname").style.display = "none";
     } else {
       document.getElementById("requiredLname").style.display = "none";
     }
@@ -90,20 +97,11 @@ register.addEventListener("click", registerUser);
 function registerUser(e) {
   var val = true;
   e.preventDefault();
-  var Fname = document.getElementById("exampleFirstName").value;
-  var Lname = document.getElementById("exampleLastName").value;
-  var Email = document.getElementById("exampleInputEmail").value;
-  var Password = document.getElementById("exampleInputPassword").value;
+  var firstName = document.getElementById("exampleFirstName").value;
+  var lastName = document.getElementById("exampleLastName").value;
+  var email = document.getElementById("exampleInputEmail").value;
+  var password = document.getElementById("exampleInputPassword").value;
 
-  if (Password == "") {
-    document.getElementById("requiredPassword").style.display = "block";
-    val = false;
-  }
-
-  if (Email == "") {
-    document.getElementById("requiredEmail").style.display = "block";
-    val = false;
-  }
   var fname = document.getElementById("exampleFirstName").value;
   var regex = /^[a-zA-Z ]{2,30}$/;
   if (!fname.match(regex)) {
@@ -129,21 +127,53 @@ function registerUser(e) {
     val = false;
   }
 
-  var Email = document.getElementById("exampleInputEmail").value;
+  var email = document.getElementById("exampleInputEmail").value;
   var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (!Email.match(pattern)) {
+  if (!email.match(pattern)) {
     document.getElementById("correctEmail").style.display = "block";
     document.getElementById("requiredEmail").style.display = "none";
     val = false;
   }
 
-  if (Fname == "") {
+  if (firstName == "") {
     document.getElementById("requiredFname").style.display = "block";
+    document.getElementById("correctFname").style.display = "none";
     val = false;
   }
 
-  if (Lname == "") {
+  if (lastName == "") {
     document.getElementById("requiredLname").style.display = "block";
+    document.getElementById("correctLname").style.display = "none";
+    val = false;
+  }
+
+  if (localstorageRegRecord != null) {
+    localstorageRegRecord.filter((data) => {
+      if (
+        data.email.includes(email) == true &&
+        firstName != "" &&
+        lastName != "" &&
+        email != "" &&
+        password != ""
+      ) {
+        swal("Please login !", "", "error");
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
+
+        val = false;
+      }
+    });
+  }
+  if (password == "") {
+    document.getElementById("requiredPassword").style.display = "block";
+    document.getElementById("correctPassword").style.display = "none";
+    val = false;
+  }
+
+  if (email == "") {
+    document.getElementById("requiredEmail").style.display = "block";
+    document.getElementById("correctEmail").style.display = "none";
     val = false;
   }
 
@@ -156,8 +186,6 @@ function registerUser(e) {
       location.href = "index.html";
     }, 2000);
 
-    var localstorageRegRecord =
-      JSON.parse(localStorage.getItem("register_input")) ?? [];
     var localId = localstorageRegRecord.length + 1;
 
     var localObject = {

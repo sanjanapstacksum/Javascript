@@ -1,13 +1,10 @@
 function logout() {
-  localStorage.clear();
+  window.localStorage.removeItem("login_input");
 }
-
 var userArray = JSON.parse(localStorage.getItem("register_input"));
 var loginUser = JSON.parse(localStorage.getItem("login_input"));
 document.getElementById("profileName").innerHTML =
   loginUser.fname + " " + loginUser.lname;
-
-
 
 var tableInfo = "";
 const renderTable = (data) => {
@@ -21,19 +18,17 @@ const renderTable = (data) => {
     <a onclick="deletedata(${users.id})" href="javascript:;" data-id="${users.id}" ><i class="fa-sharp fa-solid fa-trash" style="color:red"></i></a></td>
     </tr>`;
   });
-  
-  return (document.getElementById("customtable").innerHTML = tableInfo);
-  
-};
-  renderTable(userArray);
 
+  return (document.getElementById("customtable").innerHTML = tableInfo);
+};
+renderTable(userArray);
 
 // pagination//
 const paginationNumbers = document.getElementById("pagination-numbers");
 const paginatedList = document.getElementById("customtable").rows;
 const nextButton = document.getElementById("next-button");
 const prevButton = document.getElementById("prev-button");
-const paginationLimit = 3;
+const paginationLimit = 5;
 const pageCount = Math.ceil(userArray.length / paginationLimit);
 let currentPage = 1;
 
@@ -128,9 +123,9 @@ window.addEventListener("load", () => {
 
 // validation of add modal //
 
-var regexx = document.querySelectorAll(".allEvent");
+var formValidation = document.querySelectorAll(".allEvent");
 
-regexx.forEach((e) => {
+formValidation.forEach((e) => {
   e.addEventListener("keyup", (e) => {
     var name = document.getElementById("name").value;
     var regex = /^[a-zA-Z ]{2,30}$/;
@@ -162,10 +157,10 @@ regexx.forEach((e) => {
       document.getElementById("last_name").style.display = "none";
     }
 
-    var passtrong = document.getElementById("password").value;
+    var password = document.getElementById("password").value;
     var regex1 =
       /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
-    if (e.target.id == "password" && !passtrong.match(regex1)) {
+    if (e.target.id == "password" && !password.match(regex1)) {
       document.getElementById("correct_password").style.display = "block";
       document.getElementById("passwordRequired").style.display = "none";
     } else {
@@ -180,6 +175,7 @@ allevent.forEach((element) => {
   element.addEventListener("blur", (e) => {
     if (e.target.id == "name" && document.getElementById("name").value == "") {
       document.getElementById("firstName").style.display = "block";
+      document.getElementById("correct_name").style.display = "none";
     } else {
       document.getElementById("firstName").style.display = "none";
     }
@@ -189,6 +185,7 @@ allevent.forEach((element) => {
       document.getElementById("email").value == ""
     ) {
       document.getElementById("emailRequired").style.display = "block";
+      document.getElementById("correct_email").style.display = "none";
     } else {
       document.getElementById("emailRequired").style.display = "none";
     }
@@ -198,6 +195,7 @@ allevent.forEach((element) => {
       document.getElementById("lastName").value == ""
     ) {
       document.getElementById("last_name").style.display = "block";
+      document.getElementById("correct_lastName").style.display = "none";
     } else {
       document.getElementById("last_name").style.display = "none";
     }
@@ -207,6 +205,7 @@ allevent.forEach((element) => {
       document.getElementById("password").value == ""
     ) {
       document.getElementById("passwordRequired").style.display = "block";
+      document.getElementById("correct_password").style.display = "none";
     } else {
       document.getElementById("passwordRequired").style.display = "none";
     }
@@ -222,6 +221,37 @@ function submitUser() {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
 
+  var password = document.getElementById("password").value;
+  var regex1 =
+    /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
+  if (password != "" && !password.match(regex1)) {
+    document.getElementById("correct_password").style.display = "block";
+    val = false;
+  }
+
+  var name = document.getElementById("name").value;
+  var regex = /^[a-zA-Z ]{2,30}$/;
+  if (name != "" && !name.match(regex)) {
+    document.getElementById("correct_name").style.display = "block";
+    document.getElementById("firstName").style.display = "none";
+    val = false;
+  }
+
+  var email = document.getElementById("email").value;
+  var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (email != "" && !email.match(pattern)) {
+    document.getElementById("correct_email").style.display = "block";
+    document.getElementById("emailRequired").style.display = "none";
+    val = false;
+  }
+
+  var lastName = document.getElementById("lastName").value;
+  var regex = /^[a-zA-Z ]{2,30}$/;
+  if (lastName != "" && !lastName.match(regex)) {
+    document.getElementById("correct_lastName").style.display = "block";
+    document.getElementById("last_name").style.display = "none";
+    val = false;
+  }
   if (name == "") {
     document.getElementById("firstName").style.display = "block";
     val = false;
@@ -229,6 +259,7 @@ function submitUser() {
 
   if (email == "") {
     document.getElementById("emailRequired").style.display = "block";
+    document.getElementById("correct_email").style.display = "none";
     val = false;
   }
 
@@ -237,44 +268,19 @@ function submitUser() {
     val = false;
   }
 
-  var passtrong = document.getElementById("password").value;
-  var regex1 =
-    /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
-  if (!passtrong.match(regex1)) {
-    document.getElementById("correct_password").style.display = "block"
-    val = false;
-  }
-
-
-  var name = document.getElementById("name").value;
-    var regex = /^[a-zA-Z ]{2,30}$/;
-    if ( !name.match(regex)) {
-      document.getElementById("correct_name").style.display = "block";
-      document.getElementById("firstName").style.display = "none";
-      val = false;
-    } 
-
-    var email = document.getElementById("email").value;
-    var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!email.match(pattern)) {
-      document.getElementById("correct_email").style.display = "block";
-      document.getElementById("emailRequired").style.display = "none";
-      val = false;
-    }
-
-
-    var lastName = document.getElementById("lastName").value;
-    var regex = /^[a-zA-Z ]{2,30}$/;
-    if ( !lastName.match(regex)) {
-      document.getElementById("correct_lastName").style.display = "block";
-      document.getElementById("last_name").style.display = "none";
-      val = false;
-    } 
-
-
   if (password == "") {
     document.getElementById("passwordRequired").style.display = "block";
     val = false;
+  }
+
+  if (userArray != null) {
+    userArray.filter((data) => {
+      if (data.email.includes(email) == true) {
+        document.getElementById("correct_email").style.display = "block";
+        document.getElementById("emailRequired").style.display = "none";
+        val = false;
+      }
+    });
   }
 
   if (val === false) {
@@ -401,6 +407,7 @@ allevent.forEach((element) => {
       document.getElementById("update_name").value == ""
     ) {
       document.getElementById("requiredName").style.display = "block";
+      document.getElementById("correctName").style.display = "none";
     } else {
       document.getElementById("requiredName").style.display = "none";
     }
@@ -410,6 +417,7 @@ allevent.forEach((element) => {
       document.getElementById("update_email").value == ""
     ) {
       document.getElementById("requiredEmail").style.display = "block";
+      document.getElementById("correctEmail").style.display = "none";
     } else {
       document.getElementById("requiredEmail").style.display = "none";
     }
@@ -419,6 +427,7 @@ allevent.forEach((element) => {
       document.getElementById("update_Lname").value == ""
     ) {
       document.getElementById("requiredLname").style.display = "block";
+      document.getElementById("correctLname").style.display = "none";
     } else {
       document.getElementById("requiredLname").style.display = "none";
     }
@@ -428,6 +437,7 @@ allevent.forEach((element) => {
       document.getElementById("update_password").value == ""
     ) {
       document.getElementById("requiredPassword").style.display = "block";
+      document.getElementById("correctPassword").style.display = "none";
     } else {
       document.getElementById("requiredPassword").style.display = "none";
     }
@@ -436,29 +446,43 @@ allevent.forEach((element) => {
 
 document.getElementById("btn_modelUpdate").onclick = function () {
   var val = true;
-  var Name = document.getElementById("update_name").value;
-  var Email = document.getElementById("update_email").value;
+  var name = document.getElementById("update_name").value;
+  var email = document.getElementById("update_email").value;
   var lname = document.getElementById("update_Lname").value;
   var password = document.getElementById("update_password").value;
 
-  if (Name == "") {
+  if (name == "") {
     document.getElementById("requiredName").style.display = "block";
+    document.getElementById("correctName").style.display = "none";
     val = false;
   }
 
-  if (Email == "") {
+  if (email == "") {
     document.getElementById("requiredEmail").style.display = "block";
+    document.getElementById("correctEmail").style.display = "none";
     val = false;
   }
 
   if (lname == "") {
     document.getElementById("requiredLname").style.display = "block";
+    document.getElementById("correctLname").style.display = "none";
     val = false;
   }
 
   if (password == "") {
     document.getElementById("requiredPassword").style.display = "block";
+    document.getElementById("correctPassword").style.display = "none";
     val = false;
+  }
+
+  if (userArray != null) {
+    userArray.filter((data) => {
+      if (data.email.includes(email) == true) {
+        document.getElementById("correctEmail").style.display = "block";
+
+        val = false;
+      }
+    });
   }
 
   if (val === false) {
@@ -512,11 +536,8 @@ function searchUser() {
     if (!filteredData.length) {
       document.getElementById("noDataFound").style.display = "block";
     }
-
-   
-   tableInfo=''
-   document.getElementById("customtable").innerHTML = tableInfo
-   renderTable(filteredData)
-   
+    tableInfo = "";
+    document.getElementById("customtable").innerHTML = tableInfo;
+    renderTable(filteredData);
   }
 }

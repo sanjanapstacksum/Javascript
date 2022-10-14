@@ -1,5 +1,5 @@
 function logout() {
-  window.localStorage.removeItem('login_input')
+  window.localStorage.removeItem("login_input");
 }
 var blogArray = JSON.parse(localStorage.getItem("blog-records"));
 var userArray = JSON.parse(localStorage.getItem("register_input"));
@@ -37,13 +37,13 @@ function timer() {
   if (sec < 10) {
     sec = "0" + sec;
   }
-  var t_str = hours + ":" + minutes + ":" + sec + " ";
+  var time = hours + ":" + minutes + ":" + sec + " ";
   if (hours > 11) {
-    t_str += "PM";
+    time += "PM";
   } else {
-    t_str += "AM";
+    time += "AM";
   }
-  document.getElementById("time").innerHTML = t_str;
+  document.getElementById("time").innerHTML = time;
   setTimeout(timer, 1000);
 }
 

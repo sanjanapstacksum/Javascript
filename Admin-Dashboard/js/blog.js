@@ -1,9 +1,10 @@
+
 function logout() {
   window.localStorage.removeItem('login_input')}
 
 var blogArray = JSON.parse(localStorage.getItem("blog-records"));
-
 var loginUser = JSON.parse(localStorage.getItem("login_input"));
+
 document.getElementById("profileName").innerHTML =
   loginUser.fname + " " + loginUser.lname;
 
@@ -23,17 +24,16 @@ regex.forEach((e) => {
     }
 
     var body = document.getElementById("body").value;
-    var pattern = /^(?:\b\w+\b[\s\r\n]*){1,3}$/;
-
+    var pattern = /^(?:\b\w+\b[\s\r\n]*){1,30}$/;
     if (e.target.id == "body" && !body.match(pattern)) {
+      document.getElementById("description_error").style.display = "block";
       document.getElementById("bodyRequired").style.display = "none";
     } else {
-      document.getElementById("body_error_msg").style.display = "none";
       document.getElementById("bodyRequired").style.display = "none";
     }
 
     var image = document.getElementById("image").value;
-    var regex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/ 
+    var regex = /\.(jpg|jpeg|png|webp|avif|gif|svg)$/
     if (e.target.id == "image" && !image.match(regex)) {
       document.getElementById("image_error_msg").style.display = "block";
       document.getElementById("imageRequired").style.display = "none";
@@ -44,19 +44,19 @@ regex.forEach((e) => {
   });
 });
 
-
-
+// function for subString //
 function upperCase(title){
  return title[0].toUpperCase() + title.slice(1)
 }
 
+// render table //
 var tableInfo = ""; 
 const renderTable = (data) => {
   data.forEach((blogs) => {
     var blog_truncate = text_truncate(blogs.body, blogs.blog_slug);
     tableInfo += `
    <tr id="blog_${blogs.id}">
-    <td style="text-align:center"> <img class="img-fluid" src="${blogs.image}"style="font-size:10px;width: 50px;"></a></td>
+    <td style="text-align:center"> <img class="img-fluid" src="${blogs.image}"style="font-size:10px;width: 60px;"></a></td>
     <td style="text-align:center"><a href="blog-details.html?blog_slug=${blogs.blog_slug}" style="color:gray;">${upperCase(blogs.title)}</a></td>
     <td>${blog_truncate} <a href="blog-details.html?blog_slug=${blogs.blog_slug}">Read More</a></td>
     <td style="text-align:center"><a onclick="updaterecord(${blogs.id})" href="javascript:;"><i class="fa-solid fa-pen-to-square" style="color:green"></i></a> |
@@ -168,6 +168,7 @@ window.addEventListener("load", () => {
     }
   });
 });
+//pagination end //
 
 var allevent = document.querySelectorAll(".allEvent");
 allevent.forEach((element) => {
@@ -177,6 +178,7 @@ allevent.forEach((element) => {
       document.getElementById("image").value == ""
     ) {
       document.getElementById("imageRequired").style.display = "block";
+      document.getElementById("image_error_msg").style.display = "none";
     } else {
       document.getElementById("imageRequired").style.display = "none";
     }
@@ -186,6 +188,8 @@ allevent.forEach((element) => {
       document.getElementById("title").value == ""
     ) {
       document.getElementById("titleRequired").style.display = "block";
+      document.getElementById("title_error_msg").style.display = "none";
+      
     } else {
       document.getElementById("titleRequired").style.display = "none";
     }
@@ -207,21 +211,8 @@ function submitBlog() {
   var body = document.getElementById("body").value;
   var title = document.getElementById("title").value;
   
- 
-  
   title = title.toLowerCase();
   key = title.replace(/ /g, "_");
-
-  if (image == "") {
-    document.getElementById("imageRequired").style.display = "block";
-    val = false;
-  }
-
-  if (title == "") {
-    document.getElementById("titleRequired").style.display = "block";
-    val = false;
-  }
-
   var title = document.getElementById("title").value;
     var regex = /^[a-zA-Z ]{2,30}$/;
     if (!title.match(regex)) {
@@ -231,13 +222,23 @@ function submitBlog() {
     } 
 
     var image = document.getElementById("image").value;
-    var regex =  /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/ 
+    var regex =  /\.(jpg|jpeg|png|webp|avif|gif|svg)$/
     if ( !image.match(regex)) {
       document.getElementById("image_error_msg").style.display = "block";
       document.getElementById("imageRequired").style.display = "none";
       val = false
     } 
-    
+    if (image == "") {
+      document.getElementById("imageRequired").style.display = "block";
+      document.getElementById("image_error_msg").style.display = "none";
+      val = false;
+    }
+  
+    if (title == "") {
+      document.getElementById("titleRequired").style.display = "block";
+      document.getElementById("title_error_msg").style.display = "none";
+      val = false;
+    }
   if (body == "") {
     document.getElementById("bodyRequired").style.display = "block";
     val = false;
@@ -393,6 +394,13 @@ document.getElementById("submit_updateModel").onclick = function () {
     document.getElementById("requiredTitle").style.display = "none";
     val = false;
   }
+  var image = document.getElementById("update_image").value;
+  var regex = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg|svg)\??.*$/gmi 
+  if ( !image.match(regex)) {
+    document.getElementById("update_image_error").style.display = "block";
+    document.getElementById("requiredImage").style.display = "none";
+    val = false;
+  }
 
   if (title == "") {
     document.getElementById("requiredTitle").style.display = "block";
@@ -453,7 +461,6 @@ function searchBlog() {
       document.getElementById("noDataFound").style.display = "block";
     }
 
-   
    tableInfo=''
    document.getElementById("customtable").innerHTML = tableInfo
    renderTable(filteredData)
@@ -461,16 +468,16 @@ function searchBlog() {
   }
 }
 
-function text_truncate(str, blog_slug, length, ending) {
+function text_truncate(blog_description, blog_slug, length, ending) {
   if (length == null) {
     length = 100;
   }
   if (ending == null) {
     ending = `.... `;
   }
-  if (str.length > length) {
-    return str.substring(0, length - ending.length) + ending;
+  if (blog_description.length > length) {
+    return blog_description.substring(0, length - ending.length) + ending;
   } else {
-    return str;
+    return blog_description;
   }
 }
