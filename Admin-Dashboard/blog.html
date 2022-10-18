@@ -93,7 +93,7 @@
                      <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="profileName">Douglas McGee</span>
-                           <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                           <img class="img-profile rounded-circle" id="profilePicture" src="img/undraw_profile.svg">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                            <a class="dropdown-item" href="profile.html">
@@ -158,9 +158,9 @@
                                                      <div class="form-group row">
                                                         <label for="staticEmail" class="col-sm-3 col-form-label">Description</label>
                                                         <div class="col-sm-9">
-                                                           <textarea id="body" name="story"class="form-control allEvent " placeholder="enter your text"
+                                                           <textarea id="description" name="story"class="form-control allEvent " placeholder="enter your text"
                                                           rows="5" cols="33"></textarea>
-                                                           <span id="bodyRequired" style="display: none; float:left; color: red;">Description is required</span>
+                                                           <span id="descriptionRequired" style="display: none; float:left; color: red;">Description is required</span>
                                                            <span id="description_error" style="display: none; float:left; color: red;">please write atleast 30 characters</span>
                                                            </div>
                                                      </div>
@@ -212,10 +212,10 @@
                                                     <label for="staticEmail" class="col-sm-3 col-form-label" style="color: black">Description</label>
                                                     <div class="col-sm-9">
                                                       
-                                                      <textarea id="update_body" name="story"class="form-control updateEvent "
+                                                      <textarea id="update_description" name="story"class="form-control updateEvent "
                                                       rows="5" cols="33"></textarea>
-                                                       <span id="requiredBody" style="display: none; float:left; color: red;" placeholder="Enter Your text">body text is required</span>
-                                                       <span id="update_body_error" style="display: none; float:left; color: red;">*Please enter Description</span>
+                                                       <span id="requiredDescription" style="display: none; float:left; color: red;" placeholder="Enter Your text">description text is required</span>
+                                                       <span id="update_description_error" style="display: none; float:left; color: red;">*Please enter Description</span>
                                                     </div>
                                                  </div>
                                                    <div class="form-group row">

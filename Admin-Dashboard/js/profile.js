@@ -1,25 +1,11 @@
 function logout() {
   window.localStorage.removeItem("login_input");
 }
-var getData = localStorage.getItem("login_input");
-if (getData == null) {
-  location.href = "index.html";
-}
 
-var getUser = JSON.parse(localStorage.getItem("login_input"));
-document.getElementById("profileName").innerHTML =
-  getUser.fname + " " + getUser.lname;
+var regexx = document.querySelectorAll(".saveData");
 
-document.getElementById("first_name").value = getUser.fname;
-document.getElementById("last_name").value = getUser.lname;
-document.getElementById("email").value = getUser.email;
-document.getElementById("userId").value = getUser.id;
-document.getElementById("password").value = getUser.password;
-
-var regexx = document.querySelectorAll(".savaData");
-
-regexx.forEach((e) => {
-  e.addEventListener("keyup", (e) => {
+regexx.forEach((element) => {
+  element.addEventListener("keyup", (e) => {
     var name = document.getElementById("first_name").value;
     var regex = /^[a-zA-Z ]{2,30}$/;
     if (e.target.id == "first_name" && !name.match(regex)) {
@@ -50,6 +36,15 @@ regexx.forEach((e) => {
       document.getElementById("lastName").style.display = "none";
     }
 
+    var mobileNo = document.getElementById("mobileNo").value;
+    var regex1 = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/;
+
+    if (e.target.id == "mobileNo" && !mobileNo.match(regex1)) {
+      document.getElementById("mobile_error_message").style.display = "block";
+    } else {
+      document.getElementById("mobile_error_message").style.display = "none";
+    }
+
     var passtrong = document.getElementById("password").value;
     var regex1 =
       /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
@@ -62,6 +57,22 @@ regexx.forEach((e) => {
     }
   });
 });
+var getUser = JSON.parse(localStorage.getItem("login_input"));
+
+document.getElementById("first_name").value = getUser.fname;
+document.getElementById("last_name").value = getUser.lname;
+document.getElementById("email").value = getUser.email;
+document.getElementById("userId").value = getUser.id;
+document.getElementById("password").value = getUser.password;
+document.getElementById("profilePictureUser").value = getUser.image;
+document.getElementById("birthDate").value = getUser.birthDate;
+document.getElementById("mobileNo").value = getUser.mobileNo;
+
+if (getUser.gender == "male") {
+  document.getElementById("male").checked = true;
+} else if (getUser.gender == "female") {
+  document.getElementById("female").checked = true;
+}
 
 var allevent = document.querySelectorAll(".saveData");
 allevent.forEach((element) => {
@@ -155,6 +166,8 @@ document.getElementById("save").onclick = function (e) {
   if (val === false) {
     return false;
   } else {
+
+
     var userId = document.getElementById("userId").value;
 
     if (parseInt(userId) === getUser.id) {
@@ -162,14 +175,38 @@ document.getElementById("save").onclick = function (e) {
       getUser.lname = document.getElementById("last_name").value;
       getUser.email = document.getElementById("email").value;
       getUser.password = document.getElementById("password").value;
+      getUser.image = document.getElementById("profilePictureUser").value;
+      getUser.birthDate = document.getElementById("birthDate").value;
+      getUser.mobileNo = document.getElementById("mobileNo").value;
+
+      var male = document.getElementById("male");
+      var female = document.getElementById("female");
+      if (male.checked) {
+        getUser.gender = document.getElementById("male").value;
+      }
+      if (female.checked) {
+        getUser.gender = document.getElementById("female").value;
+      }
+
+      var genderMale = document.getElementById("male");
+      var genderFemale = document.getElementById("female");
+
+      if (genderMale.value == getUser.gender) {
+        getUser.gender.checked;
+      }
+      if (genderFemale.value == getUser.gender) {
+        getUser.gender.checked;
+      }
+
+      var imagePath = document.getElementById("img-preview")
+      console.log(imagePath,"imagePath") 
+
       swal("saved Successfully !", "", "success");
       localStorage.setItem("login_input", JSON.stringify(getUser));
-
       e.preventDefault();
-
-      setTimeout(function () {
-        location.reload();
-      }, 1000);
+      // setTimeout(function () {
+      //   location.reload();
+      // }, 1000);
     }
   }
 };
@@ -185,6 +222,21 @@ for (var i = 0; i < localstorageRegRecord.length; i++) {
     document.getElementById("password").value =
       localstorageRegRecord[i].password;
     document.getElementById("userId").value = localstorageRegRecord[i].id;
+    document.getElementById("profilePictureUser").value =
+      localstorageRegRecord[i].image;
+    document.getElementById("birthDate").value =
+      localstorageRegRecord[i].birthDate;
+    document.getElementById("mobileNo").value =
+      localstorageRegRecord[i].mobileNo;
+
+    var male = document.getElementById("male");
+    var female = document.getElementById("female");
+    if (male.checked) {
+      document.getElementById("male").value = localstorageRegRecord[i].gender;
+    }
+    if (female.checked) {
+      document.getElementById("female").value = localstorageRegRecord[i].gender;
+    }
   }
 }
 
@@ -195,9 +247,44 @@ localstorageRegRecord.map((user) => {
     user.lname = document.getElementById("last_name").value;
     user.email = document.getElementById("email").value;
     user.password = document.getElementById("password").value;
+    user.image = document.getElementById("profilePictureUser").value;
+    user.birthDate = document.getElementById("birthDate").value;
+    user.mobileNo = document.getElementById("mobileNo").value;
+    var male = document.getElementById("male");
+    var female = document.getElementById("female");
+    if (male.checked) {
+      user.gender = document.getElementById("male").value;
+    }
+    if (female.checked) {
+      user.gender = document.getElementById("female").value;
+    }
     localStorage.setItem(
       "register_input",
       JSON.stringify(localstorageRegRecord)
     );
   }
 });
+
+
+// upload document image preview //
+
+
+const chooseFile = document.getElementById("choose-file");
+const imgPreview = document.getElementById("img-preview");
+chooseFile.addEventListener("change", function () {
+  getImgData();
+});
+
+function getImgData() {
+  const files = chooseFile.files[0];
+  console.log(files)
+  console.log(files[0].mozFullPath);
+  if (files) {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(files);
+    fileReader.addEventListener("load", function () {
+      imgPreview.style.display = "block";
+      imgPreview.innerHTML = '<img src="' + this.result + '" />';
+    });    
+  }
+}

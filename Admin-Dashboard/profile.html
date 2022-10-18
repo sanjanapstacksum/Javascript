@@ -10,6 +10,7 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="css/profile.css" rel="stylesheet" />
   </head>
   <body id="page-top">
     <div id="wrapper">
@@ -86,7 +87,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="profileName">Douglas McGee</span>
-                  <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
+                  <img class="img-profile rounded-circle"  id= "profilePicture" src="img/undraw_profile.svg" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <a class="dropdown-item" href="profile.html">
@@ -134,6 +135,23 @@
                           </div>
                         </div>
                       </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group" style="
+                          margin-top: 10px;
+                          font-size: 18px;
+                      ">
+                        <label>  
+                          Gender:  
+                          </label>  
+                          <input type="radio" id= "male"  name="gender" value="male" > Male     
+                          <input type="radio" id= "female"  name="gender" value="female"> Female 
+                         
+                           
+                      </div>
+                        </div>
+                      </div>
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
@@ -151,8 +169,42 @@
                             <label class="control-label">Password</label>
                             <input type="password" name="password" id="password" class="form-control saveData">
                             <span id="password_required" style="display: none; float:left; color: red;">Password is required</span>
-                            <span id="correct_password" style="display: none; float:left; color: red;">*Please enter correct Password</span>
-                                                      
+                            <span id="correct_password" style="display: none; float:left; color: red;">*Please enter correct Password</span>                     
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="control-label">Birthdate</label>
+                            <input type="date" name="profile" id="birthDate" class="form-control saveData">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="control-label">Mobile No</label>
+                            <input type="text" class="form-control saveData" placeholder="Enter your mobile-no"  id= "mobileNo" >
+                            <span id="mobile_error_message" style="display: none;float:left; color: red;">Please Enter Correct Number</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label class="control-label">Profile Picture</label>
+                            <input type="text" name="profile" id="profilePictureUser" class="form-control saveData">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group" >
+                            <div id="img-preview"></div>
+                            <label class="control-label">Upload Picture</label>
+                            <input type="file" name="choose-file" id="choose-file" class="form-control saveData" style="
+                           
+                            height: 100%;
+                        " accept="image/*" />
                           </div>
                         </div>
                       </div>
@@ -166,38 +218,7 @@
               </div>
             </div>
           </div>
-          <!-- Modal -->
-          <div id="uploadimageModal" class="modal" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h4 class="modal-title">Upload &amp; Crop Image</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="row">
-                    <div class="col-md-8 text-center">
-                      <div id="image_demo" style="width:350px; margin-top:30px" class="croppie-container">
-                        <div class="cr-boundary" aria-dropeffect="none" style="width: 300px; height: 300px;">
-                          <img class="cr-image" alt="preview" aria-grabbed="false">
-                          <div class="cr-viewport cr-vp-circle" tabindex="0" style="width: 200px; height: 200px;"></div>
-                          <div class="cr-overlay"></div>
-                        </div>
-                        <div class="cr-slider-wrap">
-                          <input class="cr-slider" type="range" step="0.0001" aria-label="zoom">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer text-center">
-                  <button class="btn btn-primary crop_image">Crop &amp; Upload Image</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end -->
+         
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
@@ -231,5 +252,6 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/profile.js"></script>
     <script src="js/sweetalert.min.js"></script>
+    <script src="js/validated.js"></script>
   </body>
 </html>

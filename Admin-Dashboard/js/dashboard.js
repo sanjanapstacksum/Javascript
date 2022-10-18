@@ -6,6 +6,15 @@ var userArray = JSON.parse(localStorage.getItem("register_input"));
 var loginUser = JSON.parse(localStorage.getItem("login_input"));
 var userLength = userArray.length;
 
+
+// var profilePicture = document.getElementById("profilePicture")
+// if(loginUser.image==undefined){
+//   profilePicture.src = "https://cdn.pixabay.com/photo/2016/10/26/19/00/domain-names-1772242_960_720.jpg"
+// }
+// else{
+// profilePicture.src = loginUser.image;
+// }
+
 document.getElementById("countOfUsers").innerHTML = userLength;
 if (Array.isArray(blogArray)) {
   document.getElementById("countOfBlogs").innerHTML = blogArray.length;
@@ -15,8 +24,7 @@ if (Array.isArray(blogArray)) {
 
 document.getElementById("userName").innerHTML =
   loginUser.fname + " " + loginUser.lname;
-document.getElementById("profileName").innerHTML =
-  loginUser.fname + " " + loginUser.lname;
+
 
 var date = new Date();
 var current_date =

@@ -2,9 +2,7 @@ function logout() {
   window.localStorage.removeItem("login_input");
 }
 var userArray = JSON.parse(localStorage.getItem("register_input"));
-var loginUser = JSON.parse(localStorage.getItem("login_input"));
-document.getElementById("profileName").innerHTML =
-  loginUser.fname + " " + loginUser.lname;
+var loginUser = localStorage.getItem("login_input");
 
 var tableInfo = "";
 const renderTable = (data) => {
@@ -215,7 +213,7 @@ allevent.forEach((element) => {
 var submit = document.getElementById("btnSubmit");
 submit.addEventListener("click", submitUser);
 function submitUser() {
-  var val = true;
+  var value = true;
   var name = document.getElementById("name").value;
   var lname = document.getElementById("lastName").value;
   var email = document.getElementById("email").value;
@@ -226,7 +224,7 @@ function submitUser() {
     /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
   if (password != "" && !password.match(regex1)) {
     document.getElementById("correct_password").style.display = "block";
-    val = false;
+    value = false;
   }
 
   var name = document.getElementById("name").value;
@@ -234,7 +232,7 @@ function submitUser() {
   if (name != "" && !name.match(regex)) {
     document.getElementById("correct_name").style.display = "block";
     document.getElementById("firstName").style.display = "none";
-    val = false;
+    value = false;
   }
 
   var email = document.getElementById("email").value;
@@ -242,7 +240,7 @@ function submitUser() {
   if (email != "" && !email.match(pattern)) {
     document.getElementById("correct_email").style.display = "block";
     document.getElementById("emailRequired").style.display = "none";
-    val = false;
+    value = false;
   }
 
   var lastName = document.getElementById("lastName").value;
@@ -250,27 +248,27 @@ function submitUser() {
   if (lastName != "" && !lastName.match(regex)) {
     document.getElementById("correct_lastName").style.display = "block";
     document.getElementById("last_name").style.display = "none";
-    val = false;
+    value = false;
   }
   if (name == "") {
     document.getElementById("firstName").style.display = "block";
-    val = false;
+    value = false;
   }
 
   if (email == "") {
     document.getElementById("emailRequired").style.display = "block";
     document.getElementById("correct_email").style.display = "none";
-    val = false;
+    value = false;
   }
 
   if (lname == "") {
     document.getElementById("last_name").style.display = "block";
-    val = false;
+    value = false;
   }
 
   if (password == "") {
     document.getElementById("passwordRequired").style.display = "block";
-    val = false;
+    value = false;
   }
 
   if (userArray != null) {
@@ -278,12 +276,12 @@ function submitUser() {
       if (data.email.includes(email) == true) {
         document.getElementById("correct_email").style.display = "block";
         document.getElementById("emailRequired").style.display = "none";
-        val = false;
+        value = false;
       }
     });
   }
 
-  if (val === false) {
+  if (value === false) {
     return false;
   } else {
     var localstorageRegRecord =
@@ -445,7 +443,7 @@ allevent.forEach((element) => {
 });
 
 document.getElementById("btn_modelUpdate").onclick = function () {
-  var val = true;
+  var value = true;
   var name = document.getElementById("update_name").value;
   var email = document.getElementById("update_email").value;
   var lname = document.getElementById("update_Lname").value;
@@ -454,25 +452,25 @@ document.getElementById("btn_modelUpdate").onclick = function () {
   if (name == "") {
     document.getElementById("requiredName").style.display = "block";
     document.getElementById("correctName").style.display = "none";
-    val = false;
+    value = false;
   }
 
   if (email == "") {
     document.getElementById("requiredEmail").style.display = "block";
     document.getElementById("correctEmail").style.display = "none";
-    val = false;
+    value = false;
   }
 
   if (lname == "") {
     document.getElementById("requiredLname").style.display = "block";
     document.getElementById("correctLname").style.display = "none";
-    val = false;
+    value = false;
   }
 
   if (password == "") {
     document.getElementById("requiredPassword").style.display = "block";
     document.getElementById("correctPassword").style.display = "none";
-    val = false;
+    value = false;
   }
 
   if (userArray != null) {
@@ -480,12 +478,12 @@ document.getElementById("btn_modelUpdate").onclick = function () {
       if (data.email.includes(email) == true) {
         document.getElementById("correctEmail").style.display = "block";
 
-        val = false;
+        value = false;
       }
     });
   }
 
-  if (val === false) {
+  if (value === false) {
     return false;
   } else {
     var userId = document.getElementById("userId").value;
@@ -514,30 +512,24 @@ function searchUser() {
   if (!search) {
     location.reload();
   }
-  var regex = /^[a-zA-Z ]{1,30}$/;
-  if (!search.match(regex)) {
-    document.getElementById("correctSearchName").style.display = "none";
-  } else {
-    var input = document.getElementById("search");
-    var filter = input.value;
-    var table = document.getElementById("customtable");
-    var tr = table.getElementsByTagName("tr");
 
-    filteredData = userArray?.filter((user) => {
-      const fname = user.fname.toLowerCase();
+  var input = document.getElementById("search");
+  var filter = input.value;
 
-      if (fname.includes(filter)) {
-        return fname?.includes(filter.toLowerCase());
-      } else {
-        document.getElementById("dontDisplay").style.display = "none";
-      }
-    });
+  filteredData = userArray?.filter((user) => {
+    const fname = user.fname.toLowerCase();
 
-    if (!filteredData.length) {
-      document.getElementById("noDataFound").style.display = "block";
+    if (fname.includes(filter)) {
+      return fname?.includes(filter.toLowerCase());
+    } else {
+      document.getElementById("dontDisplay").style.display = "none";
     }
-    tableInfo = "";
-    document.getElementById("customtable").innerHTML = tableInfo;
-    renderTable(filteredData);
+  });
+
+  if (!filteredData.length) {
+    document.getElementById("noDataFound").style.display = "block";
   }
+  tableInfo = "";
+  document.getElementById("customtable").innerHTML = tableInfo;
+  renderTable(filteredData);
 }
