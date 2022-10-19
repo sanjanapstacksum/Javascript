@@ -113,7 +113,6 @@ function loginUser(e) {
           fname: user.fname,
           lname: user.lname,
           password: user.password,
-          image : "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg",
           mobileNo : ""
         };
        

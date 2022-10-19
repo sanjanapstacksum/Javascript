@@ -104,8 +104,6 @@
         <div class="container-fluid" style="
          margin-bottom: 100px;
      ">
-          <div class="row page-titles"></div>
-          <div class="flash-message"></div>
           <div class="row" style="justify-content:center; margin-top: 40px;">
             <div class="col-lg-6">
               <div class="card">
@@ -119,8 +117,7 @@
                             <label class="control-label">First Name</label>
                             <input type="text" name="first_name" id="first_name" class="form-control saveData">
                             <span id="firstName" style="display: none; float:left; color: red;">Name is required</span>
-                            <span id="correct_name" style="display: none; float:left; color: red;">*Please enter correct name</span>
-                                                      
+                            <span id="correct_name" style="display: none; float:left; color: red;">*Please enter correct name</span>                        
                           </div>
                         </div>
                       </div>
@@ -130,12 +127,10 @@
                             <label class="control-label"> Last Name</label>
                             <input type="text" name="last_name" id="last_name" class="form-control saveData">
                             <span id="lastName" style="display: none; float:left; color: red;">Last name is required</span>
-                            <span id="correct_lastName" style="display: none; float:left; color: red;">*Please enter correct Last name</span>
-                                                      
+                            <span id="correct_lastName" style="display: none; float:left; color: red;">*Please enter correct Last name</span>                      
                           </div>
                         </div>
                       </div>
-
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group" style="
@@ -188,24 +183,20 @@
                           </div>
                         </div>
                       </div>
+                      
                       <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label class="control-label">Profile Picture</label>
-                            <input type="text" name="profile" id="profilePictureUser" class="form-control saveData">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                           <div class="form-group" >
                             <div id="img-preview"></div>
                             <label class="control-label">Upload Picture</label>
-                            <input type="file" name="choose-file" id="choose-file" class="form-control saveData" style="
-                           
+                            <input type="file" name="choose-file" id="choose-file" class="form-control" style="
                             height: 100%;
                         " accept="image/*" />
                           </div>
+                        </div>
+                        <div class="col-md-6" id="dontDisplay" >
+                          <img class="img-profile"  id="displayImage" src="" style="width: 150px;"/>
+                      <div class="fa fa-trash" id="delete" style="font-size:19px;"onclick="deleteImage()"></div>
                         </div>
                       </div>
                       <div class="form-actions">

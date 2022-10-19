@@ -4,11 +4,11 @@ if (getUser == null) {
 }
 document.getElementById("profileName").innerHTML =
   getUser.fname + " " + getUser.lname;
-var profilePicture = document.getElementById("profilePicture");
-if (getUser.image == "" || getUser.image == undefined) {
+  var profilePicture = document.getElementById("profilePicture");
+if (getUser.uploadProfilePicture == "" || getUser.uploadProfilePicture == undefined) {
   profilePicture.src =
     "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg";
-  document.getElementById("profilePictureUser").value = profilePicture.src;
+  
 } else {
-  profilePicture.src = getUser.image;
+  profilePicture.src = getUser.uploadProfilePicture;
 }

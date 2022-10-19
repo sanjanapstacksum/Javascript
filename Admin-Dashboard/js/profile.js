@@ -3,7 +3,6 @@ function logout() {
 }
 
 var regexx = document.querySelectorAll(".saveData");
-
 regexx.forEach((element) => {
   element.addEventListener("keyup", (e) => {
     var name = document.getElementById("first_name").value;
@@ -64,9 +63,14 @@ document.getElementById("last_name").value = getUser.lname;
 document.getElementById("email").value = getUser.email;
 document.getElementById("userId").value = getUser.id;
 document.getElementById("password").value = getUser.password;
-document.getElementById("profilePictureUser").value = getUser.image;
 document.getElementById("birthDate").value = getUser.birthDate;
 document.getElementById("mobileNo").value = getUser.mobileNo;
+
+if ("uploadProfilePicture" in getUser) {
+} else {
+  document.getElementById("displayImage").style.display = "none";
+  document.getElementById("delete").style.display = "none";
+}
 
 if (getUser.gender == "male") {
   document.getElementById("male").checked = true;
@@ -116,12 +120,11 @@ allevent.forEach((element) => {
 });
 
 document.getElementById("save").onclick = function (e) {
+  
   var val = true;
   var name = document.getElementById("first_name").value;
   var lname = document.getElementById("last_name").value;
   var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
-
   var password = document.getElementById("password").value;
   var regex1 =
     /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
@@ -136,19 +139,16 @@ document.getElementById("save").onclick = function (e) {
   if (!email.match(pattern)) {
     document.getElementById("correct_email").style.display = "block";
     document.getElementById("email_required").style.display = "none";
-
     val = false;
   }
 
   if (password == "") {
     document.getElementById("password_required").style.display = "block";
     document.getElementById("correct_password").style.display = "none";
-
     val = false;
   }
   if (name == "") {
     document.getElementById("firstName").style.display = "block";
-
     val = false;
   }
 
@@ -166,8 +166,6 @@ document.getElementById("save").onclick = function (e) {
   if (val === false) {
     return false;
   } else {
-
-
     var userId = document.getElementById("userId").value;
 
     if (parseInt(userId) === getUser.id) {
@@ -175,9 +173,12 @@ document.getElementById("save").onclick = function (e) {
       getUser.lname = document.getElementById("last_name").value;
       getUser.email = document.getElementById("email").value;
       getUser.password = document.getElementById("password").value;
-      getUser.image = document.getElementById("profilePictureUser").value;
       getUser.birthDate = document.getElementById("birthDate").value;
       getUser.mobileNo = document.getElementById("mobileNo").value;
+      var chooseFile = document.getElementById("img-preview");
+      if (chooseFile.innerHTML != "") {
+        getUser.uploadProfilePicture = chooseFile.querySelector("img").currentSrc;
+      }
 
       var male = document.getElementById("male");
       var female = document.getElementById("female");
@@ -188,46 +189,30 @@ document.getElementById("save").onclick = function (e) {
         getUser.gender = document.getElementById("female").value;
       }
 
-      var genderMale = document.getElementById("male");
-      var genderFemale = document.getElementById("female");
-
-      if (genderMale.value == getUser.gender) {
-        getUser.gender.checked;
-      }
-      if (genderFemale.value == getUser.gender) {
-        getUser.gender.checked;
-      }
-
-      var imagePath = document.getElementById("img-preview")
-      console.log(imagePath,"imagePath") 
-
       swal("saved Successfully !", "", "success");
       localStorage.setItem("login_input", JSON.stringify(getUser));
       e.preventDefault();
-      // setTimeout(function () {
-      //   location.reload();
-      // }, 1000);
+      setTimeout(function () {
+        location.reload();
+      }, 1000);
     }
   }
 };
+
+var displayImage = document.getElementById("displayImage");
+displayImage.src = getUser.uploadProfilePicture;
 
 var localstorageRegRecord = JSON.parse(localStorage.getItem("register_input"));
 
 for (var i = 0; i < localstorageRegRecord.length; i++) {
   if (localstorageRegRecord[i].id === userId) {
-    document.getElementById("first_name").value =
-      localstorageRegRecord[i].fname;
+    document.getElementById("first_name").value = localstorageRegRecord[i].fname;
     document.getElementById("last_name").value = localstorageRegRecord[i].lname;
     document.getElementById("email").value = localstorageRegRecord[i].email;
-    document.getElementById("password").value =
-      localstorageRegRecord[i].password;
+    document.getElementById("password").value = localstorageRegRecord[i].password;
     document.getElementById("userId").value = localstorageRegRecord[i].id;
-    document.getElementById("profilePictureUser").value =
-      localstorageRegRecord[i].image;
-    document.getElementById("birthDate").value =
-      localstorageRegRecord[i].birthDate;
-    document.getElementById("mobileNo").value =
-      localstorageRegRecord[i].mobileNo;
+    document.getElementById("birthDate").value = localstorageRegRecord[i].birthDate;
+    document.getElementById("mobileNo").value =  localstorageRegRecord[i].mobileNo;
 
     var male = document.getElementById("male");
     var female = document.getElementById("female");
@@ -247,7 +232,6 @@ localstorageRegRecord.map((user) => {
     user.lname = document.getElementById("last_name").value;
     user.email = document.getElementById("email").value;
     user.password = document.getElementById("password").value;
-    user.image = document.getElementById("profilePictureUser").value;
     user.birthDate = document.getElementById("birthDate").value;
     user.mobileNo = document.getElementById("mobileNo").value;
     var male = document.getElementById("male");
@@ -265,26 +249,46 @@ localstorageRegRecord.map((user) => {
   }
 });
 
-
 // upload document image preview //
-
 
 const chooseFile = document.getElementById("choose-file");
 const imgPreview = document.getElementById("img-preview");
 chooseFile.addEventListener("change", function () {
-  getImgData();
+getImgData();
 });
 
 function getImgData() {
   const files = chooseFile.files[0];
-  console.log(files)
-  console.log(files[0].mozFullPath);
+
   if (files) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(files);
     fileReader.addEventListener("load", function () {
       imgPreview.style.display = "block";
       imgPreview.innerHTML = '<img src="' + this.result + '" />';
-    });    
+    });
   }
+}
+
+function deleteImage() {
+  swal({
+    title: "Are you sure ?",
+    text: "Once deleted, you will not be able to recover your Profile Picture!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      delete getUser.uploadProfilePicture;
+      localStorage.setItem("login_input", JSON.stringify(getUser));
+      swal("Poof! Your image has been deleted!", {
+      icon: "success",
+      });
+    } else {
+      swal("Your image is safe!");
+    }
+    setTimeout(function () {
+      location.reload();
+    }, 1000);
+  });
 }
