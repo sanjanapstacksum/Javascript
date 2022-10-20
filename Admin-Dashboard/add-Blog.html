@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>SB Admin 2 - Dashboard</title>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="css/add-blog.css" rel="stylesheet">
+  </head>
+  <body id="page-top">
+    <div id="wrapper">
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup>
+          </div>
+        </a>
+        <hr class="sidebar-divider my-0" />
+        <li class="nav-item active">
+          <a class="nav-link" href="dashboard.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <hr class="sidebar-divider" />
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="users.html">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <span>Users</span>
+          </a>
+        </li>
+        <hr class="sidebar-divider" />
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="blog.html">
+            <i class="fa-solid fa-file"></i>
+            <span>blog</span>
+          </a>
+        </li>
+        <hr class="sidebar-divider" />
+      </ul>
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="contentBg" style="
+        color: #6b6d7d;
+       
+    ">
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800" style="text-align: center; margin-top: 25px"> Add Blog </h1>
+            </div>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li>
+              <nav aria-label="breadcrumb" style="
+                     margin-top: 11px;
+                 ">
+                <ol class="breadcrumb" style="background-color: white;">
+                  <li class="breadcrumb-item">
+                    <a href="dashboard.html">Dashboard</a>
+                  </li>
+                  <li class="breadcrumb-item ">
+                    <a href="blog.html">Blog</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Add-Blog</li>
+                </ol>
+              </nav>
+              <div class="topbar-divider d-none d-sm-block"></div>
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="profileName">Douglas McGee</span>
+                  <img class="img-profile rounded-circle" id="profilePicture" src="img/undraw_profile.svg" />
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="profile.html">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="index.html" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="container" style="margin-top:90px;  font-size:22px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <form style="text-align: center;" id="form">
+              <div class="container" id="one" style="  padding: 30px; padding-left: 300px;  padding-right: 0px; padding: 0px; margin-left: 100px;">
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-2 col-form-label" style="
+                       margin-top: 79px">Title:</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control allEvent" placeholder="enter your title" id="title" style="width: 70%;margin-top: 79px">
+                    <span id="titleRequired" style="display: none; float:left; color: red; ">Title is required</span>
+                    <span id="title_error_msg" style="display: none; float:left; color: red;"> *Please enter correct title</span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-2 col-form-label">Description:</label>
+                  <div class="col-sm-9">
+                    <textarea id="description" name="story" class="form-control allEvent " placeholder="enter your text" rows="5" cols="33" style="width: 70%;"></textarea>
+                    <span id="descriptionRequired" style="display: none; float:left; color: red;">Description is required</span>
+                    <span id="description_error" style="display: none; float:left; color: red;">please write atleast 30 characters</span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-1 col-form-label"></label>
+                  <div class="col-sm-9" style="
+    margin-left: 97px;
+">
+                    <div id="img-preview" style="float: left;"></div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-2 col-form-label">Image:</label>
+                  <div class="col-sm-9">
+                    <input type="file" class="form-control allEvent " placeholder="Enter your Image path" id="choose-file" style="width: 70%; height: 45px;">
+                    <span id="imageRequired" style="display: none; float:left; color: red;">Image URL is required</span>
+                    <span id="image_error_msg" style="display: none; float:left; color: red;">*Please enter correct Image path</span>
+                  </div>
+                </div>
+                <input type="button" class="btn btn-success" id="btnSubmit" value="submit" style="height: 40px;background: green;margin: 21px;margin-right: 175px;width: 121px;margin-bottom: 30px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" onclick="submitBlog()">
+            </form>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body"> Select "Logout" below if you are ready to end your current session. </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal"> Cancel </button>
+              <a class="btn btn-primary" href="index.html" onclick="logout()">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="js/add-blog.js"></script>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="js/sb-admin-2.min.js"></script>
+      <script src="js/validated.js"></script>
+      <script src="js/sweetalert.min.js"></script>
+  </body>
+</html>
