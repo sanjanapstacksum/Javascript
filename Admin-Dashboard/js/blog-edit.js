@@ -78,6 +78,7 @@ document.getElementById("submit_updateModel").onclick = function () {
 
   if (title == "") {
     document.getElementById("requiredTitle").style.display = "block";
+    document.getElementById("update_title_error").style.display = "none";
     value = false;
   }
 

@@ -44,6 +44,7 @@ row = 1;
 var tableData = "";
 
 const renderTable = (data) => {
+  console.log(data)
   data.forEach((values) => {
     tableData += `
     <tr id="user_${values.id}">

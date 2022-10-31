@@ -9,7 +9,6 @@ var found = false;
 
 blogArray.filter((blog) => {
   if (blog.blog_slug == blogSlug) {
-   
     var element = document.getElementById("imageBlog");
     element.src = blog.image;
     document.getElementById("blogHeading").innerText = blog.title;

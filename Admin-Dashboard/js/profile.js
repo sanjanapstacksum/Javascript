@@ -149,6 +149,7 @@ document.getElementById("save").onclick = function (e) {
   }
   if (name == "") {
     document.getElementById("firstName").style.display = "block";
+    document.getElementById("correct_name").style.display = "none";
     val = false;
   }
 
@@ -160,6 +161,7 @@ document.getElementById("save").onclick = function (e) {
 
   if (lname == "") {
     document.getElementById("lastName").style.display = "block";
+    document.getElementById("correct_lastName").style.display = "none";
     val = false;
   }
 
@@ -189,7 +191,7 @@ document.getElementById("save").onclick = function (e) {
         getUser.gender = document.getElementById("female").value;
       }
 
-      swal("saved Successfully !", "", "success");
+      swal("Saved Successfully !", "", "success");
       localStorage.setItem("login_input", JSON.stringify(getUser));
       e.preventDefault();
       setTimeout(function () {
